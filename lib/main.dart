@@ -39,6 +39,13 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+class subject() {
+
+}
+
+class subject
+
+
 mixin setting<T extends StatefulWidget> on State<T> {
   @override
   void setState(VoidCallback fn) {
