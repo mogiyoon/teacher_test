@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:teacher_test/achieve_screen.dart';
+import 'achieve_screen.dart';
 import 'table_screen.dart';
+import 'screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,136 +40,10 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class subject() {
-
-}
-
-class subject
-
-
-mixin setting<T extends StatefulWidget> on State<T> {
-  @override
-  void setState(VoidCallback fn) {
-    if (!mounted) return;
-
-    super.setState(fn);
-  }
-
-  List<String> subject =
-  ['국어', '수학', '사회', '과학', '영어', '체육', '미술', '음악', '도덕', '실과', '통합'];
-
-  var subjectDrawer;
-  var subjectListBuild;
-
-  bool subjectTableOpen = false;
-  bool subjectAchievOpen = false;
-  int subjectNumber = 0;
-
-  subInitializeDrawer() {
-    subjectDrawer = Drawer(
-        child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                child: Text(
-                  '목록',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white),
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.deepPurpleAccent,
-                ),
-              ),
-              ExpansionTile(
-                key: GlobalKey(),
-                title: Text('교육과정 내용체계표'),
-                children: [
-                  subjectListBuild
-                ],
-                initiallyExpanded: subjectTableOpen,
-                onExpansionChanged: (val){
-                  if(val == true){
-                    subjectAchievOpen = false;
-                    setState(() {
-
-                    });
-                    subjectTableOpen = val;
-                  }
-                },
-              ),
-              ExpansionTile(
-                key: GlobalKey(),
-                title: Text('교육과정 성취기준'),
-                children: [
-                  subjectListBuild
-                ],
-                initiallyExpanded: subjectAchievOpen,
-                onExpansionChanged: (val){
-                  if(val == true){
-                    subjectTableOpen = false;
-                    setState(() {
-
-                    });
-                    subjectAchievOpen = val;
-                  }
-                },
-              ),
-              ListTile(
-                  title: Text('총론')
-              ),
-            ]
-        )
-    );
-  }
-  subInitializeList() {
-    subjectListBuild = ListView.builder(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        itemExtent: 28,
-        itemCount: subject.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Row(
-            key: ValueKey((index+1).toString()),
-            children: [
-              Container(width: 40),
-              GestureDetector(
-                child: Text(
-                  subject[index],
-                  style: TextStyle(fontSize: 15),
-                ),
-                onTap: () async {
-                  if(subjectTableOpen == true) {
-                    subjectNumber = index+1;
-                    await Navigator.pushNamed(
-                      context,
-                      '/TableScreen',
-                      arguments: subjectNumber,
-                    );
-                  }
-                  else if(subjectAchievOpen == true) {
-                    subjectNumber = index+1;
-                    await Navigator.pushNamed(
-                      context,
-                      '/AchieveScreen',
-                      arguments: subjectNumber,
-                    );
-                  }
-                },
-              )
-            ],
-          );
-        }
-    );
-  }
-}
-
-class _MyHomePageState extends State<MyHomePage> with setting {
+class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    subInitializeList();
-    subInitializeDrawer();
 
     return Scaffold(
       appBar: AppBar(
@@ -199,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> with setting {
           ],
         ),
       ),
-      drawer: subjectDrawer,
+      drawer: SubjectDrawer(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: '정답 확인',

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'package:teacher_test/screen.dart';
 
 class AchieveScreen extends StatelessWidget{
   const AchieveScreen({super.key});
@@ -26,14 +26,13 @@ class AchieveScreenWidget extends StatefulWidget {
   State<AchieveScreenWidget> createState() => _AchieveScreenWidgetState();
 }
 
-class _AchieveScreenWidgetState extends State<AchieveScreenWidget> with setting{
+class _AchieveScreenWidgetState extends State<AchieveScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
     final int args = ModalRoute.of(context)?.settings.arguments as int;
-    String tableTitle = subject[args-1];
-    subInitializeList();
-    subInitializeDrawer();
+    var screenSetting = ScreenSetting();
+    String tableTitle = screenSetting.subject[args-1];
 
     return Scaffold(
       appBar: AppBar(
@@ -64,7 +63,7 @@ class _AchieveScreenWidgetState extends State<AchieveScreenWidget> with setting{
           ],
         ),
       ),
-      drawer: subjectDrawer,
+      drawer: SubjectDrawer(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: '정답 확인',

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'screen.dart';
 
 class TableScreen extends StatelessWidget{
   const TableScreen({super.key});
-
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -26,22 +24,13 @@ class TableScreenWidget extends StatefulWidget {
   State<TableScreenWidget> createState() => _TableScreenWidgetState();
 }
 
-class _TableScreenWidgetState extends State<TableScreenWidget> with setting {
+class _TableScreenWidgetState extends State<TableScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
     final int args = ModalRoute.of(context)?.settings.arguments as int;
-    String tableTitle = subject[args-1];
-    subInitializeList();
-    subInitializeDrawer();
-    tableScreen Scrn = new tableScreen();
-
-    var realScreen;
-    switch(args-1) {
-      case 0: realScreen = Scrn.scrn1;
-      case 1: realScreen = Scrn.scrn2;
-      break;
-    }
+    var screenSetting = ScreenSetting();
+    String tableTitle = screenSetting.subject[args-1];
 
     return Scaffold(
       appBar: AppBar(
@@ -65,8 +54,8 @@ class _TableScreenWidgetState extends State<TableScreenWidget> with setting {
             }
         ),
       ),
-      body: realScreen,
-      drawer: subjectDrawer,
+      body: Container(),
+      drawer: SubjectDrawer(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: '정답 확인',
@@ -84,32 +73,3 @@ class initialSetting extends _TableScreenWidgetState {
     ),
   );
 }
-
-class tableScreen extends initialSetting {
-  tableScreen() : super();
-
-  var scrn1 = Column(
-    children: [
-      Container(
-        child: Row(
-          children: [
-            Container(
-              height: 150,
-              width: 150,
-              child: generalForm,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
-              ),
-            ),
-          ],
-        ),
-      )
-    ],
-  );
-
-
-  var scrn2 = Center(
-    child: Text('수학')
-  );
-}
-
