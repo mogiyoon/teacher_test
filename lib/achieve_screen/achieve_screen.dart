@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:teacher_test/screenWidget.dart';
+import 'package:teacher_test/achieve_screen/achieve_contents.dart';
+import 'package:teacher_test/function/screen_widget.dart';
 
 class AchieveScreen extends StatelessWidget{
   const AchieveScreen({super.key});
-
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -31,7 +30,8 @@ class _AchieveScreenWidgetState extends State<AchieveScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final int args = ModalRoute.of(context)?.settings.arguments as int;
+    late int args = ModalRoute.of(context)?.settings.arguments as int;
+
     var screenSetting = ScreenSetting();
     String tableTitle = screenSetting.subject[args-1];
 
@@ -57,13 +57,7 @@ class _AchieveScreenWidgetState extends State<AchieveScreenWidget> {
             }
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-          ],
-        ),
-      ),
+      body: KoreanAchieveTable(),
       drawer: ChangeNotifierProvider<ScreenSetting>.value(
         value: ScreenSetting(),
         child: SubjectDrawer(),

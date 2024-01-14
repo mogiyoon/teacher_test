@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../screenWidget.dart';
+import '../function/screen_widget.dart';
 
 class TableScreen extends StatelessWidget{
   const TableScreen({super.key});
