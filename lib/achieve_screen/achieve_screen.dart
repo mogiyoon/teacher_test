@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:teacher_test/screen.dart';
+import 'package:provider/provider.dart';
+import 'package:teacher_test/screenWidget.dart';
 
 class AchieveScreen extends StatelessWidget{
   const AchieveScreen({super.key});
@@ -63,7 +64,10 @@ class _AchieveScreenWidgetState extends State<AchieveScreenWidget> {
           ],
         ),
       ),
-      drawer: SubjectDrawer(),
+      drawer: ChangeNotifierProvider<ScreenSetting>.value(
+        value: ScreenSetting(),
+        child: SubjectDrawer(),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: '정답 확인',

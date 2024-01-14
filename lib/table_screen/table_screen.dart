@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'screen.dart';
+import 'package:provider/provider.dart';
+import '../screenWidget.dart';
 
 class TableScreen extends StatelessWidget{
   const TableScreen({super.key});
@@ -55,7 +56,10 @@ class _TableScreenWidgetState extends State<TableScreenWidget> {
         ),
       ),
       body: Container(),
-      drawer: SubjectDrawer(),
+      drawer: ChangeNotifierProvider<ScreenSetting>.value(
+        value: ScreenSetting(),
+        child: SubjectDrawer(),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: '정답 확인',

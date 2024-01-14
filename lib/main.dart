@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'achieve_screen.dart';
-import 'table_screen.dart';
-import 'screen.dart';
+import 'achieve_screen/achieve_screen.dart';
+import 'table_screen/table_screen.dart';
+import 'screenWidget.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,8 +10,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -74,7 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      drawer: SubjectDrawer(),
+      drawer: ChangeNotifierProvider<ScreenSetting>.value(
+        value: ScreenSetting(),
+        child: SubjectDrawer(),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: '정답 확인',

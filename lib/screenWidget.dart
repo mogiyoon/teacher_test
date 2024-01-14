@@ -4,17 +4,35 @@ import 'package:provider/provider.dart';
 class ScreenSetting with ChangeNotifier {
   List<String> subject =
   ['국어', '수학', '사회', '과학', '영어', '체육', '미술', '음악', '도덕', '실과', '통합'];
-  bool subjectTableOpen = false;
-  bool subjectAchievOpen = false;
-  int subjectNumber = 0;
+  bool _subjectTableOpen = false;
+  bool get subjectTableOpen => _subjectTableOpen;
+
+  bool _subjectAchievOpen = false;
+  bool get subjectAchievOpen => _subjectAchievOpen;
+
+  int _subjectNumber = 0;
+  int get subjectNumber {
+    return _subjectNumber;
+  }
+  set subjectNumber(value) {
+    return _subjectNumber = value;
+  }
 
   void tableOpen() {
-    subjectTableOpen = true;
-    subjectAchievOpen = false;
+    _subjectTableOpen = true;
+    _subjectAchievOpen = false;
+    notifyListeners();
   }
   void achievOpen() {
-    subjectTableOpen = false;
-    subjectAchievOpen = true;
+    _subjectTableOpen = false;
+    _subjectAchievOpen = true;
+    notifyListeners();
+  }
+
+  void printSubject() {
+    print(subjectTableOpen);
+    print(subjectAchievOpen);
+    print(subjectNumber);
   }
 }
 
@@ -45,13 +63,13 @@ class SubjectDrawerState extends State<SubjectDrawer> {
                 key: GlobalKey(),
                 title: Text('교육과정 내용체계표'),
                 children: [
-                  SubjectListBuild()
+                  SubjectListBuild(),
                 ],
                 initiallyExpanded: screenSetting.subjectTableOpen,
                 onExpansionChanged: (val){
                   if(val == true) {
+                    screenSetting.tableOpen();
                     setState(() {
-                      screenSetting.tableOpen();
                     });
                   }
                 },
@@ -60,13 +78,13 @@ class SubjectDrawerState extends State<SubjectDrawer> {
                 key: GlobalKey(),
                 title: Text('교육과정 성취기준'),
                 children: [
-                  SubjectListBuild()
+                  SubjectListBuild(),
                 ],
                 initiallyExpanded: screenSetting.subjectAchievOpen,
                 onExpansionChanged: (val) {
                   if (val == true) {
+                    screenSetting.achievOpen();
                     setState(() {
-                      screenSetting.achievOpen();
                     });
                   }
                 }
@@ -107,7 +125,7 @@ class SubjectListBuildState extends State<SubjectListBuild> {
                 ),
                 onTap: () async {
                   if(screenSetting.subjectTableOpen == true) {
-                    screenSetting.subjectNumber = index+1;
+                    screenSetting.subjectNumber = index + 1;
                     await Navigator.pushNamed(
                       context,
                       '/TableScreen',
@@ -115,7 +133,7 @@ class SubjectListBuildState extends State<SubjectListBuild> {
                     );
                   }
                   else if(screenSetting.subjectAchievOpen == true) {
-                    screenSetting.subjectNumber = index+1;
+                    screenSetting.subjectNumber = index + 1;
                     await Navigator.pushNamed(
                       context,
                       '/AchieveScreen',
