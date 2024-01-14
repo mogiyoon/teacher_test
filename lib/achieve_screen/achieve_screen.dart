@@ -3,11 +3,28 @@ import 'package:provider/provider.dart';
 import 'package:teacher_test/achieve_screen/achieve_contents.dart';
 import 'package:teacher_test/function/screen_widget.dart';
 
+class RouteArgs with ChangeNotifier {
+  int _args = 0;
+  int get args {
+    return _args;
+  }
+  set args(value) {
+    _args = value;
+  }
+
+  void same(int value) {
+    _args = value;
+    notifyListeners();
+  }
+}
+
 class AchieveScreen extends StatelessWidget{
   const AchieveScreen({super.key});
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
+    var routeArgs = Provider.of<RouteArgs>(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Teacher Test',
@@ -23,17 +40,20 @@ class AchieveScreen extends StatelessWidget{
 class AchieveScreenWidget extends StatefulWidget {
 
   @override
-  State<AchieveScreenWidget> createState() => _AchieveScreenWidgetState();
+  State<AchieveScreenWidget> createState() => AchieveScreenWidgetState();
 }
 
-class _AchieveScreenWidgetState extends State<AchieveScreenWidget> {
+class AchieveScreenWidgetState extends State<AchieveScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    late int args = ModalRoute.of(context)?.settings.arguments as int;
+    var routeArgs = Provider.of<RouteArgs>(context);
+    late int value = ModalRoute.of(context)?.settings.arguments as int;
+    routeArgs.same(value);
+    print('print AchieveScreenWidget routeArg ${routeArgs.args}');
 
-    var screenSetting = ScreenSetting();
-    String tableTitle = screenSetting.subject[args-1];
+    var screenSetting = Provider.of<ScreenSetting>(context);
+    String tableTitle = screenSetting.subject[routeArgs.args-1];
 
     return Scaffold(
       appBar: AppBar(
@@ -57,7 +77,10 @@ class _AchieveScreenWidgetState extends State<AchieveScreenWidget> {
             }
         ),
       ),
-      body: KoreanAchieveTable(),
+      body: ChangeNotifierProvider<RouteArgs>.value(
+        value: RouteArgs(),
+        child: KoreanAchieveTable(),
+      ),
       drawer: ChangeNotifierProvider<ScreenSetting>.value(
         value: ScreenSetting(),
         child: SubjectDrawer(),

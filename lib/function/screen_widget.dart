@@ -23,17 +23,13 @@ class ScreenSetting with ChangeNotifier {
     _subjectAchievOpen = false;
     notifyListeners();
   }
+
   void achievOpen() {
     _subjectTableOpen = false;
     _subjectAchievOpen = true;
     notifyListeners();
   }
 
-  void printSubject() {
-    print(subjectTableOpen);
-    print(subjectAchievOpen);
-    print(subjectNumber);
-  }
 }
 
 class SubjectDrawer extends StatefulWidget {
