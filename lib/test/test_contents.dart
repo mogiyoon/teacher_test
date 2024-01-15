@@ -54,8 +54,8 @@ class TestTable extends StatefulWidget {
 class _TestTableState extends State<TestTable> {
   @override
   Widget build(BuildContext context) {
-    var routeArgs = Provider.of<RouteContents>(context);
-    int pageNum = routeArgs.subjectNum;
+    var routeContents = Provider.of<RouteContents>(context);
+    int subjectNum = routeContents.subjectNum;
     return Container(
       child: ChangeNotifierProvider<Choice>.value(
         value: Choice(),
@@ -68,7 +68,7 @@ class _TestTableState extends State<TestTable> {
                 CheckBoxWidget('5~6학년군', 5)
               ],
             ),
-            Container(),
+            ContentsWidget(),
           ],
         ),
       ),
@@ -108,5 +108,24 @@ class CheckBoxWidget extends StatelessWidget {
             Text(title),
           ],
     ));
+  }
+}
+
+class ContentsWidget extends StatelessWidget {
+  Widget build(BuildContext context) {
+    var choice = Provider.of<Choice>(context);
+
+    return Container(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            if(choice.oneTwoCheck) Text('oneTwoCheck'),
+            if(choice.threeFourCheck) Text('threeFourCheck'),
+            if(choice.fiveSixCheck) Text('fiveSixCheck')
+          ],
+        ),
+      )
+
+    );
   }
 }

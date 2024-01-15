@@ -1,5 +1,5 @@
 export 'art_contents.dart';
-export 'combined_contents.dart';
+export 'combined_subject_contents.dart';
 export 'english_contents.dart';
 export 'ethics_contents.dart';
 export 'korean_contents.dart';
