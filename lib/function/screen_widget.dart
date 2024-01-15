@@ -129,22 +129,16 @@ class SubjectListBuildState extends State<SubjectListBuild> {
                   style: TextStyle(fontSize: 15),
                 ),
                 onTap: () async {
-                  if(screenSetting.subjectTableOpen == true) {
-                    screenSetting.subjectNumber = index + 1;
-                    await Navigator.pushNamed(
-                      context,
-                      '/TableScreen',
-                      arguments: screenSetting.subjectNumber,
-                    );
-                  }
-                  else if(screenSetting.subjectAchievOpen == true) {
-                    screenSetting.subjectNumber = index + 1;
-                    await Navigator.pushNamed(
-                      context,
-                      '/AchieveScreen',
-                      arguments: screenSetting.subjectNumber,
-                    );
-                  }
+                  screenSetting.subjectNumber = index + 1;
+                  await Navigator.pushNamed(
+                    context,
+                    '/TestScreen',
+                    arguments: {
+                      'arg1' : screenSetting.subjectNumber,
+                      'arg2' : screenSetting.subjectTableOpen,
+                      'arg3' : screenSetting.subjectAchievOpen,
+                    },
+                  );
                 },
               )
             ],

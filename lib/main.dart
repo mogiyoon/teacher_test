@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'achieve_screen/achieve_screen.dart';
-import 'table_screen/table_screen.dart';
+import 'test/test_screen.dart';
 import 'function/screen_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -22,8 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/Main': (context) => MyHomePage(title: '초등임용 헬퍼'),
-        '/TableScreen': (context) => TableScreen(),
-        '/AchieveScreen': (context) => AchieveScreen(),
+        '/TestScreen': (context) => AchieveScreen(),
       },
       initialRoute: '/Main',
     );

@@ -1,25 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:teacher_test/main.dart';
-import 'package:teacher_test/table_screen/table_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:teacher_test/achieve_screen/achieve_contents.dart';
+import 'package:teacher_test/test/test_contents.dart';
 import 'package:teacher_test/function/screen_widget.dart';
 
-class RouteArgs with ChangeNotifier {
-  int _args = 0;
-  int get args {
-    return _args;
+class RouteContents with ChangeNotifier {
+  int _subjectNum = 0;
+  int get subjectNum {
+    return _subjectNum;
   }
-  set args(value) {
-    _args = value;
+  set subjectNum(value) {
+    _subjectNum = value;
+  }
+
+  bool _tableTest = false;
+  bool get tableTest {
+    return _tableTest;
+  }
+  set tableTest(value) {
+    _tableTest = value;
+  }
+
+  bool _achieveTest = false;
+  bool get achieveTest {
+    return _achieveTest;
+  }
+  set achieveTest(value) {
+    _achieveTest = value;
   }
 
   void same(int value) {
-    _args = value;
-    print('same _args : $_args');
-    print('same args : $args');
+    _subjectNum = value;
     notifyListeners();
   }
+
+
 }
 
 class AchieveScreen extends StatelessWidget{
@@ -28,7 +43,9 @@ class AchieveScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    late int num = ModalRoute.of(context)!.settings.arguments as int;
+    Map<String, Object> args = ModalRoute
+        .of(context)!
+        .settings.arguments as Map<String, Object>;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -39,17 +56,16 @@ class AchieveScreen extends StatelessWidget{
       ),
       home: MultiProvider(
         providers: [
-          Provider<int>.value(value: num,),
-          ChangeNotifierProvider<RouteArgs>.value(
-            value: RouteArgs(),
+          Provider<Map>.value(value: args),
+          ChangeNotifierProvider<RouteContents>.value(
+            value: RouteContents(),
           ),
         ],
         child: AchieveScreenWidget(),
       ),
       routes: {
         '/Main': (context) => MyHomePage(title: '초등임용 헬퍼'),
-        '/TableScreen': (context) => TableScreen(),
-        '/AchieveScreen': (context) => AchieveScreen(),
+        '/TestScreen': (context) => AchieveScreen(),
       },
     );
   }
@@ -65,11 +81,14 @@ class AchieveScreenWidgetState extends State<AchieveScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var routeArgs = Provider.of<RouteArgs>(context);
-    routeArgs.args = Provider.of<int>(context);
+    late Map args = Provider.of<Map>(context);
+    var routeContents = Provider.of<RouteContents>(context);
+    routeContents.subjectNum = args['arg1'] as int;
+    routeContents.tableTest = args['arg2'] as bool;
+    routeContents.achieveTest = args['arg3'] as bool;
 
     var screenSetting = ScreenSetting();
-    String tableTitle = screenSetting.subject[routeArgs.args-1];
+    String tableTitle = screenSetting.subject[routeContents.subjectNum-1];
 
     return Scaffold(
       appBar: AppBar(
@@ -93,7 +112,7 @@ class AchieveScreenWidgetState extends State<AchieveScreenWidget> {
             }
         ),
       ),
-      body: AchieveTable(),
+      body: TestTable(),
       drawer: ChangeNotifierProvider<ScreenSetting>.value(
         value: ScreenSetting(),
         child: SubjectDrawer(),
