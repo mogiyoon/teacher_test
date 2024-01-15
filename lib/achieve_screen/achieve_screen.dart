@@ -14,6 +14,8 @@ class RouteArgs with ChangeNotifier {
 
   void same(int value) {
     _args = value;
+    print('same _args : $_args');
+    print('same args : $args');
     notifyListeners();
   }
 }
@@ -21,9 +23,10 @@ class RouteArgs with ChangeNotifier {
 class AchieveScreen extends StatelessWidget{
   const AchieveScreen({super.key});
 
+
   @override
   Widget build(BuildContext context) {
-    var routeArgs = Provider.of<RouteArgs>(context);
+    final int num = ModalRoute.of(context)!.settings.arguments as int;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -32,7 +35,10 @@ class AchieveScreen extends StatelessWidget{
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: AchieveScreenWidget(),
+      home: ChangeNotifierProvider<RouteArgs>.value(
+        value: RouteArgs(),
+        child: AchieveScreenWidget(),
+      )
     );
   }
 }
@@ -48,12 +54,9 @@ class AchieveScreenWidgetState extends State<AchieveScreenWidget> {
   @override
   Widget build(BuildContext context) {
     var routeArgs = Provider.of<RouteArgs>(context);
-    late int value = ModalRoute.of(context)?.settings.arguments as int;
-    routeArgs.same(value);
-    print('print AchieveScreenWidget routeArg ${routeArgs.args}');
 
-    var screenSetting = Provider.of<ScreenSetting>(context);
-    String tableTitle = screenSetting.subject[routeArgs.args-1];
+    var screenSetting = ScreenSetting();
+    String tableTitle = screenSetting.subject[0];
 
     return Scaffold(
       appBar: AppBar(
@@ -77,10 +80,7 @@ class AchieveScreenWidgetState extends State<AchieveScreenWidget> {
             }
         ),
       ),
-      body: ChangeNotifierProvider<RouteArgs>.value(
-        value: RouteArgs(),
-        child: KoreanAchieveTable(),
-      ),
+      body: KoreanAchieveTable(),
       drawer: ChangeNotifierProvider<ScreenSetting>.value(
         value: ScreenSetting(),
         child: SubjectDrawer(),
