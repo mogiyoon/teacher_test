@@ -1,30 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:teacher_test/function/screen_widget.dart';
 import 'package:teacher_test/achieve_screen/achieve_screen.dart';
 import 'package:teacher_test/contents/contents.dart';
 
-class KoreanAchieveTable extends StatefulWidget {
-  const KoreanAchieveTable({super.key});
+class AchieveTable extends StatefulWidget {
+  const AchieveTable({super.key});
 
   @override
-  State<KoreanAchieveTable> createState() => _KoreanAchieveTableState();
+  State<AchieveTable> createState() => _AchieveTableState();
 }
 
-class _KoreanAchieveTableState extends State<KoreanAchieveTable> {
+class _AchieveTableState extends State<AchieveTable> {
   @override
   Widget build(BuildContext context) {
     var routeArgs = Provider.of<RouteArgs>(context);
+    int pageNum = routeArgs.args;
     return Container(
       child: Column(
         children: [
           Container(
-            child: ElevatedButton(
-                  onPressed: (){
-                    print('KoreanAchieveTable routeArgs : ${routeArgs.args}');
-                  },
-                  child: Text('print')
-            ),
           ),
         ],
       ),

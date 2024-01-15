@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:teacher_test/main.dart';
+import 'package:teacher_test/table_screen/table_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:teacher_test/achieve_screen/achieve_contents.dart';
 import 'package:teacher_test/function/screen_widget.dart';
@@ -26,7 +28,7 @@ class AchieveScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    final int num = ModalRoute.of(context)!.settings.arguments as int;
+    late int num = ModalRoute.of(context)!.settings.arguments as int;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -35,10 +37,20 @@ class AchieveScreen extends StatelessWidget{
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ChangeNotifierProvider<RouteArgs>.value(
-        value: RouteArgs(),
+      home: MultiProvider(
+        providers: [
+          Provider<int>.value(value: num,),
+          ChangeNotifierProvider<RouteArgs>.value(
+            value: RouteArgs(),
+          ),
+        ],
         child: AchieveScreenWidget(),
-      )
+      ),
+      routes: {
+        '/Main': (context) => MyHomePage(title: '초등임용 헬퍼'),
+        '/TableScreen': (context) => TableScreen(),
+        '/AchieveScreen': (context) => AchieveScreen(),
+      },
     );
   }
 }
@@ -54,9 +66,10 @@ class AchieveScreenWidgetState extends State<AchieveScreenWidget> {
   @override
   Widget build(BuildContext context) {
     var routeArgs = Provider.of<RouteArgs>(context);
+    routeArgs.args = Provider.of<int>(context);
 
     var screenSetting = ScreenSetting();
-    String tableTitle = screenSetting.subject[0];
+    String tableTitle = screenSetting.subject[routeArgs.args-1];
 
     return Scaffold(
       appBar: AppBar(
@@ -80,7 +93,7 @@ class AchieveScreenWidgetState extends State<AchieveScreenWidget> {
             }
         ),
       ),
-      body: KoreanAchieveTable(),
+      body: AchieveTable(),
       drawer: ChangeNotifierProvider<ScreenSetting>.value(
         value: ScreenSetting(),
         child: SubjectDrawer(),

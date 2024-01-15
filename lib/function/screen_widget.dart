@@ -55,6 +55,15 @@ class SubjectDrawerState extends State<SubjectDrawer> {
                   color: Colors.deepPurpleAccent,
                 ),
               ),
+              ListTile(
+                title: Text('홈'),
+                onTap: () async {
+                  await Navigator.pushNamed(
+                    context,
+                    '/Main',
+                  );
+                  },
+              ),
               ExpansionTile(
                 key: GlobalKey(),
                 title: Text('교육과정 내용체계표'),

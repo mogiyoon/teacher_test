@@ -1,6 +1,6 @@
 import 'package:teacher_test/contents/contents.dart';
 
-class KoreanContents{
+class KoreanAcheive22{
   List<String> koreanAcheiveListen12 = [
   '중요한 내용이나 일이 일어난 순서를 고려하며 듣고 말한다.',
   '바르고 고운 말로 서로의 감정을 나누며 듣고 말한다.',
@@ -32,4 +32,10 @@ class KoreanContents{
   '작품 속 인물의 모습, 행동, 마음을 상상하여 시, 노래, 이야기, 그림 등으로 표현한다.',
   '시나 노래, 이야기에 흥미를 가진다.'
   ];
+  List<String> koreanAcheiveMedia12 = [
+  '일상의 다양한 매체와 매체 자료에 흥미와 관심을 가진다.',
+  '일상의 경험과 생각을 글과 그림으로 표현한다.',
+  ];
+  //2022 국어 1~2학년 성취기준
+  List<String>
 }
