@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:teacher_test/test/test_screen.dart';
 import 'package:teacher_test/contents/contents.dart';
+import 'package:teacher_test/test/achieve_builder.dart';
 
 class Choice extends ChangeNotifier {
   bool _oneTwoCheck = false;
@@ -57,8 +58,8 @@ class _TestTableState extends State<TestTable> {
     var routeContents = Provider.of<RouteContents>(context);
     int subjectNum = routeContents.subjectNum;
     return Container(
-      child: ChangeNotifierProvider<Choice>.value(
-        value: Choice(),
+        child: ChangeNotifierProvider<Choice>.value(
+      value: Choice(),
         child: Column(
           children: [
             Row(
@@ -68,7 +69,13 @@ class _TestTableState extends State<TestTable> {
                 CheckBoxWidget('5~6학년군', 5)
               ],
             ),
-            ContentsWidget(),
+            Expanded(
+              child: Container(
+                child: SingleChildScrollView(
+                    child: ContentsWidget()
+                )
+              ),
+            ),
           ],
         ),
       ),
@@ -90,23 +97,23 @@ class CheckBoxWidget extends StatelessWidget {
 
     return Expanded(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Checkbox(
-                value: changeValue,
-                onChanged: (bool? value) {
-                  changeValue = value ?? false;
-                  switch (grade) {
-                    case 1:
-                      choice.oneTwoCheckFun(changeValue);
-                    case 3:
-                      choice.threeFourCheckFun(changeValue);
-                    case 5:
-                      choice.fiveSixCheckFun(changeValue);
-                  }
-                }),
-            Text(title),
-          ],
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Checkbox(
+            value: changeValue,
+            onChanged: (bool? value) {
+              changeValue = value ?? false;
+              switch (grade) {
+                case 1:
+                  choice.oneTwoCheckFun(changeValue);
+                case 3:
+                  choice.threeFourCheckFun(changeValue);
+                case 5:
+                  choice.fiveSixCheckFun(changeValue);
+              }
+            }),
+        Text(title),
+      ],
     ));
   }
 }
@@ -114,18 +121,17 @@ class CheckBoxWidget extends StatelessWidget {
 class ContentsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var choice = Provider.of<Choice>(context);
+    var koreanAchieve22 = KoreanAchieve22();
 
-    return Container(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            if(choice.oneTwoCheck) Text('oneTwoCheck'),
-            if(choice.threeFourCheck) Text('threeFourCheck'),
-            if(choice.fiveSixCheck) Text('fiveSixCheck')
-          ],
-        ),
-      )
-
+    return Column(
+      children: [
+        if (choice.oneTwoCheck)
+          FormBuilder(koreanAchieve22.koreanAchieve12),
+        if (choice.threeFourCheck)
+          FormBuilder(koreanAchieve22.koreanAchieve34),
+        if (choice.fiveSixCheck)
+          FormBuilder(koreanAchieve22.koreanAchieve56)
+      ],
     );
   }
 }
