@@ -4,44 +4,110 @@ import 'package:teacher_test/test/test_screen.dart';
 import 'package:teacher_test/contents/contents.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
 
-class Choice extends ChangeNotifier {
-  bool _oneTwoCheck = false;
+class TestChoice extends ChangeNotifier {
+  bool _isTest = false;
 
-  bool get oneTwoCheck => _oneTwoCheck;
+  bool get isTest => _isTest;
 
-  set oneTwoCheck(bool value) {
-    _oneTwoCheck = value;
+  set isTest(bool value) {
+    _isTest = value;
   }
 
-  bool _threeFourCheck = false;
+  void testCheckFun(bool value) {
+    isTest = value;
+    notifyListeners();
+  }
+}
 
-  bool get threeFourCheck => _threeFourCheck;
+class TestCheckBoxWidget extends StatelessWidget {
+  const TestCheckBoxWidget({super.key});
 
-  set threeFourCheck(bool value) {
-    _threeFourCheck = value;
+  @override
+  Widget build(BuildContext context) {
+    var testChoice = Provider.of<TestChoice>(context);
+
+    return Checkbox(
+        value: testChoice.isTest,
+        onChanged: (bool? value) {
+          testChoice.isTest = value ?? false;
+          testChoice.testCheckFun(testChoice.isTest);
+        });
+  }
+}
+
+class GradeChoice extends ChangeNotifier {
+  bool _isOneTwoCheck = false;
+
+  bool get isOneTwoCheck => _isOneTwoCheck;
+
+  set isOneTwoCheck(bool value) {
+    _isOneTwoCheck = value;
   }
 
-  bool _fiveSixCheck = false;
+  bool _isThreeFourCheck = false;
 
-  bool get fiveSixCheck => _fiveSixCheck;
+  bool get isThreeFourCheck => _isThreeFourCheck;
 
-  set fiveSixCheck(bool value) {
-    _fiveSixCheck = value;
+  set isThreeFourCheck(bool value) {
+    _isThreeFourCheck = value;
+  }
+
+  bool _isFiveSixCheck = false;
+
+  bool get isFiveSixCheck => _isFiveSixCheck;
+
+  set isFiveSixCheck(bool value) {
+    _isFiveSixCheck = value;
   }
 
   void oneTwoCheckFun(bool value) {
-    oneTwoCheck = value;
+    isOneTwoCheck = value;
     notifyListeners();
   }
 
   void threeFourCheckFun(bool value) {
-    threeFourCheck = value;
+    isThreeFourCheck = value;
     notifyListeners();
   }
 
   void fiveSixCheckFun(bool value) {
-    fiveSixCheck = value;
+    isFiveSixCheck = value;
     notifyListeners();
+  }
+}
+
+class GradeCheckBoxWidget extends StatelessWidget {
+  String title;
+  int grade;
+
+  GradeCheckBoxWidget(this.title, this.grade);
+
+  bool changeValue = false;
+
+  @override
+  Widget build(BuildContext context) {
+    var gradeChoice = Provider.of<GradeChoice>(context);
+
+    return Expanded(
+        child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Checkbox(
+            value: changeValue,
+            onChanged: (bool? value) {
+              changeValue = value ?? false;
+              switch (grade) {
+                case 1:
+                  gradeChoice.oneTwoCheckFun(changeValue);
+                case 3:
+                  gradeChoice.threeFourCheckFun(changeValue);
+                case 5:
+                  gradeChoice.fiveSixCheckFun(changeValue);
+              }
+            }),
+        Text(title),
+      ],
+    ));
   }
 }
 
@@ -56,82 +122,35 @@ class _TestTableState extends State<TestTable> {
   @override
   Widget build(BuildContext context) {
     var routeContents = Provider.of<RouteContents>(context);
-    int subjectNum = routeContents.subjectNum;
     return Container(
-        child: ChangeNotifierProvider<Choice>.value(
-      value: Choice(),
+      child: ChangeNotifierProvider<GradeChoice>.value(
+        value: GradeChoice(),
         child: Column(
           children: [
-            Row(
-              children: [
-                CheckBoxWidget('1~2학년군', 1),
-                CheckBoxWidget('3~4학년군', 3),
-                CheckBoxWidget('5~6학년군', 5)
-              ],
+            ChangeNotifierProvider<TestChoice>.value(
+              value: TestChoice(),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [TestCheckBoxWidget(), Text('시험')],
+              ),
             ),
+            ExpansionTile(title: Center(child: Text('학년군 선택')), children: [
+              Row(
+                children: [
+                  GradeCheckBoxWidget('1~2학년군', 1),
+                  GradeCheckBoxWidget('3~4학년군', 3),
+                  GradeCheckBoxWidget('5~6학년군', 5)
+                ],
+              )
+            ]),
             Expanded(
               child: Container(
-                child: SingleChildScrollView(
-                    child: ContentsWidget()
-                )
+                child: Text('Hi'),
               ),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class CheckBoxWidget extends StatelessWidget {
-  String title;
-  int grade;
-
-  CheckBoxWidget(this.title, this.grade);
-
-  bool changeValue = false;
-
-  @override
-  Widget build(BuildContext context) {
-    var choice = Provider.of<Choice>(context);
-
-    return Expanded(
-        child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Checkbox(
-            value: changeValue,
-            onChanged: (bool? value) {
-              changeValue = value ?? false;
-              switch (grade) {
-                case 1:
-                  choice.oneTwoCheckFun(changeValue);
-                case 3:
-                  choice.threeFourCheckFun(changeValue);
-                case 5:
-                  choice.fiveSixCheckFun(changeValue);
-              }
-            }),
-        Text(title),
-      ],
-    ));
-  }
-}
-
-class ContentsWidget extends StatelessWidget {
-  Widget build(BuildContext context) {
-    var choice = Provider.of<Choice>(context);
-    var koreanAchieve22 = KoreanAchieve22();
-
-    return Column(
-      children: [
-        if (choice.oneTwoCheck)
-          FormBuilder(koreanAchieve22.koreanAchieve12),
-        if (choice.threeFourCheck)
-          FormBuilder(koreanAchieve22.koreanAchieve34),
-        if (choice.fiveSixCheck)
-          FormBuilder(koreanAchieve22.koreanAchieve56)
-      ],
     );
   }
 }

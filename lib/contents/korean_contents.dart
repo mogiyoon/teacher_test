@@ -1,4 +1,7 @@
 class KoreanAchieve22{
+  late List<List<String>> koreanAchieveIndex =
+    [koreanAchieve12, koreanAchieve34, koreanAchieve56];
+
   late List<String> koreanAchieve =
       koreanAchieve12 + koreanAchieve34 + koreanAchieve56;
 

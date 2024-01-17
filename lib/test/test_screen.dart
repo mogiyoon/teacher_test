@@ -6,27 +6,27 @@ import 'package:teacher_test/function/screen_widget.dart';
 
 class RouteContents with ChangeNotifier {
   int _subjectNum = 0;
-  int get subjectNum {
+  int get subjectNum  {
     return _subjectNum;
   }
   set subjectNum(value) {
     _subjectNum = value;
   }
 
-  bool _tableTest = false;
-  bool get tableTest {
-    return _tableTest;
+  bool _isTableTest = false;
+  bool get isTableTest {
+    return _isTableTest;
   }
-  set tableTest(value) {
-    _tableTest = value;
+  set isTableTest(value) {
+    _isTableTest = value;
   }
 
-  bool _achieveTest = false;
-  bool get achieveTest {
-    return _achieveTest;
+  bool _isAchieveTest = false;
+  bool get isAchieveTest {
+    return _isAchieveTest;
   }
-  set achieveTest(value) {
-    _achieveTest = value;
+  set isAchieveTest(value) {
+    _isAchieveTest = value;
   }
 
   void same(int value) {
@@ -84,8 +84,8 @@ class AchieveScreenWidgetState extends State<AchieveScreenWidget> {
     late Map args = Provider.of<Map>(context);
     var routeContents = Provider.of<RouteContents>(context);
     routeContents.subjectNum = args['arg1'] as int;
-    routeContents.tableTest = args['arg2'] as bool;
-    routeContents.achieveTest = args['arg3'] as bool;
+    routeContents.isTableTest = args['arg2'] as bool;
+    routeContents.isAchieveTest = args['arg3'] as bool;
 
     var screenSetting = ScreenSetting();
     String tableTitle = screenSetting.subject[routeContents.subjectNum-1];

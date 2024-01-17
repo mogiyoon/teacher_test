@@ -9,3 +9,8 @@ export 'pe_contents.dart';
 export 'practical_contents.dart';
 export 'science_contents.dart';
 export 'society_contents.dart';
+import '';
+
+class Acheive {
+  var koreanAchieve22 = KoreanAchieve22();
+}

@@ -4,11 +4,11 @@ import 'package:provider/provider.dart';
 class ScreenSetting with ChangeNotifier {
   List<String> subject =
   ['국어', '수학', '사회', '과학', '영어', '체육', '미술', '음악', '도덕', '실과', '통합'];
-  bool _subjectTableOpen = false;
-  bool get subjectTableOpen => _subjectTableOpen;
+  bool _isSubjectTableOpen = false;
+  bool get isSubjectTableOpen => _isSubjectTableOpen;
 
-  bool _subjectAchievOpen = false;
-  bool get subjectAchievOpen => _subjectAchievOpen;
+  bool _isSubjectAchievOpen = false;
+  bool get subjectAchievOpen => _isSubjectAchievOpen;
 
   int _subjectNumber = 0;
   int get subjectNumber {
@@ -19,14 +19,14 @@ class ScreenSetting with ChangeNotifier {
   }
 
   void tableOpen() {
-    _subjectTableOpen = true;
-    _subjectAchievOpen = false;
+    _isSubjectTableOpen = true;
+    _isSubjectAchievOpen = false;
     notifyListeners();
   }
 
   void achievOpen() {
-    _subjectTableOpen = false;
-    _subjectAchievOpen = true;
+    _isSubjectTableOpen = false;
+    _isSubjectAchievOpen = true;
     notifyListeners();
   }
 
@@ -70,7 +70,7 @@ class SubjectDrawerState extends State<SubjectDrawer> {
                 children: [
                   SubjectListBuild(),
                 ],
-                initiallyExpanded: screenSetting.subjectTableOpen,
+                initiallyExpanded: screenSetting.isSubjectTableOpen,
                 onExpansionChanged: (val){
                   if(val == true) {
                     screenSetting.tableOpen();
@@ -135,7 +135,7 @@ class SubjectListBuildState extends State<SubjectListBuild> {
                     '/TestScreen',
                     arguments: {
                       'arg1' : screenSetting.subjectNumber,
-                      'arg2' : screenSetting.subjectTableOpen,
+                      'arg2' : screenSetting.isSubjectTableOpen,
                       'arg3' : screenSetting.subjectAchievOpen,
                     },
                   );
