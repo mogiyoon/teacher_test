@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/Main': (context) => MyHomePage(title: '초등임용 헬퍼'),
-        '/TestScreen': (context) => AchieveScreen(),
+        '/TestScreen': (context) => TestScreen(),
       },
       initialRoute: '/Main',
     );

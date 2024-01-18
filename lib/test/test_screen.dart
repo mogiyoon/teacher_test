@@ -37,8 +37,26 @@ class RouteContents with ChangeNotifier {
 
 }
 
-class AchieveScreen extends StatelessWidget{
-  const AchieveScreen({super.key});
+class Title extends StatelessWidget {
+  const Title({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var routeContents = Provider.of<RouteContents>(context);
+    var screenSetting = ScreenSetting();
+    String tableTitle = screenSetting.subject[routeContents.subjectNum-1];
+
+    return Column(
+      children: [
+        if(routeContents.isTableTest) Text('[' + tableTitle + '] 내용체계표'),
+        if(routeContents.isAchieveTest) Text('[' + tableTitle + '] 교육과정 성취기준'),
+      ],
+    );
+  }
+}
+
+class TestScreen extends StatelessWidget{
+  const TestScreen({super.key});
 
 
   @override
@@ -61,23 +79,23 @@ class AchieveScreen extends StatelessWidget{
             value: RouteContents(),
           ),
         ],
-        child: AchieveScreenWidget(),
+        child: TestScreenWidget(),
       ),
       routes: {
         '/Main': (context) => MyHomePage(title: '초등임용 헬퍼'),
-        '/TestScreen': (context) => AchieveScreen(),
+        '/TestScreen': (context) => TestScreen(),
       },
     );
   }
 }
 
-class AchieveScreenWidget extends StatefulWidget {
+class TestScreenWidget extends StatefulWidget {
 
   @override
-  State<AchieveScreenWidget> createState() => AchieveScreenWidgetState();
+  State<TestScreenWidget> createState() => TestScreenWidgetState();
 }
 
-class AchieveScreenWidgetState extends State<AchieveScreenWidget> {
+class TestScreenWidgetState extends State<TestScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
@@ -87,9 +105,6 @@ class AchieveScreenWidgetState extends State<AchieveScreenWidget> {
     routeContents.isTableTest = args['arg2'] as bool;
     routeContents.isAchieveTest = args['arg3'] as bool;
 
-    var screenSetting = ScreenSetting();
-    String tableTitle = screenSetting.subject[routeContents.subjectNum-1];
-
     return Scaffold(
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
@@ -98,7 +113,7 @@ class AchieveScreenWidgetState extends State<AchieveScreenWidget> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text('[' + tableTitle + '] 교육과정 성취기준'),
+        title: Title(),
         centerTitle: true,
         leading: Builder(
             builder: (BuildContext context) {

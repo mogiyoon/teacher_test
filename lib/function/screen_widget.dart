@@ -4,12 +4,6 @@ import 'package:provider/provider.dart';
 class ScreenSetting with ChangeNotifier {
   List<String> subject =
   ['국어', '수학', '사회', '과학', '영어', '체육', '미술', '음악', '도덕', '실과', '통합'];
-  bool _isSubjectTableOpen = false;
-  bool get isSubjectTableOpen => _isSubjectTableOpen;
-
-  bool _isSubjectAchievOpen = false;
-  bool get subjectAchievOpen => _isSubjectAchievOpen;
-
   int _subjectNumber = 0;
   int get subjectNumber {
     return _subjectNumber;
@@ -17,6 +11,12 @@ class ScreenSetting with ChangeNotifier {
   set subjectNumber(value) {
     return _subjectNumber = value;
   }
+
+  bool _isSubjectTableOpen = false;
+  bool get isSubjectTableOpen => _isSubjectTableOpen;
+
+  bool _isSubjectAchievOpen = false;
+  bool get subjectAchievOpen => _isSubjectAchievOpen;
 
   void tableOpen() {
     _isSubjectTableOpen = true;

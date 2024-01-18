@@ -1,4 +1,7 @@
-class mathAchieve22{
+class MathAchieve22{
+  late List<List<String>> mathAchieveIndex =
+  [mathAchieve12, mathAchieve34, mathAchieve56];
+
   late List<String> mathAchieve =
       mathAchieve12 + mathAchieve34 + mathAchieve56;
 

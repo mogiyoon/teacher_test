@@ -123,33 +123,28 @@ class _TestTableState extends State<TestTable> {
   Widget build(BuildContext context) {
     var routeContents = Provider.of<RouteContents>(context);
     return Container(
-      child: ChangeNotifierProvider<GradeChoice>.value(
-        value: GradeChoice(),
-        child: Column(
-          children: [
-            ChangeNotifierProvider<TestChoice>.value(
-              value: TestChoice(),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [TestCheckBoxWidget(), Text('시험')],
-              ),
-            ),
-            ExpansionTile(title: Center(child: Text('학년군 선택')), children: [
-              Row(
-                children: [
-                  GradeCheckBoxWidget('1~2학년군', 1),
-                  GradeCheckBoxWidget('3~4학년군', 3),
-                  GradeCheckBoxWidget('5~6학년군', 5)
-                ],
-              )
-            ]),
-            Expanded(
-              child: Container(
-                child: Text('Hi'),
-              ),
-            ),
-          ],
-        ),
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider<GradeChoice>.value(value: GradeChoice()),
+          ChangeNotifierProvider<TestChoice>.value(value: TestChoice())
+        ],
+        child: Column(children: [
+          ExpansionTile(title: Center(child: Text('학년군 선택')), children: [
+            Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [TestCheckBoxWidget(), Text('시험')],
+                )),
+            Row(
+              children: [
+                GradeCheckBoxWidget('1~2학년군', 1),
+                GradeCheckBoxWidget('3~4학년군', 3),
+                GradeCheckBoxWidget('5~6학년군', 5)
+              ],
+            )
+          ]),
+          Expanded(child: SingleChildScrollView(child: AchieveTestChoiceBuilder())),
+        ]),
       ),
     );
   }
