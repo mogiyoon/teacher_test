@@ -24,7 +24,7 @@ class Achieve22 {
   var practicalAchieve22 = PracticalAchieve22();
   var combinedSubject22 = CombinedSubjectAchieve22();
 
-  late List<List<List<String>>> contentsAchieve22 = [
+  late List<List<List<String>>> contentsAchieve22Index = [
     koreanAchieve22.koreanAchieveIndex,
     mathAchieve22.mathAchieveIndex,
     societyAchieve22.societyAchieveIndex,
