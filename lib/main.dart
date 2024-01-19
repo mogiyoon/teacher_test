@@ -69,11 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
       drawer: ChangeNotifierProvider<ScreenSetting>.value(
         value: ScreenSetting(),
         child: SubjectDrawer(),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: '정답 확인',
-        child: const Icon(Icons.check),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
