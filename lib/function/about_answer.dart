@@ -27,12 +27,15 @@ class AcheiveCheckAnswer{
   AcheiveCheckAnswer(this.subjectNum, this.newTextEditor);
 
   var achieve22 = Achieve22();
-  late List<String> oneTwoAchieve =
-  (achieve22.contentsAchieve22Index[subjectNum - 1])[0];
-  late List<String> threeFourAchieve =
-  (achieve22.contentsAchieve22Index[subjectNum - 1])[1];
-  late List<String> fiveSixAchieve =
-  (achieve22.contentsAchieve22Index[subjectNum - 1])[2];
+  late List<String> oneTwoAchieve = RemoveSpaceList()
+      .removeSpaceList((achieve22.contentsAchieve22Index[subjectNum - 1])[0]);
+  late List<String> threeFourAchieve = RemoveSpaceList()
+      .removeSpaceList((achieve22.contentsAchieve22Index[subjectNum - 1])[1]);
+  late List<String> fiveSixAchieve = RemoveSpaceList()
+      .removeSpaceList((achieve22.contentsAchieve22Index[subjectNum - 1])[2]);
+
+  late List<List<String>> achieveIndex = [
+    oneTwoAchieve, threeFourAchieve, fiveSixAchieve];
 
   late List<int> achieveLengthIndex = [
     0,
@@ -50,10 +53,9 @@ class AcheiveCheckAnswer{
   }
 
   void acheiveCheckFunction(int i, int j) {
-    String removeSpaceText = (newTextEditor.controllerList[i].text);
-
-    if (((achieve22.contentsAchieve22Index[subjectNum - 1])[j]) // j=0 : 1~2, j=1 : 3~4, j=2 : 5~6
-        .contains(removeSpaceText)) {
+    String removeSpaceText = (newTextEditor.controllerList[i].text).replaceAll(' ', '');
+    // j=0 : 1~2, j=1 : 3~4, j=2 : 5~6
+    if ((achieveIndex[j]).contains(removeSpaceText)) {
       newTextEditor.controllerAnswerCheckList[i] = 1;
     }
     else if (newTextEditor.controllerList[i].text == '') {
@@ -70,7 +72,6 @@ class TableCheckAnswer{
   }
 }
 
-
 class DeleteAnswer {
   int subjectNum;
   AchieveTextEditing newTextEditor;
@@ -85,5 +86,15 @@ class DeleteAnswer {
     }
 
     newTextEditor.notifyListeners();
+  }
+}
+
+class RemoveSpaceList {
+  List<String> removeSpaceList(List<String> listString) {
+    List<String> otherListString = listString;
+    for(int i = 0; i < listString.length; i++) {
+      otherListString[i] = listString[i].replaceAll(' ', '');
+    }
+    return otherListString;
   }
 }
