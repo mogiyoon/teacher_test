@@ -111,14 +111,14 @@ class GradeCheckBoxWidget extends StatelessWidget {
   }
 }
 
-class TestTable extends StatefulWidget {
-  const TestTable({super.key});
+class TestContents extends StatefulWidget {
+  const TestContents({super.key});
 
   @override
-  State<TestTable> createState() => _TestTableState();
+  State<TestContents> createState() => _TestContentsState();
 }
 
-class _TestTableState extends State<TestTable> {
+class _TestContentsState extends State<TestContents> {
   @override
   Widget build(BuildContext context) {
     var routeContents = Provider.of<RouteContents>(context);
@@ -126,7 +126,7 @@ class _TestTableState extends State<TestTable> {
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider<GradeChoice>.value(value: GradeChoice()),
-          ChangeNotifierProvider<TestChoice>.value(value: TestChoice())
+          ChangeNotifierProvider<TestChoice>.value(value: TestChoice()),
         ],
         child: Column(children: [
           ExpansionTile(title: Center(child: Text('학년군 선택')), children: [
