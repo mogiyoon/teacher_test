@@ -22,7 +22,7 @@ class Achieve22 {
   var artAchieve22 = ArtAchieve22();
   var ethicsAchieve22 = EthicsAchieve22();
   var practicalAchieve22 = PracticalAchieve22();
-  var combinedSubject22 = CombinedSubjectAchieve22();
+  var combinedSubjectAchieve22 = CombinedSubjectAchieve22();
 
   late List<List<List<String>>> contentsAchieve22Index = [
     koreanAchieve22.koreanAchieveIndex,
@@ -34,6 +34,19 @@ class Achieve22 {
     artAchieve22.artAchieveIndex,
     ethicsAchieve22.ethicsAchieveIndex,
     practicalAchieve22.practicalAchieveIndex,
-    combinedSubject22.combinedSubjectAchieveIndex
+    combinedSubjectAchieve22.combinedSubjectAchieveIndex
+  ];
+
+  late List<List<String>> contentsAchieve22 = [
+    koreanAchieve22.koreanAchieve,
+    mathAchieve22.mathAchieve,
+    societyAchieve22.societyAchieve,
+    scienceAchieve22.scienceAchieve,
+    englishAchieve22.englishAchieve,
+    peAchieve22.peAchieve,
+    artAchieve22.artAchieve,
+    ethicsAchieve22.ethicsAchieve,
+    practicalAchieve22.practicalAchieve,
+    combinedSubjectAchieve22.combinedSubjectAchieve
   ];
 }
