@@ -48,6 +48,9 @@ class AchieveTestChoiceBuilder extends StatelessWidget {
             AchieveTextBuilder(
                 (achieve22.contentsAchieve22Index[subjectNum - 1])[2]),
         ],
+        Container(
+          height: 5,
+        )
       ],
     );
   }
@@ -103,7 +106,7 @@ class AchieveFormBuilder extends StatelessWidget {
       padding: EdgeInsets.all(5),
       child: ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
-          padding: EdgeInsets.all(30),
+          padding: EdgeInsets.symmetric(horizontal: 30),
           itemCount: AchieveList.length,
           itemBuilder: (context, index) {
             realIndex++;
@@ -123,11 +126,11 @@ class AchieveFormBuilder extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           if (formList.controllerAnswerCheckList[realIndex] == 0)
-                            ColorContainer(Colors.white, '$realIndex'),
+                            ColorContainer(Colors.white),
                           if (formList.controllerAnswerCheckList[realIndex] == 1)
-                            ColorContainer(Colors.green, '$realIndex'),
+                            ColorContainer(Colors.green.shade200),
                           if (formList.controllerAnswerCheckList[realIndex] == 2)
-                            ColorContainer(Colors.red, '$realIndex')
+                            ColorContainer(Colors.red.shade200)
                         ],
                       ),
                     ),
@@ -153,8 +156,7 @@ class AchieveTextEditing with ChangeNotifier {
 
 class ColorContainer extends StatelessWidget {
   Color containerColor;
-  String name;
-  ColorContainer(this.containerColor, this.name);
+  ColorContainer(this.containerColor);
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +167,7 @@ class ColorContainer extends StatelessWidget {
           shape: BoxShape.circle,
           color: containerColor,
         ),
-        child: Text(name));
+    );
   }
 }
 
