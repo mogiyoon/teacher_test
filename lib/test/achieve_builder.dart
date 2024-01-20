@@ -74,7 +74,8 @@ class AchieveTextBuilder extends StatelessWidget {
           itemBuilder: (context, index) {
             return Container(
               height: 50,
-              child: Text(AchieveList[index]),
+              child: SelectableText(AchieveList[index]),
+              //Todo : 눌렀을 때 클립보드에 복사 => 오류찾기에 이용
             );
           }),
     );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:teacher_test/test/test_screen.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
 
 class TestChoice extends ChangeNotifier {
@@ -120,7 +119,6 @@ class TestContents extends StatefulWidget {
 class _TestContentsState extends State<TestContents> {
   @override
   Widget build(BuildContext context) {
-    var routeContents = Provider.of<RouteContents>(context);
     return Container(
       child: MultiProvider(
         providers: [
