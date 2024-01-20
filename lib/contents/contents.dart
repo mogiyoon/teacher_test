@@ -20,6 +20,7 @@ class Achieve22 {
   var englishAchieve22 = EnglishAchieve22();
   var peAchieve22 = PEAchieve22();
   var artAchieve22 = ArtAchieve22();
+  var musicAchieve22 = MusicAchieve22();
   var ethicsAchieve22 = EthicsAchieve22();
   var practicalAchieve22 = PracticalAchieve22();
   var combinedSubjectAchieve22 = CombinedSubjectAchieve22();
@@ -32,6 +33,7 @@ class Achieve22 {
     englishAchieve22.englishAchieveIndex,
     peAchieve22.peAchieveIndex,
     artAchieve22.artAchieveIndex,
+    musicAchieve22.musicAchieveIndex,
     ethicsAchieve22.ethicsAchieveIndex,
     practicalAchieve22.practicalAchieveIndex,
     combinedSubjectAchieve22.combinedSubjectAchieveIndex
@@ -45,6 +47,7 @@ class Achieve22 {
     englishAchieve22.englishAchieve,
     peAchieve22.peAchieve,
     artAchieve22.artAchieve,
+    musicAchieve22.musicAchieve,
     ethicsAchieve22.ethicsAchieve,
     practicalAchieve22.practicalAchieve,
     combinedSubjectAchieve22.combinedSubjectAchieve
