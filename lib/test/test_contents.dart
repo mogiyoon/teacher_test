@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
+import 'package:teacher_test/test/table_builder.dart';
+import 'package:teacher_test/test/test_screen.dart';
 
 class TestChoice extends ChangeNotifier {
   bool _isTest = false;
@@ -119,6 +121,10 @@ class TestContents extends StatefulWidget {
 class _TestContentsState extends State<TestContents> {
   @override
   Widget build(BuildContext context) {
+    var routeContents = Provider.of<RouteContents>(context);
+    bool isTableTest = routeContents.isTableTest;
+    bool isAchieveTest = routeContents.isAchieveTest;
+
     return Container(
       child: MultiProvider(
         providers: [
@@ -140,7 +146,14 @@ class _TestContentsState extends State<TestContents> {
               ],
             )
           ]),
-          Expanded(child: SingleChildScrollView(child: AchieveTestChoiceBuilder())),
+          Expanded(child: SingleChildScrollView(child: Column(
+            children: [
+              if(isTableTest)
+                TableTestChoiceBuilder(),
+              if(isAchieveTest)
+                AchieveTestChoiceBuilder(),
+            ],
+          ))),
         ]),
       ),
     );
