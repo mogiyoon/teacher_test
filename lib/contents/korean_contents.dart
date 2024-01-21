@@ -1,21 +1,35 @@
-class KoreanAchieve22{
-  late List<List<String>> koreanAchieveIndex =
-    [koreanAchieve12, koreanAchieve34, koreanAchieve56];
+import 'package:teacher_test/contents/contents.dart';
+
+class KoreanAchieve22 {
+  late List<List<String>> koreanAchieveIndex = [
+    koreanAchieve12,
+    koreanAchieve34,
+    koreanAchieve56
+  ];
 
   late List<String> koreanAchieve =
       koreanAchieve12 + koreanAchieve34 + koreanAchieve56;
 
-  late List<String> koreanAchieve12 =
-      koreanAchieveListen12 + koreanAchieveRead12 + koreanAchieveWrite12
-          + koreanAchieveGram12 + koreanAchieveLiterature12 + koreanAchieveMedia12;
+  late List<String> koreanAchieve12 = koreanAchieveListen12 +
+      koreanAchieveRead12 +
+      koreanAchieveWrite12 +
+      koreanAchieveGram12 +
+      koreanAchieveLiterature12 +
+      koreanAchieveMedia12;
 
-  late List<String> koreanAchieve34 =
-      koreanAchieveListen34 + koreanAchieveRead34 + koreanAchieveWrite34
-          + koreanAchieveGram34 + koreanAchieveLiterature34 + koreanAchieveMedia34;
+  late List<String> koreanAchieve34 = koreanAchieveListen34 +
+      koreanAchieveRead34 +
+      koreanAchieveWrite34 +
+      koreanAchieveGram34 +
+      koreanAchieveLiterature34 +
+      koreanAchieveMedia34;
 
-  late List<String> koreanAchieve56 =
-      koreanAchieveListen56 + koreanAchieveRead56 + koreanAchieveWrite56
-          + koreanAchieveGram56 + koreanAchieveLiterature56 + koreanAchieveMedia56;
+  late List<String> koreanAchieve56 = koreanAchieveListen56 +
+      koreanAchieveRead56 +
+      koreanAchieveWrite56 +
+      koreanAchieveGram56 +
+      koreanAchieveLiterature56 +
+      koreanAchieveMedia56;
 
   List<String> koreanAchieveListen12 = [
     '중요한 내용이나 일이 일어난 순서를 고려하며 듣고 말한다.',
@@ -52,6 +66,7 @@ class KoreanAchieve22{
     '일상의 다양한 매체와 매체 자료에 흥미와 관심을 가진다.',
     '일상의 경험과 생각을 글과 그림으로 표현한다.',
   ];
+
   //2022 국어 1~2년 성취기준
 
   List<String> koreanAchieveListen34 = [
@@ -96,6 +111,7 @@ class KoreanAchieve22{
     '매체를 활용하여 간단한 발표 자료를 만든다.',
     '매체 소통 윤리를 고려하여 매체 자료를 활용하고 공유한다.'
   ];
+
   //2022 국어 3~4년 성취기준
 
   List<String> koreanAchieveListen56 = [
@@ -144,4 +160,116 @@ class KoreanAchieve22{
     '적합한 양식과 수용자의 반응을 고려하여 복합양식 매체 자료를 제작하고 공유한다.',
     '자신의 매체 이용 양상에 대해 성찰한다.'
   ];
+}
+
+class KoreanTable22 {
+  List<String> tableGrade = TableCategory22().tableGrade;
+  List<String> tableCategory = TableCategory22().tableCategory;
+
+  List<String> tableKoreanTitle = ['듣기⋅말하기', '읽기', '쓰기', '문법', '문학', '매체'];
+
+  List<String> tableKoreanListenKnowledgeLowerCategory = ['듣기.말하기 맥락', '담화 유형'];
+  List<String> tableKoreanListenProcessLowerCategory = [
+    '내용 확인.추론.평가',
+    '내용 생성.조직.표현과 전달',
+    '상호 작용',
+    '점검과 조정'
+  ];
+  List<String> tableKoreanListenWorthCategory = [];
+
+  List<String> tableKoreanReadKnowledgeLowerCategory = ['읽기 맥락', '글의 유형'];
+  List<String> tableKoreanReadProcessLowerCategory = [
+    '읽기의 기초',
+    '내용 확인과 추론',
+    '평가와 창의',
+    '점검과 조정'
+  ];
+  List<String> tableKoreanReadWorthCategory = [];
+
+  List<String> tableKoreanWriteKnowledgeLowerCategory = ['쓰기 맥락', '글의 유형'];
+  List<String> tableKoreanWriteProcessLowerCategory = [
+    '쓰기의 기초',
+    '계획하기',
+    '내용 생성하기',
+    '내용 조직하기',
+    '표현하기',
+    '고쳐쓰기',
+    '공유하기',
+    '점검과 조정',
+  ];
+  List<String> tableKoreanWriteWorthLowerCategory = [];
+
+  List<String> tableKoreanGramKnowledgeLowerCategory = [
+    '언어의 본질과 맥락',
+    '언어 단위',
+    '한글의 기초와 국어 규범'
+  ];
+  List<String> tableKoreanGramProcessLowerCategory = [
+    '국어의 분석과 활용',
+    '국어 실천의 성찰과 비판'
+  ];
+  List<String> tableKoreanGramWorthLowerCategory = [];
+
+  List<String> tableKoreanLiterKnowledgeLowerCategory = ['갈래', '맥락'];
+  List<String> tableKoreanLiterProcessLowerCategory = [
+    '작품 읽기와 이해',
+    '해석과 감상',
+    '비평',
+    '창작'
+  ];
+  List<String> tableKoreanLiterWorthLowerCategory = [];
+
+  List<String> tableKoreanMediaKnowledgeLowerCategory = [
+    '매체 소통 맥락',
+    '매체 자료 유형'
+  ];
+  List<String> tableKoreanMediaProcessLowerCategory = [
+    '접근과 선택',
+    '해석과 평가',
+    '제작과 공유',
+    '점검과 조정'
+  ];
+  List<String> tableKoreanMediaWorthLowerCategory = [];
+
+  List<List<String>> tableKoreanListenOneTwoValue = [
+    ['상황 맥락'],
+    ['대화', '발표'],
+    ['집중하기', '중요한 내용 확인하기', '일이 일어난 순서 파악하기'],
+    ['경험과 배경지식 활용하기', '일이 일어난 순서에 따라 조직하기', '바르고 고운 말로 표현하기', '바른 자세로 말하기'],
+    ['말차례 지키기', '감정 나누기'],
+    [],
+    ['듣기⋅말하기에 대한 흥미']
+  ]; //2022 국어 듣기말하기 1~2년 내용체계
+  List<List<String>> tableKoreanListenThreeFourValue = [
+    ['상황 맥락'],
+    [
+      '대화', '발표', '토의',
+    ],
+    ['중요한 내용과 주제 파악하기', '내용 요약하기', '원인과 결과 파악하기', '내용 예측하기',],
+    [
+      '목적과 주제 고려하기',
+      '자료 정리하기',
+      '원인과 결과 구조에 따라 조직하기',
+      '주제에 적절한 의견과 이유 제시하기',
+      '준언어⋅비언어적 표현 활용하기',
+    ],
+    ['상황과 상대의 입장 이해하기', '예의를 지키며 듣고 말하기', '의견 교환하기',],
+    ['듣기⋅말하기 과정과 전략에 대해 점검⋅조정하기'],
+    ['듣기⋅말하기 효능감']
+  ]; //2022 국어 듣기말하기 3~4년 내용체계
+  List<List<String>> tableKoreanListenFiveSixValue = [
+    ['상황 맥락', '사회⋅문화적 맥락',],
+    ['대화', '면담', '발표', '토의', '토론',],
+    ['생략된 내용 추론하기', '주장, 이유, 근거가 타당한지 평가하기',],
+    [
+      '청자와 매체 고려하기',
+      '자료 선별하기',
+      '핵심 정보 중심으로 내용 구성하기',
+      '주장, 이유, 근거로 내용 구성하기',
+      '매체 활용하여 전달하기',
+    ],
+    ['궁금한 내용 질문하기', '절차와 규칙 준수하기', '협력적으로 참여하기', '의견 비교하기 및 조정하기',],
+    ['듣기⋅말하기 과정과 전략에 대해 점검⋅조정하기'],
+    ['듣기⋅말하기에 적극적 참여']
+  ]; //2022 국어 듣기말하기 5~6년 내용체계
 }

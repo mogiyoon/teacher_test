@@ -34,7 +34,11 @@ class TableBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Table('핵심');
+    return Column(
+      children: [
+        Table('핵심')
+      ],
+    );
   }
 }
 
@@ -44,7 +48,7 @@ class Table extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ContainerWithBorder(
+    return Container(
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
@@ -138,7 +142,6 @@ class Category extends StatelessWidget {
 
 class LowerCategory extends StatelessWidget {
   String title;
-
   LowerCategory(this.title);
 
   @override
@@ -171,17 +174,17 @@ class LowerCategory extends StatelessWidget {
                   Expanded(
                       flex: 1,
                       child: ContainerWithBorder(
-                          //Todo 지식 이해 관련 LIST
+                          //Todo 지식 이해 관련 내용요소 LIST
                           )),
                   Expanded(
                       flex: 1,
                       child: ContainerWithBorder(
-                          //Todo 지식 이해 관련 LIST
+                          //Todo 지식 이해 관련 내용요소 LIST
                           )),
                   Expanded(
                       flex: 1,
                       child: ContainerWithBorder(
-                          //Todo 지식 이해 관련 LIST
+                          //Todo 지식 이해 관련 내용요소 LIST
                           )),
                 ],
               ))
@@ -190,3 +193,13 @@ class LowerCategory extends StatelessWidget {
     );
   }
 }
+
+class ContentsContainerBuilder extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemBuilder: itemBuilder);
+  }
+}
+

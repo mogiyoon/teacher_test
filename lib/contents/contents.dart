@@ -53,3 +53,32 @@ class Achieve22 {
     combinedSubjectAchieve22.combinedSubjectAchieve
   ];
 }
+
+class TableReturn22 {
+  String title;
+  String grade;
+  String category;
+  String lowerCategory;
+  List<String> contentsList;
+  TableReturn22 (this.title, this.grade, this.category, this.lowerCategory, this.contentsList);
+
+  String returnTitle() {
+    return title;
+  }
+  String returnGrade() {
+    return grade;
+  }
+  String returnCategory() {
+    return category;
+  }
+  String returnLowerCategory() {
+    return lowerCategory;
+  }
+  List<String> returnContents() {
+    return contentsList;
+  }
+}
+class TableCategory22 {
+  List<String> tableGrade = ['1~2학년', '3~4학년', '5~6학년'];
+  List<String> tableCategory = ['지식·이해', '과정·기능', '가치·태도'];
+}
