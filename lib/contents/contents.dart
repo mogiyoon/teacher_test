@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 export 'art_contents.dart';
 export 'combined_subject_contents.dart';
 export 'english_contents.dart';
@@ -9,6 +10,7 @@ export 'pe_contents.dart';
 export 'practical_contents.dart';
 export 'science_contents.dart';
 export 'society_contents.dart';
+
 import '';
 
 class Achieve22 {
@@ -54,30 +56,62 @@ class Achieve22 {
   ];
 }
 
-class TableReturn22 {
-  String title;
-  String grade;
-  String category;
-  String lowerCategory;
-  List<String> contentsList;
-  TableReturn22 (this.title, this.grade, this.category, this.lowerCategory, this.contentsList);
+class Table22 {
+  var koreanTable22 = KoreanTable22();
+  // var mathTable22 = MathTable22();
+  // var societyTable22 = SocietyTable22();
+  // var scienceTable22 = ScienceTable22();
+  // var englishTable22 = EnglishTable22();
+  // var peTable22 = PETable22();
+  // var artTable22 = ArtTable22();
+  // var musicTable22 = MusicTable22();
+  // var ethicsTable22 = EthicsTable22();
+  // var practicalTable22 = PracticalTable22();
+  // var combinedSubjectTable22 = CombinedSubjectTable22();
 
-  String returnTitle() {
-    return title;
-  }
-  String returnGrade() {
-    return grade;
-  }
-  String returnCategory() {
-    return category;
-  }
-  String returnLowerCategory() {
-    return lowerCategory;
-  }
-  List<String> returnContents() {
-    return contentsList;
-  }
+  late List<List<String>> contentsTable22Area = [
+    koreanTable22.koreanTableArea,
+    // mathTable22.mathTableArea,
+    // societyTable22.societyTableArea,
+    // scienceTable22.scienceTableArea,
+    // englishTable22.englishTableArea,
+    // peTable22.peTableArea,
+    // artTable22.artTableArea,
+    // musicTable22.musicTableArea,
+    // ethicsTable22.ethicsTableArea,
+    // practicalTable22.practicalTableArea,
+    // combinedSubjectTable22.combinedSubjectTableArea,
+  ];
+
+  late List<List<List<List<String>>>> contentsTable22AreaIndex = [
+    koreanTable22.koreanTableAreaIndex,
+    // mathTable22.mathTableAreaIndex,
+    // societyTable22.societyTableAreaIndex,
+    // scienceTable22.scienceTableAreaIndex,
+    // englishTable22.englishTableAreaIndex,
+    // peTable22.peTableAreaIndex,
+    // artTable22.artTableAreaIndex,
+    // musicTable22.musicTableAreaIndex,
+    // ethicsTable22.ethicsTableAreaIndex,
+    // practicalTable22.practicalTableAreaIndex,
+    // combinedSubjectTable22.combinedSubjectTableAreaIndex,
+  ];
+  
+  late List<List<List<String>>> contentsTable22CIIndex = [
+    koreanTable22.koreanTableCIIndex,
+    // mathTable22.mathTableCIIndex,
+    // societyTable22.societyTableCIIndex,
+    // scienceTable22.scienceTableCIIndex,
+    // englishTable22.englishTableCIIndex,
+    // peTable22.peTableCIIndex,
+    // artTable22.artTableCIIndex,
+    // musicTable22.musicTableCIIndex,
+    // ethicsTable22.ethicsTableCIIndex,
+    // practicalTable22.practicalTableCIIndex,
+    // combinedSubjectTable22.combinedSubjectTableCIIndex,
+  ];
 }
+
 class TableCategory22 {
   List<String> tableGrade = ['1~2학년', '3~4학년', '5~6학년'];
   List<String> tableCategory = ['지식·이해', '과정·기능', '가치·태도'];
