@@ -30,6 +30,7 @@ class ContainerWithKey extends StatefulWidget {
   final double? width;
   final BoxConstraints? constraints;
   final int areaNum;
+
   const ContainerWithKey(this.areaNum,
       {this.child, this.width, this.constraints, super.key});
 
@@ -38,18 +39,32 @@ class ContainerWithKey extends StatefulWidget {
 }
 
 class _ContainerWithKeyState extends State<ContainerWithKey> {
+  late CentralIdeaState? CIWidget =
+      context.findAncestorStateOfType<CentralIdeaState>();
+  late GlobalKey CIKey =
+      CIWidget?.centralIdeaKeyList[widget.areaNum] ?? GlobalKey();
+  double? sizeHeight;
+
+  double? _getSizeHeight() {
+    if (CIKey != null) {
+      RenderBox renderBox =
+          CIKey.currentContext!.findRenderObject() as RenderBox;
+      sizeHeight = renderBox.size.height;
+      return sizeHeight;
+    }
+  }
+
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      setState(() {
+        sizeHeight = _getSizeHeight();
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    CentralIdeaState? CIWidget = context.findAncestorStateOfType<CentralIdeaState>();
-    GlobalKey CIKey = CIWidget?.centralIdeaKeyList[widget.areaNum] ?? GlobalKey();
-    double sizeHeight = 0;
-
-    if(CIKey.currentContext != null) {
-      RenderBox renderBox = CIKey.currentContext!.findRenderObject() as RenderBox;
-      sizeHeight = renderBox.size.height;
-    }
-
     return Container(
       decoration: BoxDecoration(border: Border.all()),
       child: Center(

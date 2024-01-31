@@ -110,6 +110,20 @@ class Table22 {
     // practicalTable22.practicalTableCIIndex,
     // combinedSubjectTable22.combinedSubjectTableCIIndex,
   ];
+  
+  late List<List<List<List<List<String>>>>> contentsTable22ValueIndex = [
+    koreanTable22.koreanTableGradeValueIndex,
+    // mathTable22.mathTableGradeValueIndex,
+    // soGradeValueetyTable22.soGradeValueetyTableGradeValueIndex,
+    // sGradeValueenceTable22.sGradeValueenceTableGradeValueIndex,
+    // englishTable22.englishTableGradeValueIndex,
+    // peTable22.peTableGradeValueIndex,
+    // artTable22.artTableGradeValueIndex,
+    // musicTable22.musicTableGradeValueIndex,
+    // ethicsTable22.ethicsTableGradeValueIndex,
+    // practicalTable22.practicalTableGradeValueIndex,
+    // combinedSubjectTable22.combinedSubjectTableGradeValueIndex,
+  ];
 }
 
 class TableCategory22 {

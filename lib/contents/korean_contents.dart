@@ -167,6 +167,7 @@ class KoreanTable22 {
   List<String> tableCategory = TableCategory22().tableCategory;
 
   List<String> koreanTableArea = ['듣기⋅말하기', '읽기', '쓰기', '문법', '문학', '매체'];
+
   late List<List<List<String>>> koreanTableAreaIndex = [
     koreanTableListenCategoryIndex,
     koreanTableReadCategoryIndex,
@@ -175,6 +176,7 @@ class KoreanTable22 {
     koreanTableLiterCategoryIndex,
     koreanTableMediaCategoryIndex
   ];
+
   late List<List<String>> koreanTableCIIndex = [
     koreanTableListenCI,
     koreanTableReadCI,
@@ -184,12 +186,44 @@ class KoreanTable22 {
     koreanTableMediaCI
   ];
 
+  late List<List<List<List<String>>>> koreanTableGradeValueIndex = [
+    koreanTableOneTwoValueIndex,
+    koreanTableThreeFourValueIndex,
+    koreanTableFiveSixValueIndex,
+  ];
+
+  late List<List<List<String>>> koreanTableOneTwoValueIndex = [
+    koreanTableListenOneTwoValue,
+    koreanTableReadOneTwoValue,
+    koreanTableWriteOneTwoValue,
+    koreanTableGramOneTwoValue,
+    koreanTableLiterOneTwoValue,
+    koreanTableMediaOneTwoValue,
+  ];
+
+  late List<List<List<String>>> koreanTableThreeFourValueIndex = [
+    koreanTableListenThreeFourValue,
+    koreanTableReadThreeFourValue,
+    koreanTableWriteThreeFourValue,
+    koreanTableGramThreeFourValue,
+    koreanTableLiterThreeFourValue,
+    koreanTableMediaThreeFourValue,
+  ];
+
+  late List<List<List<String>>> koreanTableFiveSixValueIndex = [
+    koreanTableListenFiveSixValue,
+    koreanTableReadFiveSixValue,
+    koreanTableWriteFiveSixValue,
+    koreanTableGramFiveSixValue,
+    koreanTableLiterFiveSixValue,
+    koreanTableMediaFiveSixValue,
+  ];
+
   late List<List<String>> koreanTableListenCategoryIndex = [
     koreanTableListenKnowledgeLowerCategory,
     koreanTableListenProcessLowerCategory,
     koreanTableListenWorthLowerCategory
   ];
-
 
   late List<String> koreanTableListenLowerCategory =
       koreanTableListenKnowledgeLowerCategory +
@@ -670,7 +704,7 @@ class KoreanTable22 {
     '제작과 공유',
     '점검과 조정'
   ];
-  List<String> koreanTableMediaWorthLowerCategory = [];
+  List<String> koreanTableMediaWorthLowerCategory = [''];
   List<String> koreanTableMediaCI = [
     '매체는 소통을 매개하는 도구, 기술, 환경으로 당대 사회의 소통 방식과 소통 문화에 영향을 미친다.',
     '매체 이용자는 매체 자료의 주체적인 수용과 생산을 통해 정체성을 형성하고 사회적 의미 구성 과정에 관여한다.',
