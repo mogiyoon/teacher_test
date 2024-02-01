@@ -27,26 +27,38 @@ class AchieveTestChoiceBuilder extends StatelessWidget {
       //[Subject][OneTwoCheck:0, ThreeFourCheck:1, FiveSixCheck:2]
       children: [
         if (isTest) ...[
-          if (isOneTwoCheck)
+          if (isOneTwoCheck) ...[
+            Center(child: Text('---1~2학년군---'),),
             AchieveFormBuilder(
                 (achieve22.contentsAchieve22Index[subjectNum - 1])[0], 0, subjectNum),
-          if (isThreeFourCheck)
+          ],
+          if (isThreeFourCheck) ...[
+            Center(child: Text('---3~4학년군---'),),
             AchieveFormBuilder(
                 (achieve22.contentsAchieve22Index[subjectNum - 1])[1], 1, subjectNum),
-          if (isFiveSixCheck)
+          ],
+          if (isFiveSixCheck) ...[
+            Center(child: Text('---5~6학년군---'),),
             AchieveFormBuilder(
                 (achieve22.contentsAchieve22Index[subjectNum - 1])[2], 2, subjectNum),
+          ]
         ],
         if (!isTest) ...[
-          if (isOneTwoCheck)
+          if (isOneTwoCheck) ...[
+            Center(child: Text('---1~2학년군---'),),
             AchieveTextBuilder(
                 (achieve22.contentsAchieve22Index[subjectNum - 1])[0]),
-          if (isThreeFourCheck)
+          ],
+          if (isThreeFourCheck) ...[
+            Center(child: Text('---3~4학년군---'),),
             AchieveTextBuilder(
                 (achieve22.contentsAchieve22Index[subjectNum - 1])[1]),
-          if (isFiveSixCheck)
+          ],
+          if (isFiveSixCheck) ...[
+            Center(child: Text('---5~6학년군---'),),
             AchieveTextBuilder(
                 (achieve22.contentsAchieve22Index[subjectNum - 1])[2]),
+          ]
         ],
         Container(
           height: 5,

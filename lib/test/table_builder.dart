@@ -46,11 +46,9 @@ class Table extends StatelessWidget {
             Center(child: Text(title)),
             CentralIdea(subjectNum, areaNum),
             Category(),
+            LowerCategoryListBuilder(areaNum),
             Container(
-              child: LowerCategoryListBuilder(areaNum),
-            ),
-            Container(
-              height: 20,
+              height: 60,
             )
           ],
         ));
@@ -194,8 +192,11 @@ class LowerCategoryListBuilder extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: tableCategory.length,
         itemBuilder: (context, categoryNum) {
-          return LowerCategory(
-              tableCategory[categoryNum], areaNum, categoryNum);
+          return Container(
+            decoration: BoxDecoration(border: Border.all()),
+            child:
+                LowerCategory(tableCategory[categoryNum], areaNum, categoryNum),
+          );
         });
   }
 }
@@ -220,8 +221,8 @@ class LowerCategory extends StatelessWidget {
     var routeContents = Provider.of<RouteContents>(context);
     int subjectNum = routeContents.subjectNum;
     var Table22AreaIndex = Table22().contentsTable22AreaIndex;
-
-    return Container(
+//TODO isTEST 변수 활용하기
+    return ContainerWithBorder(
       child: Row(
         children: [
           Expanded(
@@ -230,7 +231,7 @@ class LowerCategory extends StatelessWidget {
                 children: [
                   Expanded(
                       flex: 2,
-                      child: ContainerWithBorder(
+                      child: Center(
                         child: Text(title),
                       )),
                   if (Table22AreaIndex[subjectNum - 1][areaNum][categoryNum]
@@ -291,9 +292,26 @@ class TableLowerCategoryTextBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     var routeContents = Provider.of<RouteContents>(context);
     int subjectNum = routeContents.subjectNum;
-    var Table22AreaIndex = Table22().contentsTable22AreaIndex;
+    var table22AreaIndex = Table22().contentsTable22AreaIndex;
+    var table22ValueIndex = Table22().contentsTable22ValueIndex;
+    var table22LowerCategoryIndex = Table22().contentsTable22LowerCategoryIndex;
+
     List<String> inputList =
-        Table22AreaIndex[subjectNum - 1][areaNum][categoryNum];
+        table22AreaIndex[subjectNum - 1][areaNum][categoryNum];
+//ex)koreanTableAreaIndex/koreanTableListenCategoryIndex/koreanTableListenKnowledgeLowerCategory
+
+    List<List<String>> inputListOneTwoValue =
+        table22ValueIndex[subjectNum - 1][0][areaNum];
+    List<List<String>> inputListThreeFourValue =
+        table22ValueIndex[subjectNum - 1][1][areaNum];
+    List<List<String>> inputListFiveSixValue =
+        table22ValueIndex[subjectNum - 1][2][areaNum];
+//ex)koreanTableGradeValueIndex/koreanTableOneTwoValueIndex/koreanTableListenOneTwoValue
+
+    List<String> inputListLowerCategory =
+        table22LowerCategoryIndex[subjectNum - 1][areaNum];
+
+    int categoryIndexNum = 0;
 
     return Column(
       children: [
@@ -305,10 +323,48 @@ class TableLowerCategoryTextBuilder extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: inputList.length,
                       itemBuilder: (context, index) {
+                        for (int i = 0;
+                            i < inputListLowerCategory.length;
+                            i++) {
+                          if (inputList[index] == inputListLowerCategory[i]) {
+                            categoryIndexNum = i;
+                          }
+                        }
+
+                        int maxLength = 0;
+                        if (maxLength <
+                            inputListOneTwoValue[categoryIndexNum].length) {
+                          maxLength =
+                              inputListOneTwoValue[categoryIndexNum].length;
+                        }
+                        if (maxLength <
+                            inputListThreeFourValue[categoryIndexNum].length) {
+                          maxLength =
+                              inputListThreeFourValue[categoryIndexNum].length;
+                        }
+                        if (maxLength <
+                            inputListFiveSixValue[categoryIndexNum].length) {
+                          maxLength =
+                              inputListFiveSixValue[categoryIndexNum].length;
+                        }
+
                         return Container(
-                          decoration: BoxDecoration(border: Border.all()),
-                          child: SelectableText(inputList[index]),
-                        );
+                            decoration: BoxDecoration(border: Border.all()),
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: maxLength,
+                                itemBuilder: (context, i) {
+                                  return Container(
+                                    child: Column(
+                                      children: [
+                                        if (i < 1)
+                                          SelectableText(inputList[index]),
+                                        if (i >= 1) Text(''),
+                                      ],
+                                    ),
+                                  );
+                                }));
                       })))
       ],
     );
@@ -328,11 +384,17 @@ class TableValueTextBuilder extends StatelessWidget {
     int subjectNum = routeContents.subjectNum;
     var Table22ValueIndex = Table22().contentsTable22ValueIndex;
     var Table22AreaIndex = Table22().contentsTable22AreaIndex;
-    //TODO 아래부분 수정 필요 areaNum 변수 조정 필요
 
     List<List<String>> inputListValue =
         Table22ValueIndex[subjectNum - 1][gradeNum][areaNum];
-    //koreanTableGradeValueIndex/koreanTableOneTwoValueIndex/koreanTableListenOneTwoValue
+    List<List<String>> inputListOneTwoValue =
+        Table22ValueIndex[subjectNum - 1][0][areaNum];
+    List<List<String>> inputListThreeFourValue =
+        Table22ValueIndex[subjectNum - 1][1][areaNum];
+    List<List<String>> inputListFiveSixValue =
+        Table22ValueIndex[subjectNum - 1][2][areaNum];
+    //ex)koreanTableGradeValueIndex/koreanTableOneTwoValueIndex/koreanTableListenOneTwoValue
+
     List<String> inputListCategory =
         Table22AreaIndex[subjectNum - 1][areaNum][categoryNum];
     List<String> inputListCategoryKnowledge =
@@ -341,7 +403,7 @@ class TableValueTextBuilder extends StatelessWidget {
         Table22AreaIndex[subjectNum - 1][areaNum][1];
     List<String> inputListCategoryWorth =
         Table22AreaIndex[subjectNum - 1][areaNum][2];
-    //koreanTableAreaIndex/koreanTableListenCategoryIndex/koreanTableListenKnowledgeLowerCategory
+    //ex)koreanTableAreaIndex/koreanTableListenCategoryIndex/koreanTableListenKnowledgeLowerCategory
 
     int categoryItemNum = 0;
     switch (categoryNum) {
@@ -366,17 +428,46 @@ class TableValueTextBuilder extends StatelessWidget {
                     itemCount: inputListCategory.length,
                     itemBuilder: (context, index) {
                       categoryItemNum++;
+
+                      int maxLength = 0;
+                      if (maxLength <
+                          inputListOneTwoValue[categoryItemNum - 1].length) {
+                        maxLength =
+                            inputListOneTwoValue[categoryItemNum - 1].length;
+                      }
+                      if (maxLength <
+                          inputListThreeFourValue[categoryItemNum - 1].length) {
+                        maxLength =
+                            inputListThreeFourValue[categoryItemNum - 1].length;
+                      }
+                      if (maxLength <
+                          inputListFiveSixValue[categoryItemNum - 1].length) {
+                        maxLength =
+                            inputListFiveSixValue[categoryItemNum - 1].length;
+                      }
+
                       return Container(
                         decoration: BoxDecoration(border: Border.all()),
                         child: ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            itemCount:
-                                inputListValue[categoryItemNum - 1].length,
+                            itemCount: maxLength,
                             itemBuilder: (context, i) {
                               return Container(
-                                child: SelectableText(
-                                    inputListValue[categoryItemNum - 1][i]),
+                                child: Column(
+                                  children: [
+                                    if (i <
+                                        inputListValue[categoryItemNum - 1]
+                                            .length)
+                                      SelectableText(
+                                          inputListValue[categoryItemNum - 1]
+                                              [i]),
+                                    if (i >=
+                                        inputListValue[categoryItemNum - 1]
+                                            .length)
+                                      Text('')
+                                  ],
+                                ),
                               );
                             }),
                       );

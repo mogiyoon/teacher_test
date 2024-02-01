@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 export 'art_contents.dart';
 export 'combined_subject_contents.dart';
 export 'english_contents.dart';
@@ -10,7 +9,6 @@ export 'pe_contents.dart';
 export 'practical_contents.dart';
 export 'science_contents.dart';
 export 'society_contents.dart';
-
 import '';
 
 class Achieve22 {
@@ -110,12 +108,26 @@ class Table22 {
     // practicalTable22.practicalTableCIIndex,
     // combinedSubjectTable22.combinedSubjectTableCIIndex,
   ];
+
+  late List<List<List<String>>> contentsTable22LowerCategoryIndex = [
+    koreanTable22.koreanTableLowerCategoryIndex,
+    // mathTable22.mathTableLowerCategoryIndex,
+    // sociTable22.societyTableLowerCategoryIndex,
+    // scienceTable22.scienceTableLowerCategoryIndex,
+    // englishTable22.englishTableLowerCategoryIndex,
+    // peTable22.peTableLowerCategoryIndex,
+    // artTable22.artTableLowerCategoryIndex,
+    // musicTable22.musicTableLowerCategoryIndex,
+    // ethicsTable22.ethicsTableLowerCategoryIndex,
+    // practicalTable22.practicalTableLowerCategoryIndex,
+    // combinedSubjectTable22.combinedSubjectTableLowerCategoryIndex,
+  ];
   
   late List<List<List<List<List<String>>>>> contentsTable22ValueIndex = [
     koreanTable22.koreanTableGradeValueIndex,
     // mathTable22.mathTableGradeValueIndex,
-    // soGradeValueetyTable22.soGradeValueetyTableGradeValueIndex,
-    // sGradeValueenceTable22.sGradeValueenceTableGradeValueIndex,
+    // societyTable22.societyTableGradeValueIndex,
+    // scienceTable22.scienceTableGradeValueIndex,
     // englishTable22.englishTableGradeValueIndex,
     // peTable22.peTableGradeValueIndex,
     // artTable22.artTableGradeValueIndex,
