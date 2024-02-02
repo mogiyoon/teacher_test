@@ -56,12 +56,12 @@ class Achieve22 {
 
 class Table22 {
   var koreanTable22 = KoreanTable22();
-  // var mathTable22 = MathTable22();
-  // var societyTable22 = SocietyTable22();
+  var mathTable22 = MathTable22();
+  var societyTable22 = SocietyTable22();
   // var scienceTable22 = ScienceTable22();
   // var englishTable22 = EnglishTable22();
   // var peTable22 = PETable22();
-  // var artTable22 = ArtTable22();
+  var artTable22 = ArtTable22();
   // var musicTable22 = MusicTable22();
   // var ethicsTable22 = EthicsTable22();
   // var practicalTable22 = PracticalTable22();
@@ -69,12 +69,12 @@ class Table22 {
 
   late List<List<String>> contentsTable22Area = [
     koreanTable22.koreanTableArea,
-    // mathTable22.mathTableArea,
-    // societyTable22.societyTableArea,
+    mathTable22.mathTableArea,
+    societyTable22.societyTableArea,
     // scienceTable22.scienceTableArea,
     // englishTable22.englishTableArea,
     // peTable22.peTableArea,
-    // artTable22.artTableArea,
+    artTable22.artTableArea,
     // musicTable22.musicTableArea,
     // ethicsTable22.ethicsTableArea,
     // practicalTable22.practicalTableArea,
@@ -83,12 +83,12 @@ class Table22 {
 
   late List<List<List<List<String>>>> contentsTable22AreaIndex = [
     koreanTable22.koreanTableAreaIndex,
-    // mathTable22.mathTableAreaIndex,
-    // societyTable22.societyTableAreaIndex,
+    mathTable22.mathTableAreaIndex,
+    societyTable22.societyTableAreaIndex,
     // scienceTable22.scienceTableAreaIndex,
     // englishTable22.englishTableAreaIndex,
     // peTable22.peTableAreaIndex,
-    // artTable22.artTableAreaIndex,
+    artTable22.artTableAreaIndex,
     // musicTable22.musicTableAreaIndex,
     // ethicsTable22.ethicsTableAreaIndex,
     // practicalTable22.practicalTableAreaIndex,
@@ -97,12 +97,12 @@ class Table22 {
   
   late List<List<List<String>>> contentsTable22CIIndex = [
     koreanTable22.koreanTableCIIndex,
-    // mathTable22.mathTableCIIndex,
-    // societyTable22.societyTableCIIndex,
+    mathTable22.mathTableCIIndex,
+    societyTable22.societyTableCIIndex,
     // scienceTable22.scienceTableCIIndex,
     // englishTable22.englishTableCIIndex,
     // peTable22.peTableCIIndex,
-    // artTable22.artTableCIIndex,
+    artTable22.artTableCIIndex,
     // musicTable22.musicTableCIIndex,
     // ethicsTable22.ethicsTableCIIndex,
     // practicalTable22.practicalTableCIIndex,
@@ -111,12 +111,12 @@ class Table22 {
 
   late List<List<List<String>>> contentsTable22LowerCategoryIndex = [
     koreanTable22.koreanTableLowerCategoryIndex,
-    // mathTable22.mathTableLowerCategoryIndex,
-    // sociTable22.societyTableLowerCategoryIndex,
+    mathTable22.mathTableLowerCategoryIndex,
+    societyTable22.societyTableLowerCategoryIndex,
     // scienceTable22.scienceTableLowerCategoryIndex,
     // englishTable22.englishTableLowerCategoryIndex,
     // peTable22.peTableLowerCategoryIndex,
-    // artTable22.artTableLowerCategoryIndex,
+    artTable22.artTableLowerCategoryIndex,
     // musicTable22.musicTableLowerCategoryIndex,
     // ethicsTable22.ethicsTableLowerCategoryIndex,
     // practicalTable22.practicalTableLowerCategoryIndex,
@@ -125,12 +125,12 @@ class Table22 {
   
   late List<List<List<List<List<String>>>>> contentsTable22ValueIndex = [
     koreanTable22.koreanTableGradeValueIndex,
-    // mathTable22.mathTableGradeValueIndex,
-    // societyTable22.societyTableGradeValueIndex,
+    mathTable22.mathTableGradeValueIndex,
+    societyTable22.societyTableGradeValueIndex,
     // scienceTable22.scienceTableGradeValueIndex,
     // englishTable22.englishTableGradeValueIndex,
     // peTable22.peTableGradeValueIndex,
-    // artTable22.artTableGradeValueIndex,
+    artTable22.artTableGradeValueIndex,
     // musicTable22.musicTableGradeValueIndex,
     // ethicsTable22.ethicsTableGradeValueIndex,
     // practicalTable22.practicalTableGradeValueIndex,

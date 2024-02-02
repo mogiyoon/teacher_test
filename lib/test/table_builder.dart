@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:collection/collection.dart';
 import 'package:teacher_test/contents/contents.dart';
 import 'package:teacher_test/function/container_widget.dart';
 import 'package:teacher_test/test/test_contents.dart';
@@ -48,7 +49,7 @@ class Table extends StatelessWidget {
             Category(),
             LowerCategoryListBuilder(areaNum),
             Container(
-              height: 60,
+              height: 60, // 표 사이 공간
             )
           ],
         ));
@@ -210,6 +211,7 @@ class LowerCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var table22ValueIndex = Table22().contentsTable22ValueIndex;
     var testChoice = Provider.of<TestChoice>(context);
     bool isTest = testChoice.isTest;
 
@@ -221,6 +223,15 @@ class LowerCategory extends StatelessWidget {
     var routeContents = Provider.of<RouteContents>(context);
     int subjectNum = routeContents.subjectNum;
     var Table22AreaIndex = Table22().contentsTable22AreaIndex;
+
+    Function eq = const ListEquality().equals;
+    bool valueOneToFour = eq(
+        table22ValueIndex[subjectNum - 1][0][areaNum],
+        table22ValueIndex[subjectNum - 1][1][areaNum]);
+    bool valueThreeToSix = eq(
+        table22ValueIndex[subjectNum - 1][1][areaNum],
+        table22ValueIndex[subjectNum - 1][2][areaNum]);
+
 //TODO isTEST 변수 활용하기
     return ContainerWithBorder(
       child: Row(
@@ -236,7 +247,7 @@ class LowerCategory extends StatelessWidget {
                       )),
                   if (Table22AreaIndex[subjectNum - 1][areaNum][categoryNum]
                           .length >
-                      1)
+                      1 || Table22AreaIndex[subjectNum - 1][areaNum][categoryNum][0] != '')
                     Expanded(
                         flex: 3,
                         child:
@@ -246,34 +257,118 @@ class LowerCategory extends StatelessWidget {
           Expanded(
               flex: 3,
               child: Row(
+                //TODO 경우의 수 나누어서 칸 분배하기
                 children: [
-//Todo 학년군 체크시 사용할 IF문 추가
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      children: [
-                        if (isOneTwoCheck)
-                          TableValueTextBuilder(areaNum, 0, categoryNum),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      children: [
-                        if (isThreeFourCheck)
-                          TableValueTextBuilder(areaNum, 1, categoryNum),
-                      ],
-                    ),
-                  ),
-                  Expanded(
+                  if (Table22AreaIndex[subjectNum - 1][areaNum][categoryNum]
+                      .length <=
+                      1) ...[
+                    if (!valueOneToFour && !valueThreeToSix) ...[
+                      Expanded(
+                        flex: 1,
+                        child: Column(
+                          children: [
+                            if (isOneTwoCheck)
+                              TableValueTextBuilder(areaNum, 0, categoryNum),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Column(
+                          children: [
+                            if (isThreeFourCheck)
+                              TableValueTextBuilder(areaNum, 1, categoryNum),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                          flex: 1,
+                          child: Column(
+                            children: [
+                              if (isFiveSixCheck)
+                                TableValueTextBuilder(areaNum, 2, categoryNum),
+                            ],
+                          )),
+                    ],
+                    if (valueOneToFour && !valueThreeToSix) ...[
+                      Expanded(
+                          flex: 2,
+                          child: Column(
+                            children: [
+                              if (isOneTwoCheck || isThreeFourCheck)
+                                TableValueTextBuilder(areaNum, 1, categoryNum)
+                            ],
+                          )),
+                      Expanded(
+                          flex: 1,
+                          child: Column(
+                            children: [
+                              if (isFiveSixCheck)
+                                TableValueTextBuilder(areaNum, 2, categoryNum),
+                            ],
+                          )),
+                    ],
+                    if (!valueOneToFour && valueThreeToSix) ...[
+                      Expanded(
+                          flex: 1,
+                          child: Column(
+                            children: [
+                              if (isOneTwoCheck)
+                                TableValueTextBuilder(areaNum, 0, categoryNum)
+                            ],
+                          )),
+                      Expanded(
+                          flex: 2,
+                          child: Column(
+                            children: [
+                              if (isThreeFourCheck || isFiveSixCheck)
+                                TableValueTextBuilder(areaNum, 1, categoryNum),
+                            ],
+                          )),
+                    ],
+                    if (valueOneToFour && valueThreeToSix) ...[
+                      Expanded(
+                          flex: 1,
+                          child: Column(
+                            children: [
+                              if (isOneTwoCheck ||
+                                  isThreeFourCheck ||
+                                  isFiveSixCheck)
+                                TableValueTextBuilder(areaNum, 1, categoryNum)
+                            ],
+                          )),
+                    ],
+                  ],
+                  if (Table22AreaIndex[subjectNum - 1][areaNum][categoryNum]
+                      .length >
+                      1) ...[
+                    Expanded(
                       flex: 1,
                       child: Column(
                         children: [
-                          if (isFiveSixCheck)
-                            TableValueTextBuilder(areaNum, 2, categoryNum),
+                          if (isOneTwoCheck)
+                            TableValueTextBuilder(areaNum, 0, categoryNum),
                         ],
-                      )),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        children: [
+                          if (isThreeFourCheck)
+                            TableValueTextBuilder(areaNum, 1, categoryNum),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                        flex: 1,
+                        child: Column(
+                          children: [
+                            if (isFiveSixCheck)
+                              TableValueTextBuilder(areaNum, 2, categoryNum),
+                          ],
+                        )),
+                  ]
                 ],
               ))
         ],
@@ -315,7 +410,6 @@ class TableLowerCategoryTextBuilder extends StatelessWidget {
 
     return Column(
       children: [
-        if (inputList.length > 1)
           Container(
               child: Center(
                   child: ListView.builder(
@@ -382,27 +476,27 @@ class TableValueTextBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     var routeContents = Provider.of<RouteContents>(context);
     int subjectNum = routeContents.subjectNum;
-    var Table22ValueIndex = Table22().contentsTable22ValueIndex;
-    var Table22AreaIndex = Table22().contentsTable22AreaIndex;
+    var table22ValueIndex = Table22().contentsTable22ValueIndex;
+    var table22AreaIndex = Table22().contentsTable22AreaIndex;
 
     List<List<String>> inputListValue =
-        Table22ValueIndex[subjectNum - 1][gradeNum][areaNum];
+        table22ValueIndex[subjectNum - 1][gradeNum][areaNum];
     List<List<String>> inputListOneTwoValue =
-        Table22ValueIndex[subjectNum - 1][0][areaNum];
+        table22ValueIndex[subjectNum - 1][0][areaNum];
     List<List<String>> inputListThreeFourValue =
-        Table22ValueIndex[subjectNum - 1][1][areaNum];
+        table22ValueIndex[subjectNum - 1][1][areaNum];
     List<List<String>> inputListFiveSixValue =
-        Table22ValueIndex[subjectNum - 1][2][areaNum];
+        table22ValueIndex[subjectNum - 1][2][areaNum];
     //ex)koreanTableGradeValueIndex/koreanTableOneTwoValueIndex/koreanTableListenOneTwoValue
 
     List<String> inputListCategory =
-        Table22AreaIndex[subjectNum - 1][areaNum][categoryNum];
+        table22AreaIndex[subjectNum - 1][areaNum][categoryNum];
     List<String> inputListCategoryKnowledge =
-        Table22AreaIndex[subjectNum - 1][areaNum][0];
+        table22AreaIndex[subjectNum - 1][areaNum][0];
     List<String> inputListCategoryProcess =
-        Table22AreaIndex[subjectNum - 1][areaNum][1];
+        table22AreaIndex[subjectNum - 1][areaNum][1];
     List<String> inputListCategoryWorth =
-        Table22AreaIndex[subjectNum - 1][areaNum][2];
+        table22AreaIndex[subjectNum - 1][areaNum][2];
     //ex)koreanTableAreaIndex/koreanTableListenCategoryIndex/koreanTableListenKnowledgeLowerCategory
 
     int categoryItemNum = 0;

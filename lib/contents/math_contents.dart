@@ -1,21 +1,28 @@
-class MathAchieve22{
-  late List<List<String>> mathAchieveIndex =
-  [mathAchieve12, mathAchieve34, mathAchieve56];
+import 'package:teacher_test/contents/contents.dart';
 
-  late List<String> mathAchieve =
-      mathAchieve12 + mathAchieve34 + mathAchieve56;
+class MathAchieve22 {
+  late List<List<String>> mathAchieveIndex = [
+    mathAchieve12,
+    mathAchieve34,
+    mathAchieve56
+  ];
 
-  late List<String> mathAchieve12 =
-      mathAchieveCalcul12 + mathAchieveRelation12 + mathAchieveFigure12
-          + mathAchieveData12;
+  late List<String> mathAchieve = mathAchieve12 + mathAchieve34 + mathAchieve56;
 
-  late List<String> mathAchieve34 =
-      mathAchieveCalcul34 + mathAchieveRelation34 + mathAchieveFigure34
-          + mathAchieveData34;
+  late List<String> mathAchieve12 = mathAchieveCalcul12 +
+      mathAchieveRelation12 +
+      mathAchieveFigure12 +
+      mathAchieveData12;
 
-  late List<String> mathAchieve56 =
-      mathAchieveCalcul56 + mathAchieveRelation56 + mathAchieveFigure56
-          + mathAchieveData56;
+  late List<String> mathAchieve34 = mathAchieveCalcul34 +
+      mathAchieveRelation34 +
+      mathAchieveFigure34 +
+      mathAchieveData34;
+
+  late List<String> mathAchieve56 = mathAchieveCalcul56 +
+      mathAchieveRelation56 +
+      mathAchieveFigure56 +
+      mathAchieveData56;
 
   List<String> mathAchieveCalcul12 = [
     '수의 필요성을 인식하면서 0과 100까지의 수 개념을 이해하고, 수를 세고 읽고 쓸 수 있다.',
@@ -31,7 +38,7 @@ class MathAchieve22{
     '곱셈구구를 이해하고, 한 자리 수의 곱셈을 할 수 있다.'
   ];
   List<String> mathAchieveRelation12 = [
-    '물체, 무늬, 수 등의 배열에서 규칙을 찾아 여러 가지 방법으로 표현할 수 있다.',
+    '물체, 무늬, 수 등의 배열에서 규칙을 찾아 여러 가지 방법으로 변화와 관계할 수 있다.',
     '자신이 정한 규칙에 따라 물체, 무늬, 수 등을 배열할 수 있다.'
   ];
   List<String> mathAchieveFigure12 = [
@@ -42,19 +49,19 @@ class MathAchieve22{
     '삼각형, 사각형에서 각각의 공통점을 찾아 말할 수 있다.',
     '구체물의 길이, 들이, 무게, 넓이를 비교하여 각각 ‘길다, 짧다’, ‘많다, 적다’, ‘무겁다, 가볍다’, ‘넓다, 좁다’ 등을 구별하여 말할 수 있다.',
     '시계를 보고 시각을 ‘몇 시 몇 분’까지 읽을 수 있다.',
-    '1시간과 1분의 관계를 이해하고, 시간을 ‘시간’, ‘분’으로 표현할 수 있다.',
+    '1시간과 1분의 관계를 이해하고, 시간을 ‘시간’, ‘분’으로 변화와 관계할 수 있다.',
     '실생활 문제 상황과 연결하여 1분, 1시간, 1일, 1주일, 1개월, 1년 사이의 관계를 이해한다.',
     '길이 단위 1cm와 1m를 알고, 이를 이용하여 주변 사물의 길이를 측정할 수 있다.',
-    '1m와 1cm의 관계를 이해하고, 길이를 ‘몇 m 몇 cm’와 ‘몇 cm’로 표현할 수 있다.',
+    '1m와 1cm의 관계를 이해하고, 길이를 ‘몇 m 몇 cm’와 ‘몇 cm’로 변화와 관계할 수 있다.',
     '여러 가지 물건의 길이를 어림하고, 길이에 대한 양감을 기른다.',
     '실생활 문제 상황과 연결하여 길이의 덧셈과 뺄셈을 할 수 있다.'
-
   ];
   List<String> mathAchieveData12 = [
     '여러 가지 사물을 정해진 기준 또는 자신이 정한 기준으로 분류하여 개수를 세어 보고, 기준에 따른 결과를 말할 수 있다.',
     '자료를 분류하여 표로 나타내고, 자료를 표로 나타내면 편리한 점을 말할 수 있다.',
     '자료를 분류하여 ○, ×, / 등을 이용한 그래프로 나타내고, 자료를 그래프로 나타내면 편리한 점을 말할 수 있다.'
   ];
+
   //2022 수학 1~2년 성취기준
 
   List<String> mathAchieveCalcul34 = [
@@ -96,12 +103,12 @@ class MathAchieve22{
     '1분과 1초의 관계를 이해하고, 초 단위까지 시각을 읽을 수 있다.',
     '실생활 문제 상황과 연결하여 초 단위까지의 시간의 덧셈과 뺄셈을 할 수 있다.',
     '길이 단위 1mm와 1km를 알고, 이를 이용하여 길이를 측정하고 어림하며 수학의 유용성을 인식할 수 있다.',
-    '1cm와 1mm, 1km와 1m의 관계를 이해하고, 길이를 ‘몇 cm 몇 mm’와 ‘몇 mm’, ‘몇 km 몇 m’와 ‘몇 m’로 다양하게 표현할 수 있다.',
+    '1cm와 1mm, 1km와 1m의 관계를 이해하고, 길이를 ‘몇 cm 몇 mm’와 ‘몇 mm’, ‘몇 km 몇 m’와 ‘몇 m’로 다양하게 변화와 관계할 수 있다.',
     '들이 단위 1L와 1mL를 알고, 이를 이용하여 들이를 측정하고 어림하며 수학의 유용성을 인식할 수 있다.',
-    '1L와 1mL의 관계를 이해하고, 들이를 ‘몇 L 몇 mL’와 ‘몇 mL’로 표현할 수 있다.',
+    '1L와 1mL의 관계를 이해하고, 들이를 ‘몇 L 몇 mL’와 ‘몇 mL’로 변화와 관계할 수 있다.',
     '실생활 문제 상황과 연결하여 들이의 덧셈과 뺄셈을 할 수 있다.',
     '실생활에서 무게를 나타낼 때 사용하는 단위 1g과 1kg을 알고, 이를 이용하여 무게를 측정하고 어림하며 수학의 유용성을 인식할 수 있다.',
-    '1kg과 1g의 관계를 이해하고, 무게를 ‘몇 kg 몇 g’과 ‘몇 g’으로 표현할 수 있다.',
+    '1kg과 1g의 관계를 이해하고, 무게를 ‘몇 kg 몇 g’과 ‘몇 g’으로 변화와 관계할 수 있다.',
     '실생활에서 무게를 나타낼 때 사용하는 단위 1t을 알고, 1t과 1kg의 관계를 이해한다.',
     '실생활 문제 상황과 연결하여 무게의 덧셈과 뺄셈을 할 수 있다.',
     '각의 크기의 단위인 1도(°)를 알고, 각도기를 이용하여 각의 크기를 측정하고 어림할 수 있다.',
@@ -112,6 +119,7 @@ class MathAchieve22{
     '자료를 수집하여 꺾은선그래프로 나타내고 해석할 수 있다.',
     '탐구 문제를 해결하기 위해 자료를 수집, 정리하여 막대그래프나 꺾은선그래프로 나타내고 해석할 수 있다.'
   ];
+
   //2022 수학 3~4년 성취기준
 
   List<String> mathAchieveCalcul56 = [
@@ -148,7 +156,7 @@ class MathAchieve22{
     '원기둥, 원뿔, 구를 이해하고, 구성 요소와 성질을 탐구하고 설명할 수 있다.',
     '원기둥의 전개도를 그릴 수 있다.',
     '쌓기나무로 만든 입체도형을 보고 사용된 쌓기나무의 개수를 구할 수 있다.',
-    '쌓기나무로 만든 입체도형의 위, 앞, 옆에서 본 모양을 표현할 수 있고, 이러한 표현을 보고 입체도형의 모양을 추측할 수 있다.',
+    '쌓기나무로 만든 입체도형의 위, 앞, 옆에서 본 모양을 변화와 관계할 수 있고, 이러한 변화와 관계을 보고 입체도형의 모양을 추측할 수 있다.',
     '평면도형의 둘레를 이해하고, 기본적인 평면도형의 둘레를 구할 수 있다.',
     '넓이 단위 1cm², 1m², 1km²를 알며, 그 관계를 이해한다.',
     '직사각형과 정사각형의 넓이를 구하는 방법을 이해하고, 이를 구할 수 있다.',
@@ -163,9 +171,456 @@ class MathAchieve22{
     '평균의 의미를 알고, 자료를 수집하여 평균을 구하고 해석할 수 있다.',
     '자료를 수집하여 띠그래프나 원그래프로 나타내고 해석할 수 있다.',
     '탐구 문제를 설정하고, 그에 맞는 자료를 수집, 정리하여 적절한 그래프로 나타내고 해석할 수 있다.',
-    '사건이 일어날 가능성을 말로 표현하고 비교할 수 있다.',
+    '사건이 일어날 가능성을 말로 변화와 관계하고 비교할 수 있다.',
     '사건이 일어날 가능성을 수로 나타낼 수 있다.',
     '자료를 이용하여 가능성을 예상하고, 가능성에 근거하여 적절한 판단을 내릴 수 있다.'
   ];
-  //2022 수학 5~6년 성취기준
+//2022 수학 5~6년 성취기준
+}
+
+class MathTable22 {
+  List<String> tableGrade = TableCategory22().tableGrade;
+  List<String> tableCategory = TableCategory22().tableCategory;
+
+  List<String> mathTableArea = ['수와 연산', '변화와 관계', '도형과 측정', '자료와 가능성'];
+
+  late List<List<List<String>>> mathTableAreaIndex = [
+    mathTableCalculCategoryIndex,
+    mathTableRelationCategoryIndex,
+    mathTableFigureCategoryIndex,
+    mathTableDataCategoryIndex
+  ];
+
+  late List<List<String>> mathTableCIIndex = [
+    mathTableCalculCI,
+    mathTableRelationCI,
+    mathTableFigureCI,
+    mathTableDataCI
+  ];
+
+  late List<List<String>> mathTableLowerCategoryIndex = [
+    mathTableCalculLowerCategory,
+    mathTableRelationLowerCategory,
+    mathTableFigureLowerCategory,
+    mathTableDataLowerCategory,
+  ];
+
+  late List<List<List<List<String>>>> mathTableGradeValueIndex = [
+    mathTableOneTwoValueIndex,
+    mathTableThreeFourValueIndex,
+    mathTableFiveSixValueIndex,
+  ];
+
+  late List<List<List<String>>> mathTableOneTwoValueIndex = [
+    mathTableCalculOneTwoValue,
+    mathTableRelationOneTwoValue,
+    mathTableFigureOneTwoValue,
+    mathTableDataOneTwoValue,
+  ];
+
+  late List<List<List<String>>> mathTableThreeFourValueIndex = [
+    mathTableCalculThreeFourValue,
+    mathTableRelationThreeFourValue,
+    mathTableFigureThreeFourValue,
+    mathTableDataThreeFourValue,
+  ];
+
+  late List<List<List<String>>> mathTableFiveSixValueIndex = [
+    mathTableCalculFiveSixValue,
+    mathTableRelationFiveSixValue,
+    mathTableFigureFiveSixValue,
+    mathTableDataFiveSixValue,
+  ];
+
+  late List<List<String>> mathTableCalculCategoryIndex = [
+    mathTableCalculKnowledgeLowerCategory,
+    mathTableCalculProcessLowerCategory,
+    mathTableCalculWorthLowerCategory
+  ];
+
+  late List<String> mathTableCalculLowerCategory =
+      mathTableCalculKnowledgeLowerCategory +
+          mathTableCalculProcessLowerCategory +
+          mathTableCalculWorthLowerCategory;
+
+  List<String> mathTableCalculKnowledgeLowerCategory = [''];
+  List<String> mathTableCalculProcessLowerCategory = [''];
+  List<String> mathTableCalculWorthLowerCategory = [''];
+  List<String> mathTableCalculCI = [
+    '사물의 양은 자연수, 분수, 소수 등으로 변화와 관계되며, 수는 자연수에서 정수, 유리수, 실수로 확장된다.',
+    '사칙계산은 자연수에 대해 정의되며 정수, 유리수, 실수의 사칙계산으로 확장되고 이때 연산의 성질이 일관되게 성립한다.',
+    '수와 사칙계산은 수학 학습의 기본이 되며, 실생활 문제를 포함한 다양한 문제를 해결하는 데 유용하게 활용된다.',
+  ];
+  List<List<String>> mathTableCalculOneTwoValue = [
+    [
+      '네 자리 이하의 수',
+      '두 자리 수 범위의 덧셈과 뺄셈',
+      '한 자리 수의 곱셈',
+    ],
+    [
+      '자연수, 분수, 소수 등 수 관련 개념과 원리를 탐구하기',
+      '수를 세고 읽고 쓰기',
+      '자연수, 분수, 소수의 크기를 비교하고 그 방법을 설명하기',
+      '사칙계산의 의미와 계산 원리를 탐구하고 계산하기',
+      '수 감각과 연산 감각 기르기',
+      '연산 사이의 관계, 분수와 소수의 관계를 탐구하기',
+      '수의 범위와 올림, 버림, 반올림한 어림값을 실생활과 연결하기',
+      '자연수, 분수, 소수, 사칙계산을 실생활 및 타 교과와 연결하여 문제해결하기',
+    ],
+    [
+      '자연수, 분수, 소수의 필요성 인식',
+      '사칙계산, 어림의 유용성 인식',
+      '분수 표현의 편리함 인식',
+      '수와 연산 관련 문제해결에서 비판적으로 사고하는 태도',
+    ],
+  ]; //2022 수학 수와 연산 1~2년 내용체계
+  List<List<String>> mathTableCalculThreeFourValue = [
+    [
+      '다섯 자리 이상의 수',
+      '분수',
+      '소수',
+      '세 자리 수의 덧셈과 뺄셈',
+      '자연수의 곱셈과 나눗셈',
+      '분모가 같은 분수의 덧셈과 뺄셈',
+      '소수의 덧셈과 뺄셈',
+    ],
+    [
+      '자연수, 분수, 소수 등 수 관련 개념과 원리를 탐구하기',
+      '수를 세고 읽고 쓰기',
+      '자연수, 분수, 소수의 크기를 비교하고 그 방법을 설명하기',
+      '사칙계산의 의미와 계산 원리를 탐구하고 계산하기',
+      '수 감각과 연산 감각 기르기',
+      '연산 사이의 관계, 분수와 소수의 관계를 탐구하기',
+      '수의 범위와 올림, 버림, 반올림한 어림값을 실생활과 연결하기',
+      '자연수, 분수, 소수, 사칙계산을 실생활 및 타 교과와 연결하여 문제해결하기',
+    ],
+    [
+      '자연수, 분수, 소수의 필요성 인식',
+      '사칙계산, 어림의 유용성 인식',
+      '분수 표현의 편리함 인식',
+      '수와 연산 관련 문제해결에서 비판적으로 사고하는 태도',
+    ],
+  ]; //2022 수학 수와 연산 3~4년 내용체계
+  List<List<String>> mathTableCalculFiveSixValue = [
+    [
+      '약수와 배수',
+      '수의 범위와 올림, 버림, 반올림',
+      '자연수의 혼합 계산',
+      '분모가 다른 분수의 덧셈과 뺄셈',
+      '분수의 곱셈과 나눗셈',
+      '소수의 곱셈과 나눗셈',
+    ],
+    [
+      '자연수, 분수, 소수 등 수 관련 개념과 원리를 탐구하기',
+      '수를 세고 읽고 쓰기',
+      '자연수, 분수, 소수의 크기를 비교하고 그 방법을 설명하기',
+      '사칙계산의 의미와 계산 원리를 탐구하고 계산하기',
+      '수 감각과 연산 감각 기르기',
+      '연산 사이의 관계, 분수와 소수의 관계를 탐구하기',
+      '수의 범위와 올림, 버림, 반올림한 어림값을 실생활과 연결하기',
+      '자연수, 분수, 소수, 사칙계산을 실생활 및 타 교과와 연결하여 문제해결하기',
+    ],
+    [
+      '자연수, 분수, 소수의 필요성 인식',
+      '사칙계산, 어림의 유용성 인식',
+      '분수 표현의 편리함 인식',
+      '수와 연산 관련 문제해결에서 비판적으로 사고하는 태도',
+    ],
+  ]; //2022 수학 수와 연산 5~6년 내용체계
+//2022 수학 수와 연산 내용체계표
+
+  late List<List<String>> mathTableRelationCategoryIndex = [
+    mathTableRelationKnowledgeLowerCategory,
+    mathTableRelationProcessLowerCategory,
+    mathTableRelationWorthLowerCategory
+  ];
+
+  late List<String> mathTableRelationLowerCategory =
+      mathTableRelationKnowledgeLowerCategory +
+          mathTableRelationProcessLowerCategory +
+          mathTableRelationWorthLowerCategory;
+
+  List<String> mathTableRelationKnowledgeLowerCategory = [''];
+  List<String> mathTableRelationProcessLowerCategory = [''];
+  List<String> mathTableRelationWorthLowerCategory = [''];
+  List<String> mathTableRelationCI = [
+    '변화하는 현상에 반복적인 요소로 들어있는 규칙은 수나 식으로 표현될 수 있으며, 규칙을 탐구하는 것은 수학적으로 추측하고 일반화하는 데 기반이 된다.',
+    '동치 관계, 대응 관계, 비례 관계 등은 여러 현상에 들어있는 대상들 사이의 다양한 관계를 기술하고 복잡한 문제를 해결하는 데 유용하게 활용된다.',
+    '수와 그 계산은 문자와 식을 사용하여 일반화되며, 특정한 관계를 만족시키는 미지의 값은 방정식과 부등식을 해결하는 적절한 절차를 거쳐 구해진다.',
+    '한 양이 변함에 따라 다른 양이 하나씩 정해지는 두 양 사이의 대응 관계를 나타내는 함수와 그 그래프는 변화하는 현상 속의 다양한 관계를 수학적으로 표현한다.',
+  ];
+  List<List<String>> mathTableRelationOneTwoValue = [
+    ['규칙'],
+    [
+      '물체, 무늬, 수, 계산식의 배열에서 규칙을 탐구하기',
+      '규칙을 찾아 여러 가지 방법으로 표현하기',
+      '두 양의 관계를 탐구하고, 등호를 사용하여 나타내기',
+      '대응 관계를 탐구하고, □, △ 등을 사용하여 식으로 나타내고 설명하기',
+      '두 양의 관계를 비나 비율로 나타내기',
+      '비율을 분수, 소수, 백분율로 나타내기',
+      '비율을 실생활 및 타 교과와 연결하여 문제해결하기',
+      '비례식을 풀고, 주어진 양을 비례배분하기',
+    ],
+    [
+      '규칙, 동치 관계 탐구에 대한 흥미',
+      '대응 관계, 비 표현의 편리함 인식',
+      '비와 비율의 유용성 인식',
+      '변화와 관계 관련 문제해결에서 비판적으로 사고하는 태도',
+    ]
+  ]; //2022 수학 변화와 관계 1~2년 내용체계
+  List<List<String>> mathTableRelationThreeFourValue = [
+    [
+      '규칙',
+      '동치 관계',
+    ],
+    [
+      '물체, 무늬, 수, 계산식의 배열에서 규칙을 탐구하기',
+      '규칙을 찾아 여러 가지 방법으로 표현하기',
+      '두 양의 관계를 탐구하고, 등호를 사용하여 나타내기',
+      '대응 관계를 탐구하고, □, △ 등을 사용하여 식으로 나타내고 설명하기',
+      '두 양의 관계를 비나 비율로 나타내기',
+      '비율을 분수, 소수, 백분율로 나타내기',
+      '비율을 실생활 및 타 교과와 연결하여 문제해결하기',
+      '비례식을 풀고, 주어진 양을 비례배분하기',
+    ],
+    [
+      '규칙, 동치 관계 탐구에 대한 흥미',
+      '대응 관계, 비 표현의 편리함 인식',
+      '비와 비율의 유용성 인식',
+      '변화와 관계 관련 문제해결에서 비판적으로 사고하는 태도',
+    ],
+  ]; //2022 수학 변화와 관계 3~4년 내용체계
+  List<List<String>> mathTableRelationFiveSixValue = [
+    [
+      '대응 관계',
+      '비와 비율',
+      '비례식과 비례배분',
+    ],
+    [
+      '물체, 무늬, 수, 계산식의 배열에서 규칙을 탐구하기',
+      '규칙을 찾아 여러 가지 방법으로 표현하기',
+      '두 양의 관계를 탐구하고, 등호를 사용하여 나타내기',
+      '대응 관계를 탐구하고, □, △ 등을 사용하여 식으로 나타내고 설명하기',
+      '두 양의 관계를 비나 비율로 나타내기',
+      '비율을 분수, 소수, 백분율로 나타내기',
+      '비율을 실생활 및 타 교과와 연결하여 문제해결하기',
+      '비례식을 풀고, 주어진 양을 비례배분하기',
+    ],
+    [
+      '규칙, 동치 관계 탐구에 대한 흥미',
+      '대응 관계, 비 표현의 편리함 인식',
+      '비와 비율의 유용성 인식',
+      '변화와 관계 관련 문제해결에서 비판적으로 사고하는 태도',
+    ],
+  ]; //2022 수학 변화와 관계 5~6년 내용체계
+//2022 수학 변화와 관계 내용체계표
+
+  late List<List<String>> mathTableFigureCategoryIndex = [
+    mathTableFigureKnowledgeLowerCategory,
+    mathTableFigureProcessLowerCategory,
+    mathTableFigureWorthLowerCategory
+  ];
+
+  late List<String> mathTableFigureLowerCategory =
+      mathTableFigureKnowledgeLowerCategory +
+          mathTableFigureProcessLowerCategory +
+          mathTableFigureWorthLowerCategory;
+
+  List<String> mathTableFigureKnowledgeLowerCategory = [''];
+  List<String> mathTableFigureProcessLowerCategory = [''];
+  List<String> mathTableFigureWorthLowerCategory = [''];
+  List<String> mathTableFigureCI = [
+    '평면도형과 입체도형은 여러 가지 모양을 범주화한 것이며, 각각의 평면도형과 입체도형은 고유한 성질을 갖는다.',
+    '도형의 성질과 관계를 탐구하고 정당화하는 것은 논리적이고 비판적으로 사고하는 데 기반이 된다.',
+    '측정은 여러 가지 속성의 양을 비교하고 속성에 따른 단위를 이용하여 양을 수치화함으로써 여러 가지 현상을 해석하거나 실생활 문제를 해결하는 데 활용된다.',
+  ];
+  List<List<String>> mathTableFigureOneTwoValue = [
+    [
+      '입체도형의 모양',
+      '평면도형과 그 구성 요소',
+      '양의 비교',
+      '시각과 시간(시, 분)',
+      '길이(cm, m)',
+    ],
+    [
+      '여러 가지 사물과 도형을 기준에 따라 분류하기',
+      '도형의 개념, 구성 요소, 성질 탐구하고 설명하기',
+      '평면도형이나 입체도형 그리기와 만들기',
+      '평면도형을 밀기, 뒤집기, 돌리기 한 모양을 추측하고 그리기',
+      '쌓은 모양 추측하고 쌓기나무의 개수 구하기',
+      '공간 감각 기르기',
+      '여러 가지 양을 비교, 측정, 어림하는 방법 탐구하기',
+      '측정 단위 사이의 관계 탐구하기',
+      '측정 단위를 사용하여 양을 표현하기',
+      '실생활 문제 상황에서 길이, 들이, 무게, 시간의 덧셈과 뺄셈하기',
+      '도형의 둘레, 넓이, 부피 구하는 방법 탐구하기',
+      '측정을 실생활 및 타 교과와 연결하여 문제해결하기',
+    ],
+    [
+      '평면도형, 입체도형에 대한 흥미와 관심',
+      '합동인 도형, 선대칭도형, 점대칭도형의 아름다움 인식',
+      '표준 단위의 필요성 인식',
+      '넓이와 부피를 구하는 방법의 편리함 인식',
+      '도형과 측정 관련 문제해결에서 비판적으로 사고하는 태도',
+    ]
+  ]; //2022 수학 도형과 측정 1~2년 내용체계
+  List<List<String>> mathTableFigureThreeFourValue = [
+    [
+      '도형의 기초',
+      '원의 구성 요소',
+      '여러 가지 삼각형',
+      '여러 가지 사각형',
+      '다각형',
+      '평면도형의 이동',
+      '시각과 시간(초)',
+      '길이(mm, km)',
+      '들이(L, mL)',
+      '무게(kg, g, t)',
+      '각도',
+    ],
+    [
+      '여러 가지 사물과 도형을 기준에 따라 분류하기',
+      '도형의 개념, 구성 요소, 성질 탐구하고 설명하기',
+      '평면도형이나 입체도형 그리기와 만들기',
+      '평면도형을 밀기, 뒤집기, 돌리기 한 모양을 추측하고 그리기',
+      '쌓은 모양 추측하고 쌓기나무의 개수 구하기',
+      '공간 감각 기르기',
+      '여러 가지 양을 비교, 측정, 어림하는 방법 탐구하기',
+      '측정 단위 사이의 관계 탐구하기',
+      '측정 단위를 사용하여 양을 표현하기',
+      '실생활 문제 상황에서 길이, 들이, 무게, 시간의 덧셈과 뺄셈하기',
+      '도형의 둘레, 넓이, 부피 구하는 방법 탐구하기',
+      '측정을 실생활 및 타 교과와 연결하여 문제해결하기',
+    ],
+    [
+      '평면도형, 입체도형에 대한 흥미와 관심',
+      '합동인 도형, 선대칭도형, 점대칭도형의 아름다움 인식',
+      '표준 단위의 필요성 인식',
+      '넓이와 부피를 구하는 방법의 편리함 인식',
+      '도형과 측정 관련 문제해결에서 비판적으로 사고하는 태도',
+    ]
+  ]; //2022 수학 도형과 측정 3~4년 내용체계
+  List<List<String>> mathTableFigureFiveSixValue = [
+    [
+      '합동과 대칭',
+      '직육면체와 정육면체',
+      '각기둥과 각뿔',
+      '원기둥, 원뿔, 구',
+      '다각형의 둘레와 넓이',
+      '원주율과 원의 넓이',
+      '직육면체와 정육면체의 겉넓이와 부피',
+    ],
+    [
+      '여러 가지 사물과 도형을 기준에 따라 분류하기',
+      '도형의 개념, 구성 요소, 성질 탐구하고 설명하기',
+      '평면도형이나 입체도형 그리기와 만들기',
+      '평면도형을 밀기, 뒤집기, 돌리기 한 모양을 추측하고 그리기',
+      '쌓은 모양 추측하고 쌓기나무의 개수 구하기',
+      '공간 감각 기르기',
+      '여러 가지 양을 비교, 측정, 어림하는 방법 탐구하기',
+      '측정 단위 사이의 관계 탐구하기',
+      '측정 단위를 사용하여 양을 표현하기',
+      '실생활 문제 상황에서 길이, 들이, 무게, 시간의 덧셈과 뺄셈하기',
+      '도형의 둘레, 넓이, 부피 구하는 방법 탐구하기',
+      '측정을 실생활 및 타 교과와 연결하여 문제해결하기',
+    ],
+    [
+      '평면도형, 입체도형에 대한 흥미와 관심',
+      '합동인 도형, 선대칭도형, 점대칭도형의 아름다움 인식',
+      '표준 단위의 필요성 인식',
+      '넓이와 부피를 구하는 방법의 편리함 인식',
+      '도형과 측정 관련 문제해결에서 비판적으로 사고하는 태도',
+    ],
+  ]; //2022 수학 도형과 측정 5~6년 내용체계
+//2022 수학 도형과 측정 내용체계표
+
+  late List<List<String>> mathTableDataCategoryIndex = [
+    mathTableDataKnowledgeLowerCategory,
+    mathTableDataProcessLowerCategory,
+    mathTableDataWorthLowerCategory
+  ];
+
+  late List<String> mathTableDataLowerCategory =
+      mathTableDataKnowledgeLowerCategory +
+          mathTableDataProcessLowerCategory +
+          mathTableDataWorthLowerCategory;
+
+  List<String> mathTableDataKnowledgeLowerCategory = [''];
+  List<String> mathTableDataProcessLowerCategory = [''];
+  List<String> mathTableDataWorthLowerCategory = [''];
+  List<String> mathTableDataCI = [
+    '자료를 수집, 정리, 해석하는 통계는 자료의 특징을 파악하고 두 집단을 비교하며 자료의 관계를 탐구하는 데 활용된다.',
+    '사건이 일어날 가능성을 여러 가지 방법으로 표현하는 것은 불확실성을 이해하는 데 도움이 되며, 가능성을 확률로 수치화하면 불확실성을 수학적으로 다룰 수 있게 된다.',
+    '자료를 이용하여 통계적 문제해결 과정을 실천하고 생활 속의 가능성을 탐구하는 것은 미래를 예측하고 합리적인 의사 결정을 하는 데 기반이 된다.',
+  ];
+  List<List<String>> mathTableDataOneTwoValue = [
+    [
+      '자료의 분류',
+      '표',
+      '○, ×, ／를 이용한 그래프',
+    ],
+    [
+      '자료를 기준에 따라 분류하고 설명하기',
+      '탐구 문제를 설정하고 그에 맞는 자료를 수집하기',
+      '자료를 표나 그래프로 나타내고 해석하기',
+      '자료의 평균을 구하고 해석하기',
+      '자료를 수집하고 정리하여 문제해결하기',
+      '사건이 일어날 가능성을 비교하고 표현하기',
+      '실생활과 연결하여 사건이 일어날 가능성을 예상하기',
+    ],
+    [
+      '표와 그래프의 편리함 인식',
+      '평균의 유용성 인식',
+      '자료를 이용한 통계적 문제해결 과정의 가치 인식',
+      '가능성에 근거하여 판단하는 태도',
+      '자료와 가능성 관련 문제해결에서 비판적으로 사고하는 태도',
+    ],
+  ]; //2022 수학 자료와 가능성 1~2년 내용체계
+  List<List<String>> mathTableDataThreeFourValue = [
+    [
+      '그림그래프',
+      '막대그래프',
+      '꺾은선그래프',
+    ],
+    [
+      '자료를 기준에 따라 분류하고 설명하기',
+      '탐구 문제를 설정하고 그에 맞는 자료를 수집하기',
+      '자료를 표나 그래프로 나타내고 해석하기',
+      '자료의 평균을 구하고 해석하기',
+      '자료를 수집하고 정리하여 문제해결하기',
+      '사건이 일어날 가능성을 비교하고 표현하기',
+      '실생활과 연결하여 사건이 일어날 가능성을 예상하기',
+    ],
+    [
+      '표와 그래프의 편리함 인식',
+      '평균의 유용성 인식',
+      '자료를 이용한 통계적 문제해결 과정의 가치 인식',
+      '가능성에 근거하여 판단하는 태도',
+      '자료와 가능성 관련 문제해결에서 비판적으로 사고하는 태도',
+    ],
+  ]; //2022 수학 자료와 가능성 3~4년 내용체계
+  List<List<String>> mathTableDataFiveSixValue = [
+    [
+      '평균',
+      '띠그래프, 원그래프',
+      '가능성',
+    ],
+    [
+      '자료를 기준에 따라 분류하고 설명하기',
+      '탐구 문제를 설정하고 그에 맞는 자료를 수집하기',
+      '자료를 표나 그래프로 나타내고 해석하기',
+      '자료의 평균을 구하고 해석하기',
+      '자료를 수집하고 정리하여 문제해결하기',
+      '사건이 일어날 가능성을 비교하고 표현하기',
+      '실생활과 연결하여 사건이 일어날 가능성을 예상하기',
+    ],
+    [
+      '표와 그래프의 편리함 인식',
+      '평균의 유용성 인식',
+      '자료를 이용한 통계적 문제해결 과정의 가치 인식',
+      '가능성에 근거하여 판단하는 태도',
+      '자료와 가능성 관련 문제해결에서 비판적으로 사고하는 태도',
+    ],
+  ]; //2022 수학 자료와 가능성 5~6년 내용체계
+//2022 수학 자료와 가능성 내용체계표
 }
