@@ -158,13 +158,12 @@ class Category extends StatelessWidget {
                           children: [
                             Expanded(
                                 flex: 1,
-                                child: ContainerWithBorder(
-                                  child: Text('1~2학년군'),
-                                )),
+                                child:
+                                    ContainerWithBorder(child: Text('1~2학년군'))),
                             Expanded(
-                              flex: 1,
-                              child: ContainerWithBorder(child: Text('3~4학년군')),
-                            ),
+                                flex: 1,
+                                child:
+                                    ContainerWithBorder(child: Text('3~4학년군'))),
                             Expanded(
                                 flex: 1,
                                 child:
@@ -224,13 +223,61 @@ class LowerCategory extends StatelessWidget {
     int subjectNum = routeContents.subjectNum;
     var Table22AreaIndex = Table22().contentsTable22AreaIndex;
 
+    bool isValueOneToFourSame = false;
+    bool isValueThreeToSixSame = false;
     Function eq = const ListEquality().equals;
-    bool valueOneToFour = eq(
-        table22ValueIndex[subjectNum - 1][0][areaNum],
-        table22ValueIndex[subjectNum - 1][1][areaNum]);
-    bool valueThreeToSix = eq(
-        table22ValueIndex[subjectNum - 1][1][areaNum],
-        table22ValueIndex[subjectNum - 1][2][areaNum]);
+    List<String> standardLowerCategory =
+        Table22AreaIndex[subjectNum - 1][areaNum][categoryNum];
+    List<String> standardLowerKnowledgeCategory =
+        Table22AreaIndex[subjectNum - 1][areaNum][0];
+    List<String> standardLowerProcessCategory =
+        Table22AreaIndex[subjectNum - 1][areaNum][1];
+    List<String> standardLowerWorthCategory =
+        Table22AreaIndex[subjectNum - 1][areaNum][2];
+
+    List<List<String>> gradeOneTwoValue =
+        table22ValueIndex[subjectNum - 1][0][areaNum];
+    List<List<String>> gradeThreeFourValue =
+        table22ValueIndex[subjectNum - 1][1][areaNum];
+    List<List<String>> gradeFiveSixValue =
+        table22ValueIndex[subjectNum - 1][2][areaNum];
+
+    if (standardLowerCategory.length <= 1 && standardLowerCategory[0] == '') {
+      switch (categoryNum) {
+        case (0):
+          {
+            isValueOneToFourSame =
+                eq(gradeOneTwoValue[0], gradeThreeFourValue[0]);
+            isValueThreeToSixSame =
+                eq(gradeThreeFourValue[0], gradeFiveSixValue[0]);
+          }
+          break;
+        case (1):
+          {
+            isValueOneToFourSame = eq(
+                gradeOneTwoValue[standardLowerKnowledgeCategory.length],
+                gradeThreeFourValue[standardLowerKnowledgeCategory.length]);
+            isValueThreeToSixSame = eq(
+                gradeThreeFourValue[standardLowerKnowledgeCategory.length],
+                gradeFiveSixValue[standardLowerKnowledgeCategory.length]);
+          }
+          break;
+        case (2):
+          {
+            isValueOneToFourSame = eq(
+                gradeOneTwoValue[standardLowerKnowledgeCategory.length +
+                    standardLowerProcessCategory.length],
+                gradeThreeFourValue[standardLowerKnowledgeCategory.length +
+                    standardLowerProcessCategory.length]);
+            isValueThreeToSixSame = eq(
+                gradeThreeFourValue[standardLowerKnowledgeCategory.length +
+                    standardLowerProcessCategory.length],
+                gradeFiveSixValue[standardLowerKnowledgeCategory.length +
+                    standardLowerProcessCategory.length]);
+          }
+          break;
+      }
+    }
 
 //TODO isTEST 변수 활용하기
     return ContainerWithBorder(
@@ -245,9 +292,8 @@ class LowerCategory extends StatelessWidget {
                       child: Center(
                         child: Text(title),
                       )),
-                  if (Table22AreaIndex[subjectNum - 1][areaNum][categoryNum]
-                          .length >
-                      1 || Table22AreaIndex[subjectNum - 1][areaNum][categoryNum][0] != '')
+                  if (standardLowerCategory.length > 1 ||
+                      standardLowerCategory[0] != '')
                     Expanded(
                         flex: 3,
                         child:
@@ -257,12 +303,9 @@ class LowerCategory extends StatelessWidget {
           Expanded(
               flex: 3,
               child: Row(
-                //TODO 경우의 수 나누어서 칸 분배하기
                 children: [
-                  if (Table22AreaIndex[subjectNum - 1][areaNum][categoryNum]
-                      .length <=
-                      1) ...[
-                    if (!valueOneToFour && !valueThreeToSix) ...[
+                  if (standardLowerCategory.length <= 1) ...[
+                    if (!isValueOneToFourSame && !isValueThreeToSixSame) ...[
                       Expanded(
                         flex: 1,
                         child: Column(
@@ -290,7 +333,7 @@ class LowerCategory extends StatelessWidget {
                             ],
                           )),
                     ],
-                    if (valueOneToFour && !valueThreeToSix) ...[
+                    if (isValueOneToFourSame && !isValueThreeToSixSame) ...[
                       Expanded(
                           flex: 2,
                           child: Column(
@@ -308,7 +351,7 @@ class LowerCategory extends StatelessWidget {
                             ],
                           )),
                     ],
-                    if (!valueOneToFour && valueThreeToSix) ...[
+                    if (!isValueOneToFourSame && isValueThreeToSixSame) ...[
                       Expanded(
                           flex: 1,
                           child: Column(
@@ -326,7 +369,7 @@ class LowerCategory extends StatelessWidget {
                             ],
                           )),
                     ],
-                    if (valueOneToFour && valueThreeToSix) ...[
+                    if (isValueOneToFourSame && isValueThreeToSixSame) ...[
                       Expanded(
                           flex: 1,
                           child: Column(
@@ -339,9 +382,7 @@ class LowerCategory extends StatelessWidget {
                           )),
                     ],
                   ],
-                  if (Table22AreaIndex[subjectNum - 1][areaNum][categoryNum]
-                      .length >
-                      1) ...[
+                  if (standardLowerCategory.length > 1) ...[
                     Expanded(
                       flex: 1,
                       child: Column(
@@ -410,56 +451,54 @@ class TableLowerCategoryTextBuilder extends StatelessWidget {
 
     return Column(
       children: [
-          Container(
-              child: Center(
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: inputList.length,
-                      itemBuilder: (context, index) {
-                        for (int i = 0;
-                            i < inputListLowerCategory.length;
-                            i++) {
-                          if (inputList[index] == inputListLowerCategory[i]) {
-                            categoryIndexNum = i;
-                          }
+        Container(
+            child: Center(
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: inputList.length,
+                    itemBuilder: (context, index) {
+                      for (int i = 0; i < inputListLowerCategory.length; i++) {
+                        if (inputList[index] == inputListLowerCategory[i]) {
+                          categoryIndexNum = i;
                         }
+                      }
 
-                        int maxLength = 0;
-                        if (maxLength <
-                            inputListOneTwoValue[categoryIndexNum].length) {
-                          maxLength =
-                              inputListOneTwoValue[categoryIndexNum].length;
-                        }
-                        if (maxLength <
-                            inputListThreeFourValue[categoryIndexNum].length) {
-                          maxLength =
-                              inputListThreeFourValue[categoryIndexNum].length;
-                        }
-                        if (maxLength <
-                            inputListFiveSixValue[categoryIndexNum].length) {
-                          maxLength =
-                              inputListFiveSixValue[categoryIndexNum].length;
-                        }
+                      int maxLength = 0;
+                      if (maxLength <
+                          inputListOneTwoValue[categoryIndexNum].length) {
+                        maxLength =
+                            inputListOneTwoValue[categoryIndexNum].length;
+                      }
+                      if (maxLength <
+                          inputListThreeFourValue[categoryIndexNum].length) {
+                        maxLength =
+                            inputListThreeFourValue[categoryIndexNum].length;
+                      }
+                      if (maxLength <
+                          inputListFiveSixValue[categoryIndexNum].length) {
+                        maxLength =
+                            inputListFiveSixValue[categoryIndexNum].length;
+                      }
 
-                        return Container(
-                            decoration: BoxDecoration(border: Border.all()),
-                            child: ListView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: maxLength,
-                                itemBuilder: (context, i) {
-                                  return Container(
-                                    child: Column(
-                                      children: [
-                                        if (i < 1)
-                                          SelectableText(inputList[index]),
-                                        if (i >= 1) Text(''),
-                                      ],
-                                    ),
-                                  );
-                                }));
-                      })))
+                      return Container(
+                          decoration: BoxDecoration(border: Border.all()),
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: maxLength,
+                              itemBuilder: (context, i) {
+                                return Container(
+                                  child: Column(
+                                    children: [
+                                      if (i < 1)
+                                        SelectableText(inputList[index]),
+                                      if (i >= 1) Text(''),
+                                    ],
+                                  ),
+                                );
+                              }));
+                    })))
       ],
     );
   }
