@@ -62,8 +62,8 @@ class Table22 {
   var englishTable22 = EnglishTable22();
   var peTable22 = PETable22();
   var artTable22 = ArtTable22();
-  // var musicTable22 = MusicTable22();
-  // var ethicsTable22 = EthicsTable22();
+  var musicTable22 = MusicTable22();
+  var ethicsTable22 = EthicsTable22();
   // var practicalTable22 = PracticalTable22();
   // var combinedSubjectTable22 = CombinedSubjectTable22();
 
@@ -75,8 +75,8 @@ class Table22 {
     englishTable22.englishTableArea,
     peTable22.peTableArea,
     artTable22.artTableArea,
-    // musicTable22.musicTableArea,
-    // ethicsTable22.ethicsTableArea,
+    musicTable22.musicTableArea,
+    ethicsTable22.ethicsTableArea,
     // practicalTable22.practicalTableArea,
     // combinedSubjectTable22.combinedSubjectTableArea,
   ];
@@ -89,8 +89,8 @@ class Table22 {
     englishTable22.englishTableAreaIndex,
     peTable22.peTableAreaIndex,
     artTable22.artTableAreaIndex,
-    // musicTable22.musicTableAreaIndex,
-    // ethicsTable22.ethicsTableAreaIndex,
+    musicTable22.musicTableAreaIndex,
+    ethicsTable22.ethicsTableAreaIndex,
     // practicalTable22.practicalTableAreaIndex,
     // combinedSubjectTable22.combinedSubjectTableAreaIndex,
   ];
@@ -103,8 +103,8 @@ class Table22 {
     englishTable22.englishTableCIIndex,
     peTable22.peTableCIIndex,
     artTable22.artTableCIIndex,
-    // musicTable22.musicTableCIIndex,
-    // ethicsTable22.ethicsTableCIIndex,
+    musicTable22.musicTableCIIndex,
+    ethicsTable22.ethicsTableCIIndex,
     // practicalTable22.practicalTableCIIndex,
     // combinedSubjectTable22.combinedSubjectTableCIIndex,
   ];
@@ -117,8 +117,8 @@ class Table22 {
     englishTable22.englishTableLowerCategoryIndex,
     peTable22.peTableLowerCategoryIndex,
     artTable22.artTableLowerCategoryIndex,
-    // musicTable22.musicTableLowerCategoryIndex,
-    // ethicsTable22.ethicsTableLowerCategoryIndex,
+    musicTable22.musicTableLowerCategoryIndex,
+    ethicsTable22.ethicsTableLowerCategoryIndex,
     // practicalTable22.practicalTableLowerCategoryIndex,
     // combinedSubjectTable22.combinedSubjectTableLowerCategoryIndex,
   ];
@@ -131,8 +131,8 @@ class Table22 {
     englishTable22.englishTableGradeValueIndex,
     peTable22.peTableGradeValueIndex,
     artTable22.artTableGradeValueIndex,
-    // musicTable22.musicTableGradeValueIndex,
-    // ethicsTable22.ethicsTableGradeValueIndex,
+    musicTable22.musicTableGradeValueIndex,
+    ethicsTable22.ethicsTableGradeValueIndex,
     // practicalTable22.practicalTableGradeValueIndex,
     // combinedSubjectTable22.combinedSubjectTableGradeValueIndex,
   ];
