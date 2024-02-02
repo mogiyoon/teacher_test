@@ -136,6 +136,8 @@ class ArtTable22 {
     '이미지에 대한 비판적 이해는 시각적 소통과 문화적 참여의 토대가 된다.',
   ];
   List<List<String>> artTableExperOneTwoValue = [
+    [''],
+    [''],
     ['']
   ]; //2022 미술 미적 체험 1~2년 내용체계
   List<List<String>> artTableExperThreeFourValue = [
@@ -193,6 +195,8 @@ class ArtTable22 {
   ];
   List<List<String>> artTableExpreOneTwoValue = [
     [''],
+    [''],
+    ['']
   ]; //2022 미술 표현 1~2년 내용체계
   List<List<String>> artTableExpreThreeFourValue = [
     [
@@ -248,6 +252,8 @@ class ArtTable22 {
   ];
   List<List<String>> artTableAppreOneTwoValue = [
     [''],
+    [''],
+    ['']
   ]; //2022 미술 감상 1~2년 내용체계
   List<List<String>> artTableAppreThreeFourValue = [
     [

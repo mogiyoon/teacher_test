@@ -1,3 +1,5 @@
+import 'package:teacher_test/contents/contents.dart';
+
 class ScienceAchieve22 {
   late List<List<String>> scienceAchieveIndex = [
     scienceAchieve12,
@@ -234,4 +236,601 @@ class ScienceAchieve22 {
   ];
 
 //2022 과학 5~6년 성취기준
+}
+
+class ScienceTable22 {
+  List<String> tableGrade = TableCategory22().tableGrade;
+  List<String> tableCategory = TableCategory22().tableCategory;
+
+  List<String> scienceTableArea = [
+    '운동과 에너지',
+    '물질',
+    '생명',
+    '지구와 우주',
+    '과학과 과학',
+  ];
+
+  late List<List<List<String>>> scienceTableAreaIndex = [
+    scienceTableMotionCategoryIndex,
+    scienceTableMaterialCategoryIndex,
+    scienceTableLifeCategoryIndex,
+    scienceTableEarthCategoryIndex,
+    scienceTableSciSoCategoryIndex,
+  ];
+
+  late List<List<String>> scienceTableCIIndex = [
+    scienceTableMotionCI,
+    scienceTableMaterialCI,
+    scienceTableLifeCI,
+    scienceTableEarthCI,
+    scienceTableSciSoCI,
+  ];
+
+  late List<List<String>> scienceTableLowerCategoryIndex = [
+    scienceTableMotionLowerCategory,
+    scienceTableMaterialLowerCategory,
+    scienceTableLifeLowerCategory,
+    scienceTableEarthLowerCategory,
+    scienceTableSciSoLowerCategory,
+  ];
+
+  late List<List<List<List<String>>>> scienceTableGradeValueIndex = [
+    scienceTableOneTwoValueIndex,
+    scienceTableThreeFourValueIndex,
+    scienceTableFiveSixValueIndex,
+  ];
+
+  late List<List<List<String>>> scienceTableOneTwoValueIndex = [
+    scienceTableMotionOneTwoValue,
+    scienceTableMaterialOneTwoValue,
+    scienceTableLifeOneTwoValue,
+    scienceTableEarthOneTwoValue,
+    scienceTableSciSoOneTwoValue,
+  ];
+
+  late List<List<List<String>>> scienceTableThreeFourValueIndex = [
+    scienceTableMotionThreeFourValue,
+    scienceTableMaterialThreeFourValue,
+    scienceTableLifeThreeFourValue,
+    scienceTableEarthThreeFourValue,
+    scienceTableSciSoThreeFourValue,
+  ];
+
+  late List<List<List<String>>> scienceTableFiveSixValueIndex = [
+    scienceTableMotionFiveSixValue,
+    scienceTableMaterialFiveSixValue,
+    scienceTableLifeFiveSixValue,
+    scienceTableEarthFiveSixValue,
+    scienceTableSciSoFiveSixValue,
+  ];
+
+  late List<List<String>> scienceTableMotionCategoryIndex = [
+    scienceTableMotionKnowledgeLowerCategory,
+    scienceTableMotionProcessLowerCategory,
+    scienceTableMotionWorthLowerCategory
+  ];
+
+  late List<String> scienceTableMotionLowerCategory =
+      scienceTableMotionKnowledgeLowerCategory +
+          scienceTableMotionProcessLowerCategory +
+          scienceTableMotionWorthLowerCategory;
+
+  List<String> scienceTableMotionKnowledgeLowerCategory = [
+    '힘과 에너지',
+    '전기와 자기',
+    '열',
+    '빛과 파동'
+  ];
+  List<String> scienceTableMotionProcessLowerCategory = [''];
+  List<String> scienceTableMotionWorthLowerCategory = [''];
+  List<String> scienceTableMotionCI = [
+    '자연과 일상생활 속의 여러 가지 힘은 물체의 속력과 운동 방향을 변화시키고, 물체의 운동은 힘과 에너지를 통해 예측할 수 있으며, 이는 안전한 일상생활의 토대가 된다.',
+    '전하와 전류는 다양한 전기와 자기 현상을 일으키고, 전기와 자기에 대한 성질은 전구, 전동기 등 여러 가지 전기 기구의 작동 원리로 유용하게 활용된다.',
+    '열은 온도가 높은 곳에서 낮은 곳으로 이동하며, 일상생활에서는 단열 등 다양한 분야에 물질의 열적 성질이나 열의 이동 방식이 이용된다.',
+    '빛과 소리는 반사, 굴절, 진동 등 파동의 특성을 가지며, 그 특성은 거울, 렌즈, 악기, 색의 구현 등 편리하고 심미적인 삶에 도움이 된다.',
+  ];
+  List<List<String>> scienceTableMotionOneTwoValue = [
+    [''],
+    [''],
+    [''],
+    [''],
+    [''],
+    [''],
+  ]; //2022 과학 운동과 에너지 1~2년 내용체계
+  List<List<String>> scienceTableMotionThreeFourValue = [
+    [
+      '밀기와 당기기',
+      '무게',
+      '수평잡기',
+      '도구의 이용',
+    ],
+    [
+      '자석과 물체 사이의 힘',
+      '자석과 자석 사이의 힘',
+      '자석의 극',
+      '자석의 이용',
+    ],
+    [''],
+    [
+      '소리의 발생',
+      '소리의 세기',
+      '소리의 높낮이',
+      '소리의 전달',
+    ],
+    [
+      '자연과 일상생활에서 운동과 에너지 관련 문제 인식하기',
+      '문제를 해결하기 위한 탐구 설계하기',
+      '관찰, 측정, 분류, 예상, 추리 등을 통해 자료를 수집하고 비교⋅분석하기',
+      '수학적 사고와 컴퓨터 및 모형 활용하기',
+      '결론을 도출하고, 자연과 일상생활에서 운동과 에너지 관련 상황에 적용⋅설명하기',
+      '자신의 생각과 주장을 과학적 언어를 사용하여 다양한 방식으로 표현하고 공유하기',
+    ],
+    [
+      '과학의 심미적 가치',
+      '과학 유용성',
+      '자연과 과학에 대한 감수성',
+      '과학 창의성',
+      '과학 활동의 윤리성',
+      '과학 문제 해결에 대한 개방성',
+      '안전⋅지속가능 사회에 기여',
+      '과학 문화 향유',
+    ]
+  ]; //2022 과학 운동과 에너지 3~4년 내용체계
+  List<List<String>> scienceTableMotionFiveSixValue = [
+    [
+      '위치의 변화',
+      '속력',
+      '속력과 안전',
+    ],
+    [
+      '전기 회로',
+      '전지의 직렬연결',
+      '전자석',
+      '전기 안전',
+    ],
+    [
+      '온도',
+      '열의 이동',
+      '단열',
+    ],
+    [
+      '빛의 직진',
+      '평면거울에서 빛의 반사',
+      '빛의 굴절',
+      '렌즈의 이용',
+    ],
+    [
+      '자연과 일상생활에서 운동과 에너지 관련 문제 인식하기',
+      '문제를 해결하기 위한 탐구 설계하기',
+      '관찰, 측정, 분류, 예상, 추리 등을 통해 자료를 수집하고 비교⋅분석하기',
+      '수학적 사고와 컴퓨터 및 모형 활용하기',
+      '결론을 도출하고, 자연과 일상생활에서 운동과 에너지 관련 상황에 적용⋅설명하기',
+      '자신의 생각과 주장을 과학적 언어를 사용하여 다양한 방식으로 표현하고 공유하기',
+    ],
+    [
+      '과학의 심미적 가치',
+      '과학 유용성',
+      '자연과 과학에 대한 감수성',
+      '과학 창의성',
+      '과학 활동의 윤리성',
+      '과학 문제 해결에 대한 개방성',
+      '안전⋅지속가능 사회에 기여',
+      '과학 문화 향유',
+    ]
+  ]; //2022 과학 운동과 에너지 5~6년 내용체계
+//2022 과학 운동과 에너지 내용체계표
+
+  late List<List<String>> scienceTableMaterialCategoryIndex = [
+    scienceTableMaterialKnowledgeLowerCategory,
+    scienceTableMaterialProcessLowerCategory,
+    scienceTableMaterialWorthLowerCategory
+  ];
+
+  late List<String> scienceTableMaterialLowerCategory =
+      scienceTableMaterialKnowledgeLowerCategory +
+          scienceTableMaterialProcessLowerCategory +
+          scienceTableMaterialWorthLowerCategory;
+
+  List<String> scienceTableMaterialKnowledgeLowerCategory = [
+    '물질의 성질',
+    '물질의 변화',
+  ];
+  List<String> scienceTableMaterialProcessLowerCategory = [''];
+  List<String> scienceTableMaterialWorthLowerCategory = [''];
+  List<String> scienceTableMaterialCI = [
+    '물질은 여러 가지 상태로 존재하며, 구성 입자의 운동에 따라 물질의 상태와 물리적 성질이 변한다.',
+    '물질의 상태 변화 및 화학 반응에는 에너지 출입이 수반되며, 이는 일상생활에 유용하게 활용된다.',
+    '물질은 서로 구분할 수 있는 고유한 특성을 가지며, 물질의 특성은 일상생활의 다양한 혼합물 분리에 이용된다.',
+    '화학 반응을 통해 물질은 다른 물질로 변하며, 화학 반응의 규칙성은 새로운 물질의 생성 원리가 된다.',
+  ];
+  List<List<String>> scienceTableMaterialOneTwoValue = [
+    [''],
+    [''],
+    [''],
+    [''],
+  ]; //2022 과학 물질 1~2년 내용체계
+  List<List<String>> scienceTableMaterialThreeFourValue = [
+    [
+      '물체와 물질',
+      '물질의 세 가지 상태',
+      '기체의 무게',
+      '온도와 압력에 따른 기체의 부피 변화',
+      '물의 상태 변화',
+    ],
+    [''],
+    [
+      '자연과 일상생활에서 물질과 관련된 문제 인식하기',
+      '관찰, 측정, 분류, 예상, 추리 등을 통해 자료를 수집하고 비교⋅분석하기',
+      '탐구 결과를 해석하여 결론을 도출하기',
+      '물질과 관련된 일상생활의 문제를 해결하기 위한 탐구 설계하기',
+      '결론을 도출하고, 자연과 일상생활에서 물질 관련 상황에 적용？설명하기',
+      '자신의 생각과 주장을 과학적 언어를 사용하여 다양한 방식으로 표현하고 공유하기',
+    ],
+    [
+      '과학의 심미적 가치',
+      '과학 유용성',
+      '자연과 과학에 대한 감수성',
+      '과학 창의성',
+      '과학 활동의 윤리성',
+      '과학 문제 해결에 대한 개방성',
+      '안전⋅지속가능 사회에 기여',
+      '과학 문화 향유',
+    ]
+  ]; //2022 과학 물질 3~4년 내용체계
+  List<List<String>> scienceTableMaterialFiveSixValue = [
+    [
+      '용액, 용매, 용질',
+      '용해',
+      '용액의 진하기',
+      '혼합물의 분리',
+    ],
+    [
+      '지시약',
+      '산성 용액',
+      '염기성 용액',
+      '연소 조건',
+      '연소 생성물',
+    ],
+    [
+      '자연과 일상생활에서 물질과 관련된 문제 인식하기',
+      '관찰, 측정, 분류, 예상, 추리 등을 통해 자료를 수집하고 비교⋅분석하기',
+      '탐구 결과를 해석하여 결론을 도출하기',
+      '물질과 관련된 일상생활의 문제를 해결하기 위한 탐구 설계하기',
+      '결론을 도출하고, 자연과 일상생활에서 물질 관련 상황에 적용？설명하기',
+      '자신의 생각과 주장을 과학적 언어를 사용하여 다양한 방식으로 표현하고 공유하기',
+    ],
+    [
+      '과학의 심미적 가치',
+      '과학 유용성',
+      '자연과 과학에 대한 감수성',
+      '과학 창의성',
+      '과학 활동의 윤리성',
+      '과학 문제 해결에 대한 개방성',
+      '안전⋅지속가능 사회에 기여',
+      '과학 문화 향유',
+    ]
+  ]; //2022 과학 물질 5~6년 내용체계
+//2022 과학 물질 내용체계표
+
+  late List<List<String>> scienceTableLifeCategoryIndex = [
+    scienceTableLifeKnowledgeLowerCategory,
+    scienceTableLifeProcessLowerCategory,
+    scienceTableLifeWorthLowerCategory
+  ];
+
+  late List<String> scienceTableLifeLowerCategory =
+      scienceTableLifeKnowledgeLowerCategory +
+          scienceTableLifeProcessLowerCategory +
+          scienceTableLifeWorthLowerCategory;
+
+  List<String> scienceTableLifeKnowledgeLowerCategory = [
+    '생물의 구조와 에너지',
+    '항상성과 몸의 조절',
+    '생명의 연속성',
+    '환경과 생태계',
+    '생명과학과 인간의 생활'
+  ];
+  List<String> scienceTableLifeProcessLowerCategory = [''];
+  List<String> scienceTableLifeWorthLowerCategory = [''];
+  List<String> scienceTableLifeCI = [
+    '생물은 세포로 이루어져 있고, 여러 구성 단계가 유기적으로 연관되어 있으며, 조화로운 작용을 통해 건강한 몸을 유지한다.',
+    '식물은 광합성으로 양분을 만들며, 생물은 호흡을 통해 생명 활동에 필요한 에너지를 얻는다.',
+    '동물은 다양한 감각 기관을 통해 자극을 받아들이고, 신경계와 호르몬의 작용을 통해 반응한다.',
+    '생물은 생식을 통해 자손을 생산하고, 생물의 형질은 유전자에 의해 자손에게 전달되며, 생물의 유전 현상은 사람의 가계에서도 관찰된다.',
+    '우리 주변의 다양한 생물은 환경과 영향을 주고받으며 밀접한 관계를 맺고 있으며, 생물다양성은 생태계와 인간의 삶과도 밀접하게 관련되어 있다.',
+  ];
+  List<List<String>> scienceTableLifeOneTwoValue = [
+    [''],
+    [''],
+    [''],
+    [''],
+    [''],
+    [''],
+    [''],
+  ]; //2022 과학 생명 1~2년 내용체계
+  List<List<String>> scienceTableLifeThreeFourValue = [
+    [
+      '동물의 생김새',
+      '식물의 생김새',
+      '균류, 원생생물, 세균의 특징',
+    ],
+    [''],
+    [
+      '동물의 한살이',
+      '식물의 한살이',
+      '식물이 자라는 조건',
+      '다양한 환경에 사는 동물과 식물',
+      '특징에 따른 동물 분류',
+      '특징에 따른 식물 분류',
+    ],
+    [
+      '생물 요소와 비생물 요소',
+      '환경오염이 생물에 미치는 영향',
+      '먹이사슬과 먹이그물',
+    ],
+    [
+      '생활 속에서 동물과 식물의 이용',
+      '균류, 원생생물, 세균의 이용',
+      '생명과학과 우리 생활',
+    ],
+    [
+      '자연과 일상생활에서 생명 현상 관련 문제 인식하기',
+      '문제를 해결하기 위한 탐구 설계하기',
+      '생물 관찰 및 분류하기',
+      '자료 조사 및 해석하기',
+      '모형으로 설명하기',
+      '자신의 생각과 주장을 과학적 언어를 사용하여 협력적 소통하기',
+    ],
+    [
+      '과학의 심미적 가치',
+      '과학 유용성',
+      '자연과 과학에 대한 감수성',
+      '과학 창의성',
+      '과학 활동의 윤리성',
+      '과학 문제 해결에 대한 개방성',
+      '안전⋅지속가능 사회에 기여',
+      '과학 문화 향유',
+    ],
+  ]; //2022 과학 생명 3~4년 내용체계
+  List<List<String>> scienceTableLifeFiveSixValue = [
+    [
+      '세포의 구조',
+      '뼈와 근육의 구조와 기능',
+      '소화⋅순환⋅호흡⋅배설 기관의 구조와 기능',
+      '뿌리, 줄기, 잎, 꽃의 구조와 기능',
+      '증산 작용',
+      '광합성 산물',
+    ],
+    [''],
+    [''],
+    [''],
+    [''],
+    [
+      '자연과 일상생활에서 생명 현상 관련 문제 인식하기',
+      '문제를 해결하기 위한 탐구 설계하기',
+      '생물 관찰 및 분류하기',
+      '자료 조사 및 해석하기',
+      '모형으로 설명하기',
+      '자신의 생각과 주장을 과학적 언어를 사용하여 협력적 소통하기',
+    ],
+    [
+      '과학의 심미적 가치',
+      '과학 유용성',
+      '자연과 과학에 대한 감수성',
+      '과학 창의성',
+      '과학 활동의 윤리성',
+      '과학 문제 해결에 대한 개방성',
+      '안전⋅지속가능 사회에 기여',
+      '과학 문화 향유',
+    ]
+  ]; //2022 과학 생명 5~6년 내용체계
+//2022 과학 생명 내용체계표
+
+  late List<List<String>> scienceTableEarthCategoryIndex = [
+    scienceTableEarthKnowledgeLowerCategory,
+    scienceTableEarthProcessLowerCategory,
+    scienceTableEarthWorthLowerCategory
+  ];
+
+  late List<String> scienceTableEarthLowerCategory =
+      scienceTableEarthKnowledgeLowerCategory +
+          scienceTableEarthProcessLowerCategory +
+          scienceTableEarthWorthLowerCategory;
+
+  List<String> scienceTableEarthKnowledgeLowerCategory = [
+    '고체 지구',
+    '유체 지구',
+    '천체'
+  ];
+  List<String> scienceTableEarthProcessLowerCategory = [''];
+  List<String> scienceTableEarthWorthLowerCategory = [''];
+  List<String> scienceTableEarthCI = [
+    '지구계는 지권, 수권, 기권, 생물권 등으로 구성되며, 이러한 지구계 구성 요소들이 상호작용을 통해 에너지와 물질을 교환하는 과정에서 다양한 자연 현상들이 발생한다.',
+    '암석과 화석, 지구 내부를 탐구함으로써 지질시대 동안 지구 환경과 생물의 변천 과정을 밝혀낼 수 있다.',
+    '물은 땅과 바다, 대기 등으로 끊임없이 순환하면서 지표의 특징을 변화시키고 지하구조를 만든다.',
+    '지구의 기후시스템은 태양 복사와 지구 복사, 인간 활동 등의 영향을 받으며, 이러한 요인들이 복합적으로 상호작용하여 나타난 기상 현상과 기후변화는 우리 생활과 지속가능성에 영향을 미친다.',
+    '태양계는 행성 및 소천체 등으로 구성되며, 생성 과정에 따라 태양계 천체의 표면은 다양하게 나타난다.',
+    '별의 표면 온도, 크기, 질량, 거리 등을 결정하는 데 관측 자료와 증거 기반 해석 등이 활용된다.',
+  ];
+  List<List<String>> scienceTableEarthOneTwoValue = [
+    [''],
+    [''],
+    [''],
+    [''],
+    [''],
+  ]; //2022 과학 지구와 우주 1~2년 내용체계
+  List<List<String>> scienceTableEarthThreeFourValue = [
+    [
+      '강 주변 지형',
+      '화산 활동',
+      '화성암',
+      '지진 대처 방법',
+    ],
+    [
+      '바다의 특징',
+      '밀물과 썰물',
+      '파도',
+      '바닷가 주변 지형',
+      '갯벌 보전',
+      '지구의 대기',
+    ],
+    [
+      '달의 모양과 표면',
+      '달의 위상변화',
+      '태양계 행성',
+      '별과 별자리',
+    ],
+    [
+      '자연과 일상생활에서 지구와 우주 관련 문제 인식하기',
+      '문제를 해결하기 위한 탐구 설계하기',
+      '관찰, 측정, 분류, 예상, 추리 등을 통해 자료를 수집하고 비교⋅분석하기',
+      '수학적 사고, 컴퓨터 및 모형 활용하기',
+      '결론을 도출하고, 지구와 우주 관련 상황에 적용⋅설명하기',
+      '자신의 생각과 주장을 과학적 언어를 사용하여 다양한 방식으로 표현하고 공유하기',
+    ],
+    [
+      '과학의 심미적 가치',
+      '과학 유용성',
+      '자연과 과학에 대한 감수성',
+      '과학 창의성',
+      '과학 활동의 윤리성',
+      '과학 문제 해결에 대한 개방성',
+      '안전⋅지속가능 사회에 기여',
+      '과학 문화 향유',
+    ],
+  ]; //2022 과학 지구와 우주 3~4년 내용체계
+  List<List<String>> scienceTableEarthFiveSixValue = [
+    [
+      '지층',
+      '퇴적암',
+      '화석의 생성',
+      '과거 생물과 환경',
+    ],
+    [
+      '날씨와 기상 요소',
+      '이슬, 안개, 구름',
+      '고기압과 저기압',
+    ],
+    [
+      '태양과 별의 위치 변화',
+      '지구의 자전과 공전',
+      '계절별 별자리 변화',
+      '태양 고도의 일변화',
+      '계절별 낮의 길이',
+    ],
+    [
+      '자연과 일상생활에서 지구와 우주 관련 문제 인식하기',
+      '문제를 해결하기 위한 탐구 설계하기',
+      '관찰, 측정, 분류, 예상, 추리 등을 통해 자료를 수집하고 비교⋅분석하기',
+      '수학적 사고, 컴퓨터 및 모형 활용하기',
+      '결론을 도출하고, 지구와 우주 관련 상황에 적용⋅설명하기',
+      '자신의 생각과 주장을 과학적 언어를 사용하여 다양한 방식으로 표현하고 공유하기',
+    ],
+    [
+      '과학의 심미적 가치',
+      '과학 유용성',
+      '자연과 과학에 대한 감수성',
+      '과학 창의성',
+      '과학 활동의 윤리성',
+      '과학 문제 해결에 대한 개방성',
+      '안전⋅지속가능 사회에 기여',
+      '과학 문화 향유',
+    ],
+  ]; //2022 과학 지구와 우주 5~6년 내용체계
+//2022 과학 지구와 우주 내용체계표
+
+  late List<List<String>> scienceTableSciSoCategoryIndex = [
+    scienceTableSciSoKnowledgeLowerCategory,
+    scienceTableSciSoProcessLowerCategory,
+    scienceTableSciSoWorthLowerCategory
+  ];
+
+  late List<String> scienceTableSciSoLowerCategory =
+      scienceTableSciSoKnowledgeLowerCategory +
+          scienceTableSciSoProcessLowerCategory +
+          scienceTableSciSoWorthLowerCategory;
+
+  List<String> scienceTableSciSoKnowledgeLowerCategory = [
+    '과학과 안전',
+    '과학과 지속가능한 사회',
+    '과학과 진로',
+  ];
+  List<String> scienceTableSciSoProcessLowerCategory = [''];
+  List<String> scienceTableSciSoWorthLowerCategory = [''];
+  List<String> scienceTableSciSoCI = [
+    '과학 탐구를 통해 얻은 과학기술은 질병의 발생 원인 규명과 예방법 마련 등 인류 복지에 기여하고, 인류가 처한 여러 가지 재난 상황 극복에 활용된다.',
+    '과학기술은 자원과 에너지 등의 효율적 이용 방안을 제공하여 지속가능한 사회에 기여한다.',
+    '과학기술의 발달은 미래 사회의 모습과 직업에 영향을 미치며, 개인은 이러한 미래 사회의 모습과 새로운 진로를 탐색하며 자신의 삶을 준비한다.',
+  ];
+  List<List<String>> scienceTableSciSoOneTwoValue = [
+    [''],
+    [''],
+    [''],
+    [''],
+    [''],
+  ]; //2022 과학 과학과 사회 1~2년 내용체계
+  List<List<String>> scienceTableSciSoThreeFourValue = [
+    [
+      '질병과 예방',
+      '감염병과 건강한 생활',
+    ],
+    [
+      '기후변화 사례',
+      '기후위기 대응'
+    ],
+    [''],
+    [
+      '자연과 일상생활에서 과학과 기술 및 사회의 상호작용과 관련된 문제 인식하기',
+      '문제를 해결하기 위한 탐구 설계하기',
+      '신뢰성 있는 출처를 활용하여 자료를 수집하고 정리하기',
+      '융합적 사고와 수학적 사고, 컴퓨터 및 모형 활용하기',
+      '결론을 도출하고, 과학⋅기술⋅사회의 문제 해결 상황에 적용⋅설명하기',
+      '자신의 생각과 주장을 과학적 언어를 사용하여 다양한 방식으로 표현하고 공유하기',
+    ],
+    [
+      '과학의 심미적 가치',
+      '과학의 사회적 가치',
+      '과학 유용성',
+      '자연과 과학에 대한 감수성',
+      '과학 창의성',
+      '과학 활동의 윤리성',
+      '과학 문제 해결에 대한 개방성',
+      '과학 문제 해결의 학문 간 융합적 접근',
+      '안전⋅지속가능 사회에 기여',
+      '과학 문화 향유',
+    ]
+  ]; //2022 과학 과학과 사회 3~4년 내용체계
+  List<List<String>> scienceTableSciSoFiveSixValue = [
+    [''],
+    [
+      '자원의 종류',
+      '자원의 효율적인 이용',
+      '지속가능한 에너지 이용',
+    ],
+    [
+      '진로와 과학의 관련성',
+      '진로 계획',
+    ],
+    [
+      '자연과 일상생활에서 과학과 기술 및 사회의 상호작용과 관련된 문제 인식하기',
+      '문제를 해결하기 위한 탐구 설계하기',
+      '신뢰성 있는 출처를 활용하여 자료를 수집하고 정리하기',
+      '융합적 사고와 수학적 사고, 컴퓨터 및 모형 활용하기',
+      '결론을 도출하고, 과학⋅기술⋅사회의 문제 해결 상황에 적용⋅설명하기',
+      '자신의 생각과 주장을 과학적 언어를 사용하여 다양한 방식으로 표현하고 공유하기',
+    ],
+    [
+      '과학의 심미적 가치',
+      '과학의 사회적 가치',
+      '과학 유용성',
+      '자연과 과학에 대한 감수성',
+      '과학 창의성',
+      '과학 활동의 윤리성',
+      '과학 문제 해결에 대한 개방성',
+      '과학 문제 해결의 학문 간 융합적 접근',
+      '안전⋅지속가능 사회에 기여',
+      '과학 문화 향유',
+    ]
+  ]; //2022 과학 과학과 사회 5~6년 내용체계
+//2022 과학 과학과 사회 내용체계표
 }

@@ -58,9 +58,9 @@ class Table22 {
   var koreanTable22 = KoreanTable22();
   var mathTable22 = MathTable22();
   var societyTable22 = SocietyTable22();
-  // var scienceTable22 = ScienceTable22();
-  // var englishTable22 = EnglishTable22();
-  // var peTable22 = PETable22();
+  var scienceTable22 = ScienceTable22();
+  var englishTable22 = EnglishTable22();
+  var peTable22 = PETable22();
   var artTable22 = ArtTable22();
   // var musicTable22 = MusicTable22();
   // var ethicsTable22 = EthicsTable22();
@@ -71,9 +71,9 @@ class Table22 {
     koreanTable22.koreanTableArea,
     mathTable22.mathTableArea,
     societyTable22.societyTableArea,
-    // scienceTable22.scienceTableArea,
-    // englishTable22.englishTableArea,
-    // peTable22.peTableArea,
+    scienceTable22.scienceTableArea,
+    englishTable22.englishTableArea,
+    peTable22.peTableArea,
     artTable22.artTableArea,
     // musicTable22.musicTableArea,
     // ethicsTable22.ethicsTableArea,
@@ -85,9 +85,9 @@ class Table22 {
     koreanTable22.koreanTableAreaIndex,
     mathTable22.mathTableAreaIndex,
     societyTable22.societyTableAreaIndex,
-    // scienceTable22.scienceTableAreaIndex,
-    // englishTable22.englishTableAreaIndex,
-    // peTable22.peTableAreaIndex,
+    scienceTable22.scienceTableAreaIndex,
+    englishTable22.englishTableAreaIndex,
+    peTable22.peTableAreaIndex,
     artTable22.artTableAreaIndex,
     // musicTable22.musicTableAreaIndex,
     // ethicsTable22.ethicsTableAreaIndex,
@@ -99,9 +99,9 @@ class Table22 {
     koreanTable22.koreanTableCIIndex,
     mathTable22.mathTableCIIndex,
     societyTable22.societyTableCIIndex,
-    // scienceTable22.scienceTableCIIndex,
-    // englishTable22.englishTableCIIndex,
-    // peTable22.peTableCIIndex,
+    scienceTable22.scienceTableCIIndex,
+    englishTable22.englishTableCIIndex,
+    peTable22.peTableCIIndex,
     artTable22.artTableCIIndex,
     // musicTable22.musicTableCIIndex,
     // ethicsTable22.ethicsTableCIIndex,
@@ -113,9 +113,9 @@ class Table22 {
     koreanTable22.koreanTableLowerCategoryIndex,
     mathTable22.mathTableLowerCategoryIndex,
     societyTable22.societyTableLowerCategoryIndex,
-    // scienceTable22.scienceTableLowerCategoryIndex,
-    // englishTable22.englishTableLowerCategoryIndex,
-    // peTable22.peTableLowerCategoryIndex,
+    scienceTable22.scienceTableLowerCategoryIndex,
+    englishTable22.englishTableLowerCategoryIndex,
+    peTable22.peTableLowerCategoryIndex,
     artTable22.artTableLowerCategoryIndex,
     // musicTable22.musicTableLowerCategoryIndex,
     // ethicsTable22.ethicsTableLowerCategoryIndex,
@@ -127,9 +127,9 @@ class Table22 {
     koreanTable22.koreanTableGradeValueIndex,
     mathTable22.mathTableGradeValueIndex,
     societyTable22.societyTableGradeValueIndex,
-    // scienceTable22.scienceTableGradeValueIndex,
-    // englishTable22.englishTableGradeValueIndex,
-    // peTable22.peTableGradeValueIndex,
+    scienceTable22.scienceTableGradeValueIndex,
+    englishTable22.englishTableGradeValueIndex,
+    peTable22.peTableGradeValueIndex,
     artTable22.artTableGradeValueIndex,
     // musicTable22.musicTableGradeValueIndex,
     // ethicsTable22.ethicsTableGradeValueIndex,
