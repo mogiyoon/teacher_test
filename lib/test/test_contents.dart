@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:teacher_test/function/text-sorted_combined.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
 import 'package:teacher_test/test/table_builder.dart';
 import 'package:teacher_test/test/test_screen.dart';
@@ -26,12 +27,17 @@ class TestCheckBoxWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var testChoice = Provider.of<TestChoice>(context);
 
-    return Checkbox(
-        value: testChoice.isTest,
-        onChanged: (bool? value) {
-          testChoice.isTest = value ?? false;
-          testChoice.testCheckFun(testChoice.isTest);
-        });
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Checkbox(
+            value: testChoice.isTest,
+            onChanged: (bool? value) {
+              testChoice.isTest = value ?? false;
+              testChoice.testCheckFun(testChoice.isTest);
+            })
+      ],
+    );
   }
 }
 
@@ -77,10 +83,10 @@ class GradeChoice extends ChangeNotifier {
 }
 
 class GradeCheckBoxWidget extends StatelessWidget {
-  String title;
+  Widget widget;
   int grade;
 
-  GradeCheckBoxWidget(this.title, this.grade);
+  GradeCheckBoxWidget(this.widget, this.grade);
 
   bool changeValue = false;
 
@@ -105,20 +111,20 @@ class GradeCheckBoxWidget extends StatelessWidget {
                   gradeChoice.fiveSixCheckFun(changeValue);
               }
             }),
-        Text(title),
+        widget,
       ],
     ));
   }
 }
 
-class TestContents extends StatefulWidget {
-  const TestContents({super.key});
+class ChoiceContents extends StatefulWidget {
+  const ChoiceContents({super.key});
 
   @override
-  State<TestContents> createState() => _TestContentsState();
+  State<ChoiceContents> createState() => _ChoiceContentsState();
 }
 
-class _TestContentsState extends State<TestContents> {
+class _ChoiceContentsState extends State<ChoiceContents> {
   @override
   Widget build(BuildContext context) {
     var routeContents = Provider.of<RouteContents>(context);
@@ -132,26 +138,26 @@ class _TestContentsState extends State<TestContents> {
           ChangeNotifierProvider<TestChoice>.value(value: TestChoice()),
         ],
         child: Column(children: [
-          ExpansionTile(title: Center(child: Text('학년군 선택')), children: [
+          ExpansionTile(title: Center(child: Text('학년군/과목 선택')), children: [
             Container(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [TestCheckBoxWidget(), Text('시험')],
-                )),
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [TestCheckBoxWidget(), Text('시험')],
+            )),
             Row(
               children: [
-                GradeCheckBoxWidget('1~2학년군', 1),
-                GradeCheckBoxWidget('3~4학년군', 3),
-                GradeCheckBoxWidget('5~6학년군', 5)
+                GradeCheckBoxWidget(TextSorterOneTwo(), 1),
+                GradeCheckBoxWidget(TextSorterThreeFour(), 3),
+                GradeCheckBoxWidget(TextSorterFiveSix(), 5)
               ],
             )
           ]),
-          Expanded(child: SingleChildScrollView(child: Column(
+          Expanded(
+              child: SingleChildScrollView(
+                  child: Column(
             children: [
-              if(isTableTest)
-                TableTestChoiceBuilder(),
-              if(isAchieveTest)
-                AchieveTestChoiceBuilder(),
+              if (isTableTest) TableTestChoiceBuilder(),
+              if (isAchieveTest) AchieveTestChoiceBuilder(),
             ],
           ))),
         ]),

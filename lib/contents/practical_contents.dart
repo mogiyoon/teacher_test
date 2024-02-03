@@ -104,7 +104,6 @@ class PracticalTable22 {
     '기술적 문제해결과 혁신',
     '지속가능한 기술과 융합',
     '디지털 사회와 인공지능',
-    '매체'
   ];
 
   late List<List<List<String>>> practicalTableAreaIndex = [

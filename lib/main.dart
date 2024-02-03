@@ -3,6 +3,12 @@ import 'test/test_screen.dart';
 import 'function/screen_widget.dart';
 import 'package:provider/provider.dart';
 
+//TODO 휴대폰 사용시 글자크기 축소
+//TODO 두 손가락으로 확대 축소
+//TODO 구글/애플 계정 연동 및 구독 시스템
+//TODO 단축키
+//TODO Setting 화면 추가
+
 void main() {
   runApp(const MyApp());
 }

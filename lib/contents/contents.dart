@@ -64,8 +64,8 @@ class Table22 {
   var artTable22 = ArtTable22();
   var musicTable22 = MusicTable22();
   var ethicsTable22 = EthicsTable22();
-  // var practicalTable22 = PracticalTable22();
-  // var combinedSubjectTable22 = CombinedSubjectTable22();
+  var practicalTable22 = PracticalTable22();
+  var combinedSubjectTable22 = CombinedSubjectTable22();
 
   late List<List<String>> contentsTable22Area = [
     koreanTable22.koreanTableArea,
@@ -77,8 +77,8 @@ class Table22 {
     artTable22.artTableArea,
     musicTable22.musicTableArea,
     ethicsTable22.ethicsTableArea,
-    // practicalTable22.practicalTableArea,
-    // combinedSubjectTable22.combinedSubjectTableArea,
+    practicalTable22.practicalTableArea,
+    combinedSubjectTable22.combinedSubjectTableArea,
   ];
 
   late List<List<List<List<String>>>> contentsTable22AreaIndex = [
@@ -91,8 +91,8 @@ class Table22 {
     artTable22.artTableAreaIndex,
     musicTable22.musicTableAreaIndex,
     ethicsTable22.ethicsTableAreaIndex,
-    // practicalTable22.practicalTableAreaIndex,
-    // combinedSubjectTable22.combinedSubjectTableAreaIndex,
+    practicalTable22.practicalTableAreaIndex,
+    combinedSubjectTable22.combinedSubjectTableAreaIndex,
   ];
   
   late List<List<List<String>>> contentsTable22CIIndex = [
@@ -105,8 +105,8 @@ class Table22 {
     artTable22.artTableCIIndex,
     musicTable22.musicTableCIIndex,
     ethicsTable22.ethicsTableCIIndex,
-    // practicalTable22.practicalTableCIIndex,
-    // combinedSubjectTable22.combinedSubjectTableCIIndex,
+    practicalTable22.practicalTableCIIndex,
+    combinedSubjectTable22.combinedSubjectTableCIIndex,
   ];
 
   late List<List<List<String>>> contentsTable22LowerCategoryIndex = [
@@ -119,8 +119,8 @@ class Table22 {
     artTable22.artTableLowerCategoryIndex,
     musicTable22.musicTableLowerCategoryIndex,
     ethicsTable22.ethicsTableLowerCategoryIndex,
-    // practicalTable22.practicalTableLowerCategoryIndex,
-    // combinedSubjectTable22.combinedSubjectTableLowerCategoryIndex,
+    practicalTable22.practicalTableLowerCategoryIndex,
+    combinedSubjectTable22.combinedSubjectTableLowerCategoryIndex,
   ];
   
   late List<List<List<List<List<String>>>>> contentsTable22ValueIndex = [
@@ -133,8 +133,8 @@ class Table22 {
     artTable22.artTableGradeValueIndex,
     musicTable22.musicTableGradeValueIndex,
     ethicsTable22.ethicsTableGradeValueIndex,
-    // practicalTable22.practicalTableGradeValueIndex,
-    // combinedSubjectTable22.combinedSubjectTableGradeValueIndex,
+    practicalTable22.practicalTableGradeValueIndex,
+    combinedSubjectTable22.combinedSubjectTableGradeValueIndex,
   ];
 }
 

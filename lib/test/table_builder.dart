@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:collection/collection.dart';
 import 'package:teacher_test/contents/contents.dart';
 import 'package:teacher_test/function/container_widget.dart';
+import 'package:teacher_test/function/text-sorted_combined.dart';
 import 'package:teacher_test/test/test_contents.dart';
 import 'package:teacher_test/test/test_screen.dart';
 
@@ -25,18 +26,43 @@ class TableListBuilder extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: Table22Area[subjectNum - 1].length,
         itemBuilder: (context, areaNum) {
-          return Table(
+          return TableText(
               Table22Area[subjectNum - 1][areaNum], subjectNum, areaNum);
         });
   }
 }
 
-class Table extends StatelessWidget {
+class TableText extends StatelessWidget {
   String title;
   int subjectNum;
   int areaNum;
+  TableText(this.title, this.subjectNum, this.areaNum);
 
-  Table(this.title, this.subjectNum, this.areaNum);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          children: [
+            Center(child: Text(title, textScaleFactor: 1.2,)),
+            CentralIdea(subjectNum, areaNum),
+            Category(),
+            LowerCategoryListBuilder(areaNum),
+            Container(
+              height: 60, // 표 사이 공간
+            )
+          ],
+        ));
+  }
+}
+
+class TableForm extends StatelessWidget {
+  String title;
+  int subjectNum;
+  int areaNum;
+  TableForm(this.title, this.subjectNum, this.areaNum);
+
+  double tableSpace = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +75,7 @@ class Table extends StatelessWidget {
             Category(),
             LowerCategoryListBuilder(areaNum),
             Container(
-              height: 60, // 표 사이 공간
+              height: tableSpace, // 표 사이 공간
             )
           ],
         ));
@@ -159,15 +185,15 @@ class Category extends StatelessWidget {
                             Expanded(
                                 flex: 1,
                                 child:
-                                    ContainerWithBorder(child: Text('1~2학년군'))),
+                                    ContainerWithBorder(child: TextSorterOneTwo())),
                             Expanded(
                                 flex: 1,
                                 child:
-                                    ContainerWithBorder(child: Text('3~4학년군'))),
+                                    ContainerWithBorder(child:TextSorterThreeFour())),
                             Expanded(
                                 flex: 1,
                                 child:
-                                    ContainerWithBorder(child: Text('5~6학년군')))
+                                    ContainerWithBorder(child: TextSorterFiveSix()))
                           ],
                         ))
                   ],

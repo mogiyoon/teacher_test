@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teacher_test/contents/contents.dart';
+import 'package:teacher_test/function/text-sorted_combined.dart';
 import 'package:teacher_test/test/test_screen.dart';
 import 'package:teacher_test/test/test_contents.dart';
 import 'package:provider/provider.dart';
@@ -28,34 +29,34 @@ class AchieveTestChoiceBuilder extends StatelessWidget {
       children: [
         if (isTest) ...[
           if (isOneTwoCheck) ...[
-            Center(child: Text('---1~2학년군---'),),
+            Center(child: TextSorterOneTwo(),),
             AchieveFormBuilder(
                 (achieve22.contentsAchieve22Index[subjectNum - 1])[0], 0, subjectNum),
           ],
           if (isThreeFourCheck) ...[
-            Center(child: Text('---3~4학년군---'),),
+            Center(child: TextSorterThreeFour(),),
             AchieveFormBuilder(
                 (achieve22.contentsAchieve22Index[subjectNum - 1])[1], 1, subjectNum),
           ],
           if (isFiveSixCheck) ...[
-            Center(child: Text('---5~6학년군---'),),
+            Center(child: TextSorterFiveSix(),),
             AchieveFormBuilder(
                 (achieve22.contentsAchieve22Index[subjectNum - 1])[2], 2, subjectNum),
           ]
         ],
         if (!isTest) ...[
           if (isOneTwoCheck) ...[
-            Center(child: Text('---1~2학년군---'),),
+            Center(child: TextSorterOneTwo(),),
             AchieveTextBuilder(
                 (achieve22.contentsAchieve22Index[subjectNum - 1])[0]),
           ],
           if (isThreeFourCheck) ...[
-            Center(child: Text('---3~4학년군---'),),
+            Center(child: TextSorterThreeFour(),),
             AchieveTextBuilder(
                 (achieve22.contentsAchieve22Index[subjectNum - 1])[1]),
           ],
           if (isFiveSixCheck) ...[
-            Center(child: Text('---5~6학년군---'),),
+            Center(child: TextSorterFiveSix(),),
             AchieveTextBuilder(
                 (achieve22.contentsAchieve22Index[subjectNum - 1])[2]),
           ]

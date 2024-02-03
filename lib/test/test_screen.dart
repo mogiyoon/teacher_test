@@ -133,7 +133,7 @@ class TestScreenWidgetState extends State<TestScreenWidget> {
                 tooltip: '목록');
           }),
         ),
-        body: TestContents(),
+        body: ChoiceContents(),
         drawer: ChangeNotifierProvider<ScreenSetting>.value(
           value: ScreenSetting(),
           child: SubjectDrawer(),
