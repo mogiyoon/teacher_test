@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:teacher_test/test/table_builder.dart';
+import 'package:teacher_test/test/table/table_builder.dart';
+import 'package:teacher_test/test/table/table_text_builder.dart';
 
 class ContainerWithBorder extends StatelessWidget {
   Widget? child;
@@ -39,10 +40,10 @@ class ContainerWithKey extends StatefulWidget {
 }
 
 class _ContainerWithKeyState extends State<ContainerWithKey> {
-  late CentralIdeaState? CIWidget =
-      context.findAncestorStateOfType<CentralIdeaState>();
+  late TableTextCentralIdeaState? CIWidget =
+      context.findAncestorStateOfType<TableTextCentralIdeaState>();
   late GlobalKey CIKey =
-      CIWidget?.centralIdeaKeyList[widget.areaNum] ?? GlobalKey();
+      CIWidget?.centralIdeaTextKeyList[widget.areaNum] ?? GlobalKey();
   double? sizeHeight;
 
   double? _getSizeHeight() {

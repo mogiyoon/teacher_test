@@ -4,6 +4,7 @@ import 'package:teacher_test/main.dart';
 import 'package:teacher_test/function/speeddial_widget.dart';
 import 'package:teacher_test/function/screen_widget.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
+import 'package:teacher_test/test/table/table_test_builder.dart';
 import 'package:teacher_test/test/test_contents.dart';
 import 'package:teacher_test/contents/contents.dart';
 
@@ -111,17 +112,25 @@ class TestScreenWidgetState extends State<TestScreenWidget> {
     var achieve22 = Achieve22();
     int subjectNum = routeContents.subjectNum;
 
-    return ChangeNotifierProvider<AchieveTextEditing>.value(
-      value: AchieveTextEditing(
-          achieve22.contentsAchieve22[subjectNum - 1].length),
+    var Table22Area = Table22().contentsTable22Area;
+    var Table22CIIndex = Table22().contentsTable22CIIndex;
+
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AchieveTextEditing>.value(
+            value: AchieveTextEditing(
+                achieve22.contentsAchieve22[subjectNum - 1].length)),
+        //Achieve
+        ChangeNotifierProvider<TableTitleEditing>.value(
+          value: TableTitleEditing(Table22Area[subjectNum - 1].length)),
+        ChangeNotifierProvider<TableCIEditing>.value(
+          value: TableCIEditing(Table22Area[subjectNum - 1].length, Table22CIIndex[subjectNum - 1][areaNum].length)
+        )
+        //Table
+      ],
       child: Scaffold(
         appBar: AppBar(
-          // TRY THIS: Try changing the color here to a specific color (to
-          // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-          // change color while the other colors stay the same.
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
           title: Title(),
           centerTitle: true,
           leading: Builder(builder: (BuildContext context) {
@@ -138,8 +147,7 @@ class TestScreenWidgetState extends State<TestScreenWidget> {
           value: ScreenSetting(),
           child: SubjectDrawer(),
         ),
-        floatingActionButton:
-            MultiFloatButton(), // This trailing comma makes auto-formatting nicer for build methods.
+        floatingActionButton: MultiFloatButton(),
       ),
     );
   }

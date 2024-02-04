@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:teacher_test/function/text-sorted_combined.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
-import 'package:teacher_test/test/table_builder.dart';
+import 'package:teacher_test/test/table/table_builder.dart';
 import 'package:teacher_test/test/test_screen.dart';
 
 class TestChoice extends ChangeNotifier {

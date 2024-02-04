@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teacher_test/contents/contents.dart';
+import 'package:teacher_test/function/about_answer.dart';
 import 'package:teacher_test/function/text-sorted_combined.dart';
 import 'package:teacher_test/test/test_screen.dart';
 import 'package:teacher_test/test/test_contents.dart';
@@ -110,15 +111,15 @@ class AchieveFormBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     double heightConst = (AchieveList.length).toDouble();
     var formList = Provider.of<AchieveTextEditing>(context);
-    var controllerList = formList.controllerList;
+    var achieveControllerList = formList.achieveControllerList;
     if (grade == 0) realIndex = -1;
     if (grade == 1) realIndex = grade12Length - 1;
     if (grade == 2) realIndex = (grade12Length + grade34Length) - 1;
 
     return Container(
-      height: 50 * (heightConst),
       padding: EdgeInsets.all(5),
       child: ListView.builder(
+        shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           padding: EdgeInsets.symmetric(horizontal: 30),
           itemCount: AchieveList.length,
@@ -131,7 +132,7 @@ class AchieveFormBuilder extends StatelessWidget {
                     Expanded(
                       flex: 10,
                       child: TextFormField(
-                        controller: controllerList[realIndex],
+                        controller: achieveControllerList[realIndex],
                       ),
                     ),
                     Expanded(
@@ -139,15 +140,18 @@ class AchieveFormBuilder extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          if (formList.controllerAnswerCheckList[realIndex] == 0)
+                          if (formList.achieveControllerAnswerCheckList[realIndex] == 0)
                             ColorContainer(Colors.white),
-                          if (formList.controllerAnswerCheckList[realIndex] == 1)
+                          if (formList.achieveControllerAnswerCheckList[realIndex] == 1)
                             ColorContainer(Colors.green.shade200),
-                          if (formList.controllerAnswerCheckList[realIndex] == 2)
+                          if (formList.achieveControllerAnswerCheckList[realIndex] == 2)
                             ColorContainer(Colors.red.shade200)
                         ],
                       ),
                     ),
+                    Container(
+                      width: 40,
+                    )
                   ],
                 ),
               ],
@@ -159,29 +163,10 @@ class AchieveFormBuilder extends StatelessWidget {
 
 class AchieveTextEditing with ChangeNotifier {
   int listLength;
-
   AchieveTextEditing(this.listLength);
 
-  late List<TextEditingController> controllerList =
+  late List<TextEditingController> achieveControllerList =
       List.generate(listLength, (i) => TextEditingController());
-  late List<int> controllerAnswerCheckList =
+  late List<int> achieveControllerAnswerCheckList =
       List.generate(listLength, (i) => 0);
 }
-
-class ColorContainer extends StatelessWidget {
-  Color containerColor;
-  ColorContainer(this.containerColor);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        width: 25,
-        height: 25,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: containerColor,
-        ),
-    );
-  }
-}
-

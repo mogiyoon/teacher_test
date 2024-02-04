@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:teacher_test/contents/contents.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
 
@@ -53,16 +54,16 @@ class AcheiveCheckAnswer{
   }
 
   void acheiveCheckFunction(int i, int j) {
-    String removeSpaceText = (newTextEditor.controllerList[i].text).replaceAll(' ', '');
+    String removeSpaceText = (newTextEditor.achieveControllerList[i].text).replaceAll(' ', '');
     // j=0 : 1~2, j=1 : 3~4, j=2 : 5~6
     if ((achieveIndex[j]).contains(removeSpaceText)) {
-      newTextEditor.controllerAnswerCheckList[i] = 1;
+      newTextEditor.achieveControllerAnswerCheckList[i] = 1;
     }
-    else if (newTextEditor.controllerList[i].text == '') {
-      newTextEditor.controllerAnswerCheckList[i] = 0;
+    else if (newTextEditor.achieveControllerList[i].text == '') {
+      newTextEditor.achieveControllerAnswerCheckList[i] = 0;
     }
     else {
-      newTextEditor.controllerAnswerCheckList[i] = 2;
+      newTextEditor.achieveControllerAnswerCheckList[i] = 2;
     }
   }
 }
@@ -81,8 +82,8 @@ class DeleteAnswer {
 
   void deleteAnswer() {
     for(int i = 0; i<(achieve22.contentsAchieve22[subjectNum-1]).length; i++){
-      newTextEditor.controllerList[i].text = '';
-      newTextEditor.controllerAnswerCheckList[i] = 0;
+      newTextEditor.achieveControllerList[i].text = '';
+      newTextEditor.achieveControllerAnswerCheckList[i] = 0;
     }
 
     newTextEditor.notifyListeners();
@@ -96,5 +97,22 @@ class RemoveSpaceList {
       otherListString[i] = listString[i].replaceAll(' ', '');
     }
     return otherListString;
+  }
+}
+
+class ColorContainer extends StatelessWidget {
+  Color containerColor;
+  ColorContainer(this.containerColor);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 25,
+      height: 25,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: containerColor,
+      ),
+    );
   }
 }

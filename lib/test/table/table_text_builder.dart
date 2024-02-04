@@ -7,101 +7,27 @@ import 'package:teacher_test/function/text-sorted_combined.dart';
 import 'package:teacher_test/test/test_contents.dart';
 import 'package:teacher_test/test/test_screen.dart';
 
-class TableTestChoiceBuilder extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(child: TableListBuilder());
-  }
-}
 
-class TableListBuilder extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var routeContents = Provider.of<RouteContents>(context);
-    int subjectNum = routeContents.subjectNum;
-    var Table22Area = Table22().contentsTable22Area;
-
-    return ListView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: Table22Area[subjectNum - 1].length,
-        itemBuilder: (context, areaNum) {
-          return TableText(
-              Table22Area[subjectNum - 1][areaNum], subjectNum, areaNum);
-        });
-  }
-}
-
-class TableText extends StatelessWidget {
-  String title;
-  int subjectNum;
-  int areaNum;
-  TableText(this.title, this.subjectNum, this.areaNum);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          children: [
-            Center(child: Text(title, textScaleFactor: 1.2,)),
-            CentralIdea(subjectNum, areaNum),
-            Category(),
-            LowerCategoryListBuilder(areaNum),
-            Container(
-              height: 60, // 표 사이 공간
-            )
-          ],
-        ));
-  }
-}
-
-class TableForm extends StatelessWidget {
-  String title;
-  int subjectNum;
-  int areaNum;
-  TableForm(this.title, this.subjectNum, this.areaNum);
-
-  double tableSpace = 60;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          children: [
-            Center(child: Text(title)),
-            CentralIdea(subjectNum, areaNum),
-            Category(),
-            LowerCategoryListBuilder(areaNum),
-            Container(
-              height: tableSpace, // 표 사이 공간
-            )
-          ],
-        ));
-  }
-}
-
-class CentralIdea extends StatefulWidget {
+class TableTextCentralIdea extends StatefulWidget {
   int areaNum;
   int subjectNum;
 
-  CentralIdea(this.subjectNum, this.areaNum, {super.key});
+  TableTextCentralIdea(this.subjectNum, this.areaNum, {super.key});
 
   @override
-  State<CentralIdea> createState() => CentralIdeaState();
+  State<TableTextCentralIdea> createState() => TableTextCentralIdeaState();
 }
 
-class CentralIdeaState extends State<CentralIdea> {
+class TableTextCentralIdeaState extends State<TableTextCentralIdea> {
   var Table22Area = Table22().contentsTable22Area;
   late int listLength = Table22Area[widget.subjectNum - 1].length;
-  late List<GlobalKey> centralIdeaKeyList =
-      List.generate(listLength, (i) => GlobalKey());
+  late List<GlobalKey> centralIdeaTextKeyList =
+  List.generate(listLength, (i) => GlobalKey());
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      key: centralIdeaKeyList[widget.areaNum],
+      key: centralIdeaTextKeyList[widget.areaNum],
       child: Row(
         children: [
           Expanded(
@@ -130,11 +56,6 @@ class TableCITextBuilder extends StatelessWidget {
     var Table22CIIndex = Table22().contentsTable22CIIndex;
     List<String> inputList = Table22CIIndex[subjectNum - 1][areaNum];
 
-    double constHeight = inputList.length.toDouble();
-    if (constHeight <= 4) {
-      constHeight = 4;
-    }
-
     return Column(
       children: [
         if (inputList.length > 1)
@@ -155,7 +76,7 @@ class TableCITextBuilder extends StatelessWidget {
   }
 }
 
-class Category extends StatelessWidget {
+class TableCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -184,16 +105,16 @@ class Category extends StatelessWidget {
                           children: [
                             Expanded(
                                 flex: 1,
-                                child:
-                                    ContainerWithBorder(child: TextSorterOneTwo())),
+                                child: ContainerWithBorder(
+                                    child: TextSorterOneTwo())),
                             Expanded(
                                 flex: 1,
-                                child:
-                                    ContainerWithBorder(child:TextSorterThreeFour())),
+                                child: ContainerWithBorder(
+                                    child: TextSorterThreeFour())),
                             Expanded(
                                 flex: 1,
-                                child:
-                                    ContainerWithBorder(child: TextSorterFiveSix()))
+                                child: ContainerWithBorder(
+                                    child: TextSorterFiveSix()))
                           ],
                         ))
                   ],
@@ -205,11 +126,11 @@ class Category extends StatelessWidget {
   }
 }
 
-class LowerCategoryListBuilder extends StatelessWidget {
+class TableLowerCategoryListBuilder extends StatelessWidget {
   List<String> tableCategory = TableCategory22().tableCategory;
   int areaNum;
 
-  LowerCategoryListBuilder(this.areaNum);
+  TableLowerCategoryListBuilder(this.areaNum);
 
   @override
   Widget build(BuildContext context) {
@@ -221,18 +142,18 @@ class LowerCategoryListBuilder extends StatelessWidget {
           return Container(
             decoration: BoxDecoration(border: Border.all()),
             child:
-                LowerCategory(tableCategory[categoryNum], areaNum, categoryNum),
+            TableLowerCategory(tableCategory[categoryNum], areaNum, categoryNum),
           );
         });
   }
 }
 
-class LowerCategory extends StatelessWidget {
+class TableLowerCategory extends StatelessWidget {
   String title;
   int areaNum;
   int categoryNum;
 
-  LowerCategory(this.title, this.areaNum, this.categoryNum);
+  TableLowerCategory(this.title, this.areaNum, this.categoryNum);
 
   @override
   Widget build(BuildContext context) {
@@ -253,20 +174,20 @@ class LowerCategory extends StatelessWidget {
     bool isValueThreeToSixSame = false;
     Function eq = const ListEquality().equals;
     List<String> standardLowerCategory =
-        Table22AreaIndex[subjectNum - 1][areaNum][categoryNum];
+    Table22AreaIndex[subjectNum - 1][areaNum][categoryNum];
     List<String> standardLowerKnowledgeCategory =
-        Table22AreaIndex[subjectNum - 1][areaNum][0];
+    Table22AreaIndex[subjectNum - 1][areaNum][0];
     List<String> standardLowerProcessCategory =
-        Table22AreaIndex[subjectNum - 1][areaNum][1];
+    Table22AreaIndex[subjectNum - 1][areaNum][1];
     List<String> standardLowerWorthCategory =
-        Table22AreaIndex[subjectNum - 1][areaNum][2];
+    Table22AreaIndex[subjectNum - 1][areaNum][2];
 
     List<List<String>> gradeOneTwoValue =
-        table22ValueIndex[subjectNum - 1][0][areaNum];
+    table22ValueIndex[subjectNum - 1][0][areaNum];
     List<List<String>> gradeThreeFourValue =
-        table22ValueIndex[subjectNum - 1][1][areaNum];
+    table22ValueIndex[subjectNum - 1][1][areaNum];
     List<List<String>> gradeFiveSixValue =
-        table22ValueIndex[subjectNum - 1][2][areaNum];
+    table22ValueIndex[subjectNum - 1][2][areaNum];
 
     if (standardLowerCategory.length <= 1 && standardLowerCategory[0] == '') {
       switch (categoryNum) {
@@ -323,7 +244,7 @@ class LowerCategory extends StatelessWidget {
                     Expanded(
                         flex: 3,
                         child:
-                            TableLowerCategoryTextBuilder(areaNum, categoryNum))
+                        TableLowerCategoryTextBuilder(areaNum, categoryNum))
                 ],
               )),
           Expanded(
@@ -459,19 +380,19 @@ class TableLowerCategoryTextBuilder extends StatelessWidget {
     var table22LowerCategoryIndex = Table22().contentsTable22LowerCategoryIndex;
 
     List<String> inputList =
-        table22AreaIndex[subjectNum - 1][areaNum][categoryNum];
+    table22AreaIndex[subjectNum - 1][areaNum][categoryNum];
 //ex)koreanTableAreaIndex/koreanTableListenCategoryIndex/koreanTableListenKnowledgeLowerCategory
 
     List<List<String>> inputListOneTwoValue =
-        table22ValueIndex[subjectNum - 1][0][areaNum];
+    table22ValueIndex[subjectNum - 1][0][areaNum];
     List<List<String>> inputListThreeFourValue =
-        table22ValueIndex[subjectNum - 1][1][areaNum];
+    table22ValueIndex[subjectNum - 1][1][areaNum];
     List<List<String>> inputListFiveSixValue =
-        table22ValueIndex[subjectNum - 1][2][areaNum];
+    table22ValueIndex[subjectNum - 1][2][areaNum];
 //ex)koreanTableGradeValueIndex/koreanTableOneTwoValueIndex/koreanTableListenOneTwoValue
 
     List<String> inputListLowerCategory =
-        table22LowerCategoryIndex[subjectNum - 1][areaNum];
+    table22LowerCategoryIndex[subjectNum - 1][areaNum];
 
     int categoryIndexNum = 0;
 
@@ -545,23 +466,23 @@ class TableValueTextBuilder extends StatelessWidget {
     var table22AreaIndex = Table22().contentsTable22AreaIndex;
 
     List<List<String>> inputListValue =
-        table22ValueIndex[subjectNum - 1][gradeNum][areaNum];
+    table22ValueIndex[subjectNum - 1][gradeNum][areaNum];
     List<List<String>> inputListOneTwoValue =
-        table22ValueIndex[subjectNum - 1][0][areaNum];
+    table22ValueIndex[subjectNum - 1][0][areaNum];
     List<List<String>> inputListThreeFourValue =
-        table22ValueIndex[subjectNum - 1][1][areaNum];
+    table22ValueIndex[subjectNum - 1][1][areaNum];
     List<List<String>> inputListFiveSixValue =
-        table22ValueIndex[subjectNum - 1][2][areaNum];
+    table22ValueIndex[subjectNum - 1][2][areaNum];
     //ex)koreanTableGradeValueIndex/koreanTableOneTwoValueIndex/koreanTableListenOneTwoValue
 
     List<String> inputListCategory =
-        table22AreaIndex[subjectNum - 1][areaNum][categoryNum];
+    table22AreaIndex[subjectNum - 1][areaNum][categoryNum];
     List<String> inputListCategoryKnowledge =
-        table22AreaIndex[subjectNum - 1][areaNum][0];
+    table22AreaIndex[subjectNum - 1][areaNum][0];
     List<String> inputListCategoryProcess =
-        table22AreaIndex[subjectNum - 1][areaNum][1];
+    table22AreaIndex[subjectNum - 1][areaNum][1];
     List<String> inputListCategoryWorth =
-        table22AreaIndex[subjectNum - 1][areaNum][2];
+    table22AreaIndex[subjectNum - 1][areaNum][2];
     //ex)koreanTableAreaIndex/koreanTableListenCategoryIndex/koreanTableListenKnowledgeLowerCategory
 
     int categoryItemNum = 0;
@@ -620,7 +541,7 @@ class TableValueTextBuilder extends StatelessWidget {
                                             .length)
                                       SelectableText(
                                           inputListValue[categoryItemNum - 1]
-                                              [i]),
+                                          [i]),
                                     if (i >=
                                         inputListValue[categoryItemNum - 1]
                                             .length)
