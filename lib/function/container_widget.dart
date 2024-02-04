@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teacher_test/test/table/table_builder.dart';
+import 'package:teacher_test/test/table/table_test_builder.dart';
 import 'package:teacher_test/test/table/table_text_builder.dart';
 
 class ContainerWithBorder extends StatelessWidget {
@@ -26,20 +27,20 @@ class ContainerWithBorder extends StatelessWidget {
   }
 }
 
-class ContainerWithKey extends StatefulWidget {
+class TableTextContainerWithKey extends StatefulWidget {
   final Widget? child;
   final double? width;
   final BoxConstraints? constraints;
   final int areaNum;
 
-  const ContainerWithKey(this.areaNum,
+  const TableTextContainerWithKey(this.areaNum,
       {this.child, this.width, this.constraints, super.key});
 
   @override
-  State<ContainerWithKey> createState() => _ContainerWithKeyState();
+  State<TableTextContainerWithKey> createState() => _TableTextContainerWithKeyState();
 }
 
-class _ContainerWithKeyState extends State<ContainerWithKey> {
+class _TableTextContainerWithKeyState extends State<TableTextContainerWithKey> {
   late TableTextCentralIdeaState? CIWidget =
       context.findAncestorStateOfType<TableTextCentralIdeaState>();
   late GlobalKey CIKey =
@@ -77,3 +78,56 @@ class _ContainerWithKeyState extends State<ContainerWithKey> {
     );
   }
 }
+
+class TableTestContainerWithKey extends StatefulWidget {
+  final Widget? child;
+  final double? width;
+  final BoxConstraints? constraints;
+  final int areaNum;
+
+  const TableTestContainerWithKey(this.areaNum,
+      {this.child, this.width, this.constraints, super.key});
+
+  @override
+  State<TableTestContainerWithKey> createState() => _TableTestContainerWithKeyState();
+}
+
+class _TableTestContainerWithKeyState extends State<TableTestContainerWithKey> {
+  late TableTestCentralIdeaState? CIWidget =
+  context.findAncestorStateOfType<TableTestCentralIdeaState>();
+  late GlobalKey CIKey =
+      CIWidget?.centralIdeaTestKeyList[widget.areaNum] ?? GlobalKey();
+  double? sizeHeight;
+
+  double? _getSizeHeight() {
+    if (CIKey != null) {
+      RenderBox renderBox =
+      CIKey.currentContext!.findRenderObject() as RenderBox;
+      sizeHeight = renderBox.size.height;
+      return sizeHeight;
+    }
+  }
+
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      setState(() {
+        sizeHeight = _getSizeHeight();
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(border: Border.all()),
+      child: Center(
+        child: widget.child,
+      ),
+      width: widget.width,
+      height: sizeHeight,
+      constraints: widget.constraints,
+    );
+  }
+}
+

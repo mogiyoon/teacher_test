@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:teacher_test/contents/contents.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
+import 'package:teacher_test/test/table/table_test_builder.dart';
 
 class CheckAnswer {
   AchieveTextEditing newTextEditor;
@@ -16,16 +17,16 @@ class CheckAnswer {
       TableCheckAnswer().tableCheckAnswer();
     }
     else if (isAchieveTest) {
-      AcheiveCheckAnswer(subjectNum, newTextEditor).acheiveCheckAnswer();
+      AchieveCheckAnswer(subjectNum, newTextEditor).achieveCheckAnswer();
     }
     newTextEditor.notifyListeners();
   }
 }
 
-class AcheiveCheckAnswer{
+class AchieveCheckAnswer{
   int subjectNum;
   AchieveTextEditing newTextEditor;
-  AcheiveCheckAnswer(this.subjectNum, this.newTextEditor);
+  AchieveCheckAnswer(this.subjectNum, this.newTextEditor);
 
   var achieve22 = Achieve22();
   late List<String> oneTwoAchieve = RemoveSpaceList()
@@ -45,15 +46,15 @@ class AcheiveCheckAnswer{
     (oneTwoAchieve.length + threeFourAchieve.length + fiveSixAchieve.length),
   ];
 
-  void acheiveCheckAnswer() {
+  void achieveCheckAnswer() {
     for (int j = 0; j < 3; j++) {
       for (int i = achieveLengthIndex[j]; i < achieveLengthIndex[j + 1]; i++) {
-        acheiveCheckFunction(i, j);
+        achieveCheckFunction(i, j);
       }
     }
   }
 
-  void acheiveCheckFunction(int i, int j) {
+  void achieveCheckFunction(int i, int j) {
     String removeSpaceText = (newTextEditor.achieveControllerList[i].text).replaceAll(' ', '');
     // j=0 : 1~2, j=1 : 3~4, j=2 : 5~6
     if ((achieveIndex[j]).contains(removeSpaceText)) {

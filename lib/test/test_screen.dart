@@ -108,24 +108,21 @@ class TestScreenWidgetState extends State<TestScreenWidget> {
     routeContents.subjectNum = args['arg1'] as int;
     routeContents.isTableTest = args['arg2'] as bool;
     routeContents.isAchieveTest = args['arg3'] as bool;
-
-    var achieve22 = Achieve22();
     int subjectNum = routeContents.subjectNum;
-
-    var Table22Area = Table22().contentsTable22Area;
-    var Table22CIIndex = Table22().contentsTable22CIIndex;
 
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<AchieveTextEditing>.value(
-            value: AchieveTextEditing(
-                achieve22.contentsAchieve22[subjectNum - 1].length)),
+            value: AchieveTextEditing(subjectNum)),
         //Achieve
-        ChangeNotifierProvider<TableTitleEditing>.value(
-          value: TableTitleEditing(Table22Area[subjectNum - 1].length)),
-        ChangeNotifierProvider<TableCIEditing>.value(
-          value: TableCIEditing(Table22Area[subjectNum - 1].length, Table22CIIndex[subjectNum - 1][areaNum].length)
-        )
+        ChangeNotifierProvider<TableTestTitleEditing>.value(
+            value: TableTestTitleEditing(subjectNum)),
+        ChangeNotifierProvider<TableTestCIEditing>.value(
+            value: TableTestCIEditing(subjectNum)),
+        ChangeNotifierProvider<TableTestLowerCategoryEditing>.value(
+            value: TableTestLowerCategoryEditing(subjectNum)),
+        ChangeNotifierProvider<TableTestValueEditing>.value(
+            value: TableTestValueEditing(subjectNum)),
         //Table
       ],
       child: Scaffold(

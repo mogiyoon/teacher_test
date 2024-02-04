@@ -56,17 +56,17 @@ class Table extends StatelessWidget {
                 textScaleFactor: 1.2,
               )),
               TableTextCentralIdea(subjectNum, areaNum),
-              TableCategory(),
-              TableLowerCategoryListBuilder(areaNum),
+              TableTextCategory(),
+              TableTextLowerCategoryListBuilder(areaNum),
               Container(
                 height: tableSpace, // 표 사이 공간
               )
             ],
             if (isTest) ...[
-              TableTitleForm(areaNum),
+              TableTestTitleForm(areaNum),
               TableTestCentralIdea(subjectNum, areaNum),
-              TableCategory(),
-              TableLowerCategoryListBuilder(areaNum),
+              TableTextCategory(),
+              TableTestLowerCategoryListBuilder(areaNum),
               Container(
                 height: tableSpace, // 표 사이 공간
               )

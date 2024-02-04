@@ -162,11 +162,13 @@ class AchieveFormBuilder extends StatelessWidget {
 }
 
 class AchieveTextEditing with ChangeNotifier {
-  int listLength;
-  AchieveTextEditing(this.listLength);
+  int subjectNum;
+  AchieveTextEditing(this.subjectNum);
+
+  var achieve22 = Achieve22();
 
   late List<TextEditingController> achieveControllerList =
-      List.generate(listLength, (i) => TextEditingController());
+      List.generate(achieve22.contentsAchieve22[subjectNum - 1].length, (i) => TextEditingController());
   late List<int> achieveControllerAnswerCheckList =
-      List.generate(listLength, (i) => 0);
+      List.generate(achieve22.contentsAchieve22[subjectNum - 1].length, (i) => 0);
 }

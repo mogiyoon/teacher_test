@@ -32,22 +32,22 @@ class TableTextCentralIdeaState extends State<TableTextCentralIdea> {
         children: [
           Expanded(
             flex: 1,
-            child: ContainerWithKey(
+            child: TableTextContainerWithKey(
               widget.areaNum,
               child: Text('핵심 아이디어'),
             ),
           ),
-          Expanded(flex: 3, child: TableCITextBuilder(widget.areaNum))
+          Expanded(flex: 3, child: TableTextCIBuilder(widget.areaNum))
         ],
       ),
     );
   }
 }
 
-class TableCITextBuilder extends StatelessWidget {
+class TableTextCIBuilder extends StatelessWidget {
   int areaNum;
 
-  TableCITextBuilder(this.areaNum);
+  TableTextCIBuilder(this.areaNum);
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +76,7 @@ class TableCITextBuilder extends StatelessWidget {
   }
 }
 
-class TableCategory extends StatelessWidget {
+class TableTextCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -126,11 +126,11 @@ class TableCategory extends StatelessWidget {
   }
 }
 
-class TableLowerCategoryListBuilder extends StatelessWidget {
+class TableTextLowerCategoryListBuilder extends StatelessWidget {
   List<String> tableCategory = TableCategory22().tableCategory;
   int areaNum;
 
-  TableLowerCategoryListBuilder(this.areaNum);
+  TableTextLowerCategoryListBuilder(this.areaNum);
 
   @override
   Widget build(BuildContext context) {
@@ -142,18 +142,18 @@ class TableLowerCategoryListBuilder extends StatelessWidget {
           return Container(
             decoration: BoxDecoration(border: Border.all()),
             child:
-            TableLowerCategory(tableCategory[categoryNum], areaNum, categoryNum),
+            TableTextLowerCategory(tableCategory[categoryNum], areaNum, categoryNum),
           );
         });
   }
 }
 
-class TableLowerCategory extends StatelessWidget {
+class TableTextLowerCategory extends StatelessWidget {
   String title;
   int areaNum;
   int categoryNum;
 
-  TableLowerCategory(this.title, this.areaNum, this.categoryNum);
+  TableTextLowerCategory(this.title, this.areaNum, this.categoryNum);
 
   @override
   Widget build(BuildContext context) {
@@ -226,7 +226,6 @@ class TableLowerCategory extends StatelessWidget {
       }
     }
 
-//TODO isTEST 변수 활용하기
     return ContainerWithBorder(
       child: Row(
         children: [
@@ -244,7 +243,7 @@ class TableLowerCategory extends StatelessWidget {
                     Expanded(
                         flex: 3,
                         child:
-                        TableLowerCategoryTextBuilder(areaNum, categoryNum))
+                        TableTextLowerCategoryBuilder(areaNum, categoryNum))
                 ],
               )),
           Expanded(
@@ -258,7 +257,7 @@ class TableLowerCategory extends StatelessWidget {
                         child: Column(
                           children: [
                             if (isOneTwoCheck)
-                              TableValueTextBuilder(areaNum, 0, categoryNum),
+                              TableTextValueBuilder(areaNum, 0, categoryNum),
                           ],
                         ),
                       ),
@@ -267,7 +266,7 @@ class TableLowerCategory extends StatelessWidget {
                         child: Column(
                           children: [
                             if (isThreeFourCheck)
-                              TableValueTextBuilder(areaNum, 1, categoryNum),
+                              TableTextValueBuilder(areaNum, 1, categoryNum),
                           ],
                         ),
                       ),
@@ -276,7 +275,7 @@ class TableLowerCategory extends StatelessWidget {
                           child: Column(
                             children: [
                               if (isFiveSixCheck)
-                                TableValueTextBuilder(areaNum, 2, categoryNum),
+                                TableTextValueBuilder(areaNum, 2, categoryNum),
                             ],
                           )),
                     ],
@@ -286,7 +285,7 @@ class TableLowerCategory extends StatelessWidget {
                           child: Column(
                             children: [
                               if (isOneTwoCheck || isThreeFourCheck)
-                                TableValueTextBuilder(areaNum, 1, categoryNum)
+                                TableTextValueBuilder(areaNum, 1, categoryNum)
                             ],
                           )),
                       Expanded(
@@ -294,7 +293,7 @@ class TableLowerCategory extends StatelessWidget {
                           child: Column(
                             children: [
                               if (isFiveSixCheck)
-                                TableValueTextBuilder(areaNum, 2, categoryNum),
+                                TableTextValueBuilder(areaNum, 2, categoryNum),
                             ],
                           )),
                     ],
@@ -304,7 +303,7 @@ class TableLowerCategory extends StatelessWidget {
                           child: Column(
                             children: [
                               if (isOneTwoCheck)
-                                TableValueTextBuilder(areaNum, 0, categoryNum)
+                                TableTextValueBuilder(areaNum, 0, categoryNum)
                             ],
                           )),
                       Expanded(
@@ -312,7 +311,7 @@ class TableLowerCategory extends StatelessWidget {
                           child: Column(
                             children: [
                               if (isThreeFourCheck || isFiveSixCheck)
-                                TableValueTextBuilder(areaNum, 1, categoryNum),
+                                TableTextValueBuilder(areaNum, 1, categoryNum),
                             ],
                           )),
                     ],
@@ -324,7 +323,7 @@ class TableLowerCategory extends StatelessWidget {
                               if (isOneTwoCheck ||
                                   isThreeFourCheck ||
                                   isFiveSixCheck)
-                                TableValueTextBuilder(areaNum, 1, categoryNum)
+                                TableTextValueBuilder(areaNum, 1, categoryNum)
                             ],
                           )),
                     ],
@@ -335,7 +334,7 @@ class TableLowerCategory extends StatelessWidget {
                       child: Column(
                         children: [
                           if (isOneTwoCheck)
-                            TableValueTextBuilder(areaNum, 0, categoryNum),
+                            TableTextValueBuilder(areaNum, 0, categoryNum),
                         ],
                       ),
                     ),
@@ -344,7 +343,7 @@ class TableLowerCategory extends StatelessWidget {
                       child: Column(
                         children: [
                           if (isThreeFourCheck)
-                            TableValueTextBuilder(areaNum, 1, categoryNum),
+                            TableTextValueBuilder(areaNum, 1, categoryNum),
                         ],
                       ),
                     ),
@@ -353,7 +352,7 @@ class TableLowerCategory extends StatelessWidget {
                         child: Column(
                           children: [
                             if (isFiveSixCheck)
-                              TableValueTextBuilder(areaNum, 2, categoryNum),
+                              TableTextValueBuilder(areaNum, 2, categoryNum),
                           ],
                         )),
                   ]
@@ -365,11 +364,11 @@ class TableLowerCategory extends StatelessWidget {
   }
 }
 
-class TableLowerCategoryTextBuilder extends StatelessWidget {
+class TableTextLowerCategoryBuilder extends StatelessWidget {
   int areaNum;
   int categoryNum;
 
-  TableLowerCategoryTextBuilder(this.areaNum, this.categoryNum);
+  TableTextLowerCategoryBuilder(this.areaNum, this.categoryNum);
 
   @override
   Widget build(BuildContext context) {
@@ -451,12 +450,12 @@ class TableLowerCategoryTextBuilder extends StatelessWidget {
   }
 }
 
-class TableValueTextBuilder extends StatelessWidget {
+class TableTextValueBuilder extends StatelessWidget {
   int areaNum;
   int gradeNum;
   int categoryNum;
 
-  TableValueTextBuilder(this.areaNum, this.gradeNum, this.categoryNum);
+  TableTextValueBuilder(this.areaNum, this.gradeNum, this.categoryNum);
 
   @override
   Widget build(BuildContext context) {
