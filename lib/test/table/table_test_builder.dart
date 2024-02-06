@@ -8,6 +8,16 @@ import 'package:teacher_test/function/text-sorted_combined.dart';
 import 'package:teacher_test/test/test_contents.dart';
 import 'package:teacher_test/test/test_screen.dart';
 
+class TableTextEditing with ChangeNotifier {
+  int subjectNum;
+  TableTextEditing(this.subjectNum);
+
+  late var tableTestTitleEditing = TableTestTitleEditing(subjectNum);
+  late var tableTestCIEditing = TableTestCIEditing(subjectNum);
+  late var tableTestLowerCategoryEditing = TableTestLowerCategoryEditing(subjectNum);
+  late var tableTestValueEditing = TableTestValueEditing(subjectNum);
+}
+
 class TableTestTitleForm extends StatelessWidget {
   int areaNum;
 
@@ -15,8 +25,10 @@ class TableTestTitleForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var formList = Provider.of<TableTestTitleEditing>(context);
+    var tableTextEditing = Provider.of<TableTextEditing>(context);
+    var formList = tableTextEditing.tableTestTitleEditing;
     var tableTitleControllerList = formList.tableTitleControllerList;
+    var tableTitleControllerAnswerCheckList = formList.tableTitleControllerAnswerCheckList;
 
     return Center(
       child: Container(
@@ -38,11 +50,11 @@ class TableTestTitleForm extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (formList.tableTitleControllerAnswerCheckList[areaNum] == 0)
+                  if (tableTitleControllerAnswerCheckList[areaNum] == 0)
                     ColorContainer(Colors.white),
-                  if (formList.tableTitleControllerAnswerCheckList[areaNum] == 1)
+                  if (tableTitleControllerAnswerCheckList[areaNum] == 1)
                     ColorContainer(Colors.green.shade200),
-                  if (formList.tableTitleControllerAnswerCheckList[areaNum] == 2)
+                  if (tableTitleControllerAnswerCheckList[areaNum] == 2)
                     ColorContainer(Colors.red.shade200)
                 ],
               ))
@@ -52,7 +64,7 @@ class TableTestTitleForm extends StatelessWidget {
   }
 }
 
-class TableTestTitleEditing with ChangeNotifier {
+class TableTestTitleEditing {
   int subjectNum;
 
   TableTestTitleEditing(this.subjectNum);
@@ -110,11 +122,13 @@ class TableTestCIFormBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     var routeContents = Provider.of<RouteContents>(context);
     int subjectNum = routeContents.subjectNum;
-    var formList = Provider.of<TableTestCIEditing>(context);
 
+    var tableTextEditing = Provider.of<TableTextEditing>(context);
+    var formList = tableTextEditing.tableTestCIEditing;
     var tableCIControllerListArea = formList.tableCIControllerListArea;
     var tableCIControllerAnswerCheckListArea =
         formList.tableCIControllerAnswerCheckListArea;
+
     var Table22CIIndex = Table22().contentsTable22CIIndex;
     List<String> inputList = Table22CIIndex[subjectNum - 1][areaNum];
 
@@ -155,7 +169,7 @@ class TableTestCIFormBuilder extends StatelessWidget {
   }
 }
 
-class TableTestCIEditing with ChangeNotifier {
+class TableTestCIEditing {
   int subjectNum;
 
   TableTestCIEditing(this.subjectNum);
@@ -207,8 +221,6 @@ class TableTestLowerCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var table22ValueIndex = Table22().contentsTable22ValueIndex;
-    var testChoice = Provider.of<TestChoice>(context);
-    bool isTest = testChoice.isTest;
 
     var gradeChoice = Provider.of<GradeChoice>(context);
     bool isOneTwoCheck = gradeChoice.isOneTwoCheck;
@@ -427,9 +439,9 @@ class TableTestLowerCategoryBuilder extends StatelessWidget {
     var table22ValueIndex = Table22().contentsTable22ValueIndex;
     var table22LowerCategoryIndex = Table22().contentsTable22LowerCategoryIndex;
 
-    var formList = Provider.of<TableTestLowerCategoryEditing>(context);
-    var tableLowerCategoryControllerListArea =
-        formList.tableLowerCategoryControllerListArea;
+    var tableTextEditing = Provider.of<TableTextEditing>(context);
+    var formList = tableTextEditing.tableTestLowerCategoryEditing;
+    var tableLowerCategoryControllerListArea = formList.tableLowerCategoryControllerListArea;
     var tableLowerCategoryControllerAnswerCheckListArea =
         formList.tableLowerCategoryControllerAnswerCheckListArea;
 
@@ -447,6 +459,7 @@ class TableTestLowerCategoryBuilder extends StatelessWidget {
 
     List<String> inputListLowerCategory =
         table22LowerCategoryIndex[subjectNum - 1][areaNum];
+  //Sum of LowerCategory of Area
 
     int categoryIndexNum = 0;
 
@@ -464,6 +477,7 @@ class TableTestLowerCategoryBuilder extends StatelessWidget {
                           categoryIndexNum = i;
                         }
                       }
+                      //Know current categoryNum in Sum of category
 
                       int maxLength = 0;
                       if (maxLength <
@@ -502,7 +516,7 @@ class TableTestLowerCategoryBuilder extends StatelessWidget {
                                               ),
                                               controller:
                                                   tableLowerCategoryControllerListArea[
-                                                      areaNum][categoryNum][i],
+                                                      areaNum][categoryNum][index],
                                               style: TextStyle(fontSize: 13),
                                             ),
                                           ),
@@ -567,7 +581,7 @@ class TableTestLowerCategoryBuilder extends StatelessWidget {
   }
 }
 
-class TableTestLowerCategoryEditing with ChangeNotifier {
+class TableTestLowerCategoryEditing {
   int subjectNum;
 
   TableTestLowerCategoryEditing(this.subjectNum);
@@ -612,7 +626,8 @@ class TableTestValueBuilder extends StatelessWidget {
     var table22ValueIndex = Table22().contentsTable22ValueIndex;
     var table22AreaIndex = Table22().contentsTable22AreaIndex;
 
-    var formList = Provider.of<TableTestValueEditing>(context);
+    var tableTextEditing = Provider.of<TableTextEditing>(context);
+    var formList = tableTextEditing.tableTestValueEditing;
     var tableValueControllerListArea = formList.tableValueControllerListArea;
     var tableValueControllerAnswerCheckListArea =
         formList.tableValueControllerAnswerCheckListArea;
@@ -768,7 +783,7 @@ class TableTestValueBuilder extends StatelessWidget {
   }
 }
 
-class TableTestValueEditing with ChangeNotifier {
+class TableTestValueEditing {
   int subjectNum;
 
   TableTestValueEditing(this.subjectNum);

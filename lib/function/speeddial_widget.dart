@@ -3,8 +3,8 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:provider/provider.dart';
 import 'package:teacher_test/function/about_answer.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
+import 'package:teacher_test/test/table/table_test_builder.dart';
 import 'package:teacher_test/test/test_screen.dart';
-
 
 class MultiFloatButton extends StatelessWidget {
   const MultiFloatButton({super.key});
@@ -16,12 +16,13 @@ class MultiFloatButton extends StatelessWidget {
     bool isTableTest = routeContents.isTableTest;
     bool isAchieveTest = routeContents.isAchieveTest;
 
-    var newTextEditor = Provider.of<AchieveTextEditing>(context);
+    var newAchieveTextEditor = Provider.of<AchieveTextEditing>(context);
+    var newTableTextEditor = Provider.of<TableTextEditing>(context);
 
-    var checkAnswer =
-    CheckAnswer(subjectNum, isTableTest, isAchieveTest, newTextEditor);
-    var deleteAnswer =
-    DeleteAnswer(subjectNum, newTextEditor);
+    var checkAnswer = CheckAnswer(subjectNum, isTableTest, isAchieveTest,
+        newAchieveTextEditor, newTableTextEditor);
+    var deleteAnswer = DeleteAnswer(subjectNum, isTableTest, isAchieveTest,
+        newAchieveTextEditor, newTableTextEditor);
 
     return SpeedDial(
       animatedIcon: AnimatedIcons.menu_close,
@@ -40,7 +41,6 @@ class MultiFloatButton extends StatelessWidget {
           child: const Icon(Icons.delete),
           backgroundColor: Colors.deepPurple.shade100,
           shape: CircleBorder(),
-
         ),
       ],
     );

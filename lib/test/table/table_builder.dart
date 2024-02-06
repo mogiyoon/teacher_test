@@ -51,7 +51,7 @@ class Table extends StatelessWidget {
           children: [
             if (!isTest) ...[
               Center(
-                  child: Text(
+                  child: SelectableText(
                 title,
                 textScaleFactor: 1.2,
               )),

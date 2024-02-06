@@ -115,14 +115,8 @@ class TestScreenWidgetState extends State<TestScreenWidget> {
         ChangeNotifierProvider<AchieveTextEditing>.value(
             value: AchieveTextEditing(subjectNum)),
         //Achieve
-        ChangeNotifierProvider<TableTestTitleEditing>.value(
-            value: TableTestTitleEditing(subjectNum)),
-        ChangeNotifierProvider<TableTestCIEditing>.value(
-            value: TableTestCIEditing(subjectNum)),
-        ChangeNotifierProvider<TableTestLowerCategoryEditing>.value(
-            value: TableTestLowerCategoryEditing(subjectNum)),
-        ChangeNotifierProvider<TableTestValueEditing>.value(
-            value: TableTestValueEditing(subjectNum)),
+        ChangeNotifierProvider<TableTextEditing>.value(
+            value: TableTextEditing(subjectNum)),
         //Table
       ],
       child: Scaffold(
