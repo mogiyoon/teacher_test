@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:collection/collection.dart';
 import 'package:teacher_test/contents/contents.dart';
 import 'package:teacher_test/function/container_widget.dart';
+import 'package:teacher_test/function/gesture_function.dart';
 import 'package:teacher_test/function/text-sorted_combined.dart';
 import 'package:teacher_test/test/test_contents.dart';
 import 'package:teacher_test/test/test_screen.dart';
@@ -68,7 +69,7 @@ class TableTextCIBuilder extends StatelessWidget {
                       itemCount: inputList.length,
                       itemBuilder: (context, index) {
                         return Container(
-                          child: SelectableText(inputList[index]),
+                          child: CopyWithText(inputList[index]),
                         );
                       })))
       ],
@@ -149,17 +150,15 @@ class TableTextLowerCategoryListBuilder extends StatelessWidget {
 }
 
 class TableTextLowerCategory extends StatelessWidget {
-  String title;
+  String category;
   int areaNum;
   int categoryNum;
 
-  TableTextLowerCategory(this.title, this.areaNum, this.categoryNum);
+  TableTextLowerCategory(this.category, this.areaNum, this.categoryNum);
 
   @override
   Widget build(BuildContext context) {
     var table22ValueIndex = Table22().contentsTable22ValueIndex;
-    var testChoice = Provider.of<TestChoice>(context);
-    bool isTest = testChoice.isTest;
 
     var gradeChoice = Provider.of<GradeChoice>(context);
     bool isOneTwoCheck = gradeChoice.isOneTwoCheck;
@@ -236,7 +235,7 @@ class TableTextLowerCategory extends StatelessWidget {
                   Expanded(
                       flex: 2,
                       child: Center(
-                        child: Text(title),
+                        child: Text(category),
                       )),
                   if (standardLowerCategory.length > 1 ||
                       standardLowerCategory[0] != '')
@@ -438,7 +437,7 @@ class TableTextLowerCategoryBuilder extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       if (i < 1)
-                                        SelectableText(inputList[index]),
+                                        CopyWithText(inputList[index]),
                                       if (i >= 1) Text(''),
                                     ],
                                   ),
@@ -538,7 +537,7 @@ class TableTextValueBuilder extends StatelessWidget {
                                     if (i <
                                         inputListValue[categoryItemNum - 1]
                                             .length)
-                                      SelectableText(
+                                      CopyWithText(
                                           inputListValue[categoryItemNum - 1]
                                           [i]),
                                     if (i >=

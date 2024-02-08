@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:teacher_test/contents/contents.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
 import 'package:teacher_test/test/table/table_test_builder.dart';
@@ -285,20 +284,4 @@ class Remove {
   }
 }
 
-class ColorContainer extends StatelessWidget {
-  Color containerColor;
 
-  ColorContainer(this.containerColor);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 25,
-      height: 25,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: containerColor,
-      ),
-    );
-  }
-}

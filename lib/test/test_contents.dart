@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:provider/single_child_widget.dart';
 import 'package:teacher_test/function/text-sorted_combined.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
 import 'package:teacher_test/test/table/table_builder.dart';
@@ -20,46 +19,43 @@ class _ChoiceContentsState extends State<ChoiceContents> {
     bool isTableTest = routeContents.isTableTest;
     bool isAchieveTest = routeContents.isAchieveTest;
 
-    final events = [];
-    bool canScroll = true;
-
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<GradeChoice>.value(value: GradeChoice()),
-        ChangeNotifierProvider<TestChoice>.value(value: TestChoice()),
-      ],
-      child: Column(children: [
-        ExpansionTile(
-          title: Center(child: Text('학년군/과목 선택')),
-          children: [
-            Container(
-              child: Row(
+        providers: [
+          ChangeNotifierProvider<GradeChoice>.value(value: GradeChoice()),
+          ChangeNotifierProvider<TestChoice>.value(value: TestChoice()),
+        ],
+        child: Column(children: [
+          ExpansionTile(
+            title: Center(child: Text('학년군/과목 선택')),
+            children: [
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TestCheckBoxWidget(),
+                    Text('시험'),
+                  ],
+                ),
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TestCheckBoxWidget(),
-                  Text('시험'),
+                  GradeCheckBoxWidget(TextSorterOneTwo(), 1),
+                  GradeCheckBoxWidget(TextSorterThreeFour(), 3),
+                  GradeCheckBoxWidget(TextSorterFiveSix(), 5)
                 ],
-              ),
+              )
+            ],
+          ),
+          Expanded( //TODO 스크롤 중 새로운 터치가 있을 때 InteractiveViewer로 전환 -- 비동기 사용?
+            child: SingleChildScrollView(
+              child: Column(children: [
+                if (isTableTest) TableTestChoiceBuilder(),
+                if (isAchieveTest) AchieveTestChoiceBuilder()
+              ]),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GradeCheckBoxWidget(TextSorterOneTwo(), 1),
-                GradeCheckBoxWidget(TextSorterThreeFour(), 3),
-                GradeCheckBoxWidget(TextSorterFiveSix(), 5)
-              ],
-            )
-          ],
-        ),
-        SingleChildScrollView(child: Expanded(child: Column(
-          children: [
-            if (isTableTest) TableTestChoiceBuilder(),
-            if (isAchieveTest) AchieveTestChoiceBuilder()
-          ],
-        ),),)
-
-      ]),
-    );
+          )
+        ]));
   }
 }
 

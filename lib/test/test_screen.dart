@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:teacher_test/function/setting.dart';
+import 'package:teacher_test/function/widget_control.dart';
 import 'package:teacher_test/main.dart';
 import 'package:teacher_test/function/speeddial_widget.dart';
 import 'package:teacher_test/function/screen_widget.dart';
@@ -54,7 +54,7 @@ class Title extends StatelessWidget {
     var screenSetting = ScreenSetting();
     String tableTitle = screenSetting.subject[routeContents.subjectNum - 1];
 
-    var widgetSetting = Provider.of<WidgetSetting>(context);
+    var widgetSetting = Provider.of<WidgetControl>(context);
     double widgetBigFontSize = widgetSetting.widgetFontSize.bigFontSize;
 
     return Column(
@@ -81,9 +81,6 @@ class TestScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Map<String, Object> args =
         ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
-
-    var widgetSetting = Provider.of<WidgetSetting>(context);
-    double widgetBigFontSize = widgetSetting.widgetFontSize.bigFontSize;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,

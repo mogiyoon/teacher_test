@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:teacher_test/test/table/table_builder.dart';
 import 'package:teacher_test/test/table/table_test_builder.dart';
 import 'package:teacher_test/test/table/table_text_builder.dart';
 
@@ -131,3 +130,20 @@ class _TableTestContainerWithKeyState extends State<TableTestContainerWithKey> {
   }
 }
 
+class ColorContainer extends StatelessWidget {
+  Color containerColor;
+
+  ColorContainer(this.containerColor);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 8,
+      height: 8,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: containerColor,
+      ),
+    );
+  }
+}

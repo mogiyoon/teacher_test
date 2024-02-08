@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teacher_test/function/setting.dart';
+import 'package:teacher_test/function/widget_control.dart';
 import 'test/test_screen.dart';
 import 'function/screen_widget.dart';
 import 'package:provider/provider.dart';
@@ -11,17 +11,18 @@ import 'package:provider/provider.dart';
 //TODO Setting 화면 추가
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<WidgetSetting>.value(
-      value: WidgetSetting(context),
-      child: MaterialApp(
+    return ChangeNotifierProvider<WidgetControl>.value(
+        value: WidgetControl(context),
+        child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Teacher Test',
           theme: ThemeData(
@@ -33,8 +34,7 @@ class MyApp extends StatelessWidget {
             '/TestScreen': (context) => TestScreen(),
           },
           initialRoute: '/Main',
-        ),
-    );
+        ));
   }
 }
 
@@ -48,34 +48,34 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
-    var widgetSetting = Provider.of<WidgetSetting>(context);
+    final double inputUnitHeightValue = MediaQuery.of(context).size.height * 0.01;
+    var widgetSetting = Provider.of<WidgetControl>(context);
+    widgetSetting.widgetFontSize.returnFontSize(inputUnitHeightValue);
     double widgetBigFontSize = widgetSetting.widgetFontSize.bigFontSize;
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title, style: TextStyle(fontSize: widgetBigFontSize),),
+        title: Text(
+          widget.title,
+          style: TextStyle(fontSize: widgetBigFontSize),
+        ),
         centerTitle: true,
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
+        leading: Builder(builder: (BuildContext context) {
+          return IconButton(
               icon: Icon(Icons.menu),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
               },
-              tooltip: '목록'
-            );
-          }
-        ),
+              tooltip: '목록');
+        }),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-          ],
+          children: <Widget>[],
         ),
       ),
       drawer: ChangeNotifierProvider<ScreenSetting>.value(
