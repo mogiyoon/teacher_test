@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:teacher_test/contents/contents.dart';
 import 'package:teacher_test/function/about_answer.dart';
+import 'package:teacher_test/function/setting.dart';
 import 'package:teacher_test/function/text-sorted_combined.dart';
 import 'package:teacher_test/test/test_screen.dart';
 import 'package:teacher_test/test/test_contents.dart';
@@ -32,17 +33,20 @@ class AchieveTestChoiceBuilder extends StatelessWidget {
           if (isOneTwoCheck) ...[
             Center(child: TextSorterOneTwo(),),
             AchieveFormBuilder(
-                (achieve22.contentsAchieve22Index[subjectNum - 1])[0], 0, subjectNum),
+                (achieve22.contentsAchieve22Index[subjectNum - 1])[0], 0,
+                subjectNum),
           ],
           if (isThreeFourCheck) ...[
             Center(child: TextSorterThreeFour(),),
             AchieveFormBuilder(
-                (achieve22.contentsAchieve22Index[subjectNum - 1])[1], 1, subjectNum),
+                (achieve22.contentsAchieve22Index[subjectNum - 1])[1], 1,
+                subjectNum),
           ],
           if (isFiveSixCheck) ...[
             Center(child: TextSorterFiveSix(),),
             AchieveFormBuilder(
-                (achieve22.contentsAchieve22Index[subjectNum - 1])[2], 2, subjectNum),
+                (achieve22.contentsAchieve22Index[subjectNum - 1])[2], 2,
+                subjectNum),
           ]
         ],
         if (!isTest) ...[
@@ -77,22 +81,22 @@ class AchieveTextBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double heightConst = (AchieveList.length).toDouble();
+    var widgetSetting = Provider.of<WidgetSetting>(context);
+    double widgetMediumFontSize = widgetSetting.widgetFontSize.mediumFontSize;
 
-    return Container(
-      height: 50 * (heightConst),
-      child: ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
+    return ListView.builder(
+          shrinkWrap: true,
+          physics: const ScrollPhysics(),
           padding: EdgeInsets.all(30),
           itemCount: AchieveList.length,
           itemBuilder: (context, index) {
             return Container(
               height: 50,
-              child: SelectableText(AchieveList[index]),
+              child: SelectableText(AchieveList[index],
+                style: TextStyle(fontSize: widgetMediumFontSize),),
               //Todo : 눌렀을 때 클립보드에 복사 => 오류찾기에 이용
             );
-          }),
-    );
+          });
   }
 }
 
@@ -100,16 +104,18 @@ class AchieveFormBuilder extends StatelessWidget {
   List<String> AchieveList;
   int grade; // 0: 1~2, 1: 3~4, 2: 5~6
   int subjectNum;
+
   AchieveFormBuilder(this.AchieveList, this.grade, this.subjectNum);
 
   var achieve22 = Achieve22();
-  late int grade12Length = ((achieve22.contentsAchieve22Index[subjectNum - 1])[0]).length;
-  late int grade34Length = ((achieve22.contentsAchieve22Index[subjectNum - 1])[1]).length;
+  late int grade12Length = ((achieve22.contentsAchieve22Index[subjectNum -
+      1])[0]).length;
+  late int grade34Length = ((achieve22.contentsAchieve22Index[subjectNum -
+      1])[1]).length;
   int realIndex = -1;
 
   @override
   Widget build(BuildContext context) {
-    double heightConst = (AchieveList.length).toDouble();
     var formList = Provider.of<AchieveTextEditing>(context);
     var achieveControllerList = formList.achieveControllerList;
     if (grade == 0) realIndex = -1;
@@ -119,7 +125,7 @@ class AchieveFormBuilder extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(5),
       child: ListView.builder(
-        shrinkWrap: true,
+          shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           padding: EdgeInsets.symmetric(horizontal: 30),
           itemCount: AchieveList.length,
@@ -140,11 +146,14 @@ class AchieveFormBuilder extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          if (formList.achieveControllerAnswerCheckList[realIndex] == 0)
+                          if (formList
+                              .achieveControllerAnswerCheckList[realIndex] == 0)
                             ColorContainer(Colors.white),
-                          if (formList.achieveControllerAnswerCheckList[realIndex] == 1)
+                          if (formList
+                              .achieveControllerAnswerCheckList[realIndex] == 1)
                             ColorContainer(Colors.green.shade200),
-                          if (formList.achieveControllerAnswerCheckList[realIndex] == 2)
+                          if (formList
+                              .achieveControllerAnswerCheckList[realIndex] == 2)
                             ColorContainer(Colors.red.shade200)
                         ],
                       ),
@@ -163,12 +172,14 @@ class AchieveFormBuilder extends StatelessWidget {
 
 class AchieveTextEditing with ChangeNotifier {
   int subjectNum;
+
   AchieveTextEditing(this.subjectNum);
 
   var achieve22 = Achieve22();
 
   late List<TextEditingController> achieveControllerList =
-      List.generate(achieve22.contentsAchieve22[subjectNum - 1].length, (i) => TextEditingController());
+  List.generate(achieve22.contentsAchieve22[subjectNum - 1].length, (i) =>
+      TextEditingController());
   late List<int> achieveControllerAnswerCheckList =
-      List.generate(achieve22.contentsAchieve22[subjectNum - 1].length, (i) => 0);
+  List.generate(achieve22.contentsAchieve22[subjectNum - 1].length, (i) => 0);
 }

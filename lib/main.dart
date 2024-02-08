@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teacher_test/function/setting.dart';
 import 'test/test_screen.dart';
 import 'function/screen_widget.dart';
 import 'package:provider/provider.dart';
@@ -18,18 +19,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Teacher Test',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      routes: {
-        '/Main': (context) => MyHomePage(title: '초등임용 헬퍼'),
-        '/TestScreen': (context) => TestScreen(),
-      },
-      initialRoute: '/Main',
+    return ChangeNotifierProvider<WidgetSetting>.value(
+      value: WidgetSetting(context),
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Teacher Test',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          routes: {
+            '/Main': (context) => MyHomePage(title: '초등임용 헬퍼'),
+            '/TestScreen': (context) => TestScreen(),
+          },
+          initialRoute: '/Main',
+        ),
     );
   }
 }
@@ -47,11 +51,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var widgetSetting = Provider.of<WidgetSetting>(context);
+    double widgetBigFontSize = widgetSetting.widgetFontSize.bigFontSize;
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(widget.title, style: TextStyle(fontSize: widgetBigFontSize),),
         centerTitle: true,
         leading: Builder(
           builder: (BuildContext context) {

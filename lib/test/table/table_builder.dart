@@ -9,7 +9,7 @@ import 'package:teacher_test/test/test_screen.dart';
 class TableTestChoiceBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(child: TableListBuilder());
+    return TableListBuilder();
   }
 }
 
@@ -22,7 +22,7 @@ class TableListBuilder extends StatelessWidget {
 
     return ListView.builder(
         shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
+        physics: const ScrollPhysics(),
         itemCount: Table22Area[subjectNum - 1].length,
         itemBuilder: (context, areaNum) {
           return Table(

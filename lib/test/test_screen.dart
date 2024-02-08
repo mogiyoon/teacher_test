@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:teacher_test/function/setting.dart';
 import 'package:teacher_test/main.dart';
 import 'package:teacher_test/function/speeddial_widget.dart';
 import 'package:teacher_test/function/screen_widget.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
 import 'package:teacher_test/test/table/table_test_builder.dart';
 import 'package:teacher_test/test/test_contents.dart';
-import 'package:teacher_test/contents/contents.dart';
 
 class RouteContents with ChangeNotifier {
   int _subjectNum = 0;
@@ -54,10 +54,21 @@ class Title extends StatelessWidget {
     var screenSetting = ScreenSetting();
     String tableTitle = screenSetting.subject[routeContents.subjectNum - 1];
 
+    var widgetSetting = Provider.of<WidgetSetting>(context);
+    double widgetBigFontSize = widgetSetting.widgetFontSize.bigFontSize;
+
     return Column(
       children: [
-        if (routeContents.isTableTest) Text('[' + tableTitle + '] 내용체계표'),
-        if (routeContents.isAchieveTest) Text('[' + tableTitle + '] 교육과정 성취기준'),
+        if (routeContents.isTableTest)
+          Text(
+            '[' + tableTitle + '] 내용체계표',
+            style: TextStyle(fontSize: widgetBigFontSize),
+          ),
+        if (routeContents.isAchieveTest)
+          Text(
+            '[' + tableTitle + '] 교육과정 성취기준',
+            style: TextStyle(fontSize: widgetBigFontSize),
+          ),
       ],
     );
   }
@@ -70,6 +81,9 @@ class TestScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Map<String, Object> args =
         ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
+
+    var widgetSetting = Provider.of<WidgetSetting>(context);
+    double widgetBigFontSize = widgetSetting.widgetFontSize.bigFontSize;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
