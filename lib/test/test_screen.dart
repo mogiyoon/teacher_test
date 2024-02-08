@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:teacher_test/function/widget_control.dart';
+import 'package:teacher_test/setting/setting_screen.dart';
+import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/main.dart';
 import 'package:teacher_test/function/speeddial_widget.dart';
 import 'package:teacher_test/function/screen_widget.dart';
@@ -45,35 +46,6 @@ class RouteContents with ChangeNotifier {
   }
 }
 
-class Title extends StatelessWidget {
-  const Title({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    var routeContents = Provider.of<RouteContents>(context);
-    var screenSetting = ScreenSetting();
-    String tableTitle = screenSetting.subject[routeContents.subjectNum - 1];
-
-    var widgetSetting = Provider.of<WidgetControl>(context);
-    double widgetBigFontSize = widgetSetting.widgetFontSize.bigFontSize;
-
-    return Column(
-      children: [
-        if (routeContents.isTableTest)
-          Text(
-            '[' + tableTitle + '] 내용체계표',
-            style: TextStyle(fontSize: widgetBigFontSize),
-          ),
-        if (routeContents.isAchieveTest)
-          Text(
-            '[' + tableTitle + '] 교육과정 성취기준',
-            style: TextStyle(fontSize: widgetBigFontSize),
-          ),
-      ],
-    );
-  }
-}
-
 class TestScreen extends StatelessWidget {
   const TestScreen({super.key});
 
@@ -99,8 +71,9 @@ class TestScreen extends StatelessWidget {
         child: TestScreenWidget(),
       ),
       routes: {
-        '/Main': (context) => MyHomePage(title: '초등임용 헬퍼'),
+        '/Main': (context) => MyHomePage(),
         '/TestScreen': (context) => TestScreen(),
+        '/SettingScreen': (context) => SettingScreen(),
       },
     );
   }
@@ -145,12 +118,41 @@ class TestScreenWidgetState extends State<TestScreenWidget> {
           }),
         ),
         body: ChoiceContents(),
-        drawer: ChangeNotifierProvider<ScreenSetting>.value(
-          value: ScreenSetting(),
+        drawer: ChangeNotifierProvider<TestSetting>.value(
+          value: TestSetting(),
           child: SubjectDrawer(),
         ),
         floatingActionButton: MultiFloatButton(),
       ),
+    );
+  }
+}
+
+class Title extends StatelessWidget {
+  const Title({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var routeContents = Provider.of<RouteContents>(context);
+    var testSetting = TestSetting();
+    String tableTitle = testSetting.subject[routeContents.subjectNum - 1];
+
+    var widgetSetting = Provider.of<WidgetControl>(context);
+    double widgetBigFontSize = widgetSetting.widgetFontSize.bigFontSize;
+
+    return Column(
+      children: [
+        if (routeContents.isTableTest)
+          Text(
+            '[' + tableTitle + '] 내용체계표',
+            style: TextStyle(fontSize: widgetBigFontSize),
+          ),
+        if (routeContents.isAchieveTest)
+          Text(
+            '[' + tableTitle + '] 교육과정 성취기준',
+            style: TextStyle(fontSize: widgetBigFontSize),
+          ),
+      ],
     );
   }
 }

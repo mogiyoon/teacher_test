@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:teacher_test/contents/contents.dart';
 import 'package:teacher_test/function/container_widget.dart';
 import 'package:teacher_test/function/gesture_function.dart';
-import 'package:teacher_test/function/widget_control.dart';
+import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/function/text-sorted_combined.dart';
 import 'package:teacher_test/test/test_screen.dart';
 import 'package:teacher_test/test/test_contents.dart';
@@ -95,7 +95,7 @@ class AchieveTextBuilder extends StatelessWidget {
               height: 50,
               child: CopyWithText(AchieveList[index],
                   style: TextStyle(fontSize: widgetMediumFontSize))
-              //Todo : 눌렀을 때 클립보드에 복사 => 오류찾기에 이용
+              //Todo : 오류찾기 구현
             );
           });
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ScreenSetting with ChangeNotifier {
+class TestSetting with ChangeNotifier {
   List<String> subject =
   ['국어', '수학', '사회', '과학', '영어', '체육', '미술', '음악', '도덕', '실과', '통합'];
   int _subjectNumber = 0;
@@ -40,7 +40,7 @@ class SubjectDrawer extends StatefulWidget {
 class SubjectDrawerState extends State<SubjectDrawer> {
 
   Widget build(BuildContext context) {
-    var screenSetting = Provider.of<ScreenSetting>(context);
+    var testSetting = Provider.of<TestSetting>(context);
     return Drawer(
         child: ListView(
             padding: EdgeInsets.zero,
@@ -70,10 +70,10 @@ class SubjectDrawerState extends State<SubjectDrawer> {
                 children: [
                   SubjectListBuild(),
                 ],
-                initiallyExpanded: screenSetting.isSubjectTableOpen,
+                initiallyExpanded: testSetting.isSubjectTableOpen,
                 onExpansionChanged: (val){
                   if(val == true) {
-                    screenSetting.tableOpen();
+                    testSetting.tableOpen();
                     setState(() {
                     });
                   }
@@ -85,10 +85,10 @@ class SubjectDrawerState extends State<SubjectDrawer> {
                 children: [
                   SubjectListBuild(),
                 ],
-                initiallyExpanded: screenSetting.subjectAchievOpen,
+                initiallyExpanded: testSetting.subjectAchievOpen,
                 onExpansionChanged: (val) {
                   if (val == true) {
-                    screenSetting.achievOpen();
+                    testSetting.achievOpen();
                     setState(() {
                     });
                   }
@@ -96,6 +96,16 @@ class SubjectDrawerState extends State<SubjectDrawer> {
               ),
               ListTile(
                   title: Text('총론')
+              ),
+              ListTile(
+                  title: Text('설정'),
+                onTap: () async {
+                  await Navigator.pushNamed(
+                    context,
+                    '/SettingScreen',
+                  );
+                },
+
               ),
             ]
         )
@@ -111,13 +121,13 @@ class SubjectListBuild extends StatefulWidget {
 class SubjectListBuildState extends State<SubjectListBuild> {
 
   Widget build(BuildContext context) {
-    var screenSetting = Provider.of<ScreenSetting>(context);
+    var testSetting = Provider.of<TestSetting>(context);
     return ListView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
         itemExtent: 28,
-        itemCount: screenSetting.subject.length,
+        itemCount: testSetting.subject.length,
         itemBuilder: (BuildContext context, int index) {
           return Row(
             key: ValueKey((index+1).toString()),
@@ -125,18 +135,18 @@ class SubjectListBuildState extends State<SubjectListBuild> {
               Container(width: 40),
               GestureDetector(
                 child: Text(
-                  screenSetting.subject[index],
+                  testSetting.subject[index],
                   style: TextStyle(fontSize: 15),
                 ),
                 onTap: () async {
-                  screenSetting.subjectNumber = index + 1;
+                  testSetting.subjectNumber = index + 1;
                   await Navigator.pushNamed(
                     context,
                     '/TestScreen',
                     arguments: {
-                      'arg1' : screenSetting.subjectNumber,
-                      'arg2' : screenSetting.isSubjectTableOpen,
-                      'arg3' : screenSetting.subjectAchievOpen,
+                      'arg1' : testSetting.subjectNumber,
+                      'arg2' : testSetting.isSubjectTableOpen,
+                      'arg3' : testSetting.subjectAchievOpen,
                     },
                   );
                 },

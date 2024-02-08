@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:teacher_test/function/widget_control.dart';
+import 'package:teacher_test/setting/widget_control.dart';
 
 class CopyWithText extends StatelessWidget {
   String inputString;

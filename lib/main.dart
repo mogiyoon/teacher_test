@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:teacher_test/function/widget_control.dart';
+import 'package:teacher_test/setting/setting_screen.dart';
+import 'package:teacher_test/setting/widget_control.dart';
 import 'test/test_screen.dart';
 import 'function/screen_widget.dart';
 import 'package:provider/provider.dart';
 
-//TODO 휴대폰 사용시 글자크기 축소
-//TODO 두 손가락으로 확대 축소
 //TODO 구글/애플 계정 연동 및 구독 시스템
-//TODO 단축키
-//TODO Setting 화면 추가
 
 void main() {
   runApp(MyApp());
@@ -30,8 +27,9 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           routes: {
-            '/Main': (context) => MyHomePage(title: '초등임용 헬퍼'),
+            '/Main': (context) => MyHomePage(),
             '/TestScreen': (context) => TestScreen(),
+            '/SettingScreen': (context) => SettingScreen(),
           },
           initialRoute: '/Main',
         ));
@@ -39,9 +37,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -59,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(
-          widget.title,
+          '초등임용 헬퍼',
           style: TextStyle(fontSize: widgetBigFontSize),
         ),
         centerTitle: true,
@@ -78,8 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[],
         ),
       ),
-      drawer: ChangeNotifierProvider<ScreenSetting>.value(
-        value: ScreenSetting(),
+      drawer: ChangeNotifierProvider<TestSetting>.value(
+        value: TestSetting(),
         child: SubjectDrawer(),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
