@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:collection/collection.dart';
 import 'package:teacher_test/contents/contents.dart';
-import 'package:teacher_test/function/container_widget.dart';
-import 'package:teacher_test/function/gesture_function.dart';
+import 'package:teacher_test/function/spatial_widget.dart';
+import 'package:teacher_test/function/text_widget.dart';
 import 'package:teacher_test/function/text-sorted_combined.dart';
 import 'package:teacher_test/test/test_contents.dart';
 import 'package:teacher_test/test/test_screen.dart';
@@ -35,7 +35,7 @@ class TableTextCentralIdeaState extends State<TableTextCentralIdea> {
             flex: 1,
             child: TableTextContainerWithKey(
               widget.areaNum,
-              child: Text('핵심 아이디어'),
+              child: SizedText('핵심 아이디어'),
             ),
           ),
           Expanded(flex: 3, child: TableTextCIBuilder(widget.areaNum))
@@ -87,7 +87,7 @@ class TableTextCategory extends StatelessWidget {
           Expanded(
             flex: 1,
             child: ContainerWithBorder(
-              child: Text('범주'),
+              child: SizedText('범주'),
             ),
           ),
           Expanded(
@@ -98,7 +98,7 @@ class TableTextCategory extends StatelessWidget {
                     Expanded(
                         flex: 1,
                         child: ContainerWithBorder(
-                          child: Text('내용 요소'),
+                          child: SizedText('내용 요소'),
                         )),
                     Expanded(
                         flex: 1,
@@ -235,7 +235,7 @@ class TableTextLowerCategory extends StatelessWidget {
                   Expanded(
                       flex: 2,
                       child: Center(
-                        child: Text(category),
+                        child: SizedText(category),
                       )),
                   if (standardLowerCategory.length > 1 ||
                       standardLowerCategory[0] != '')
@@ -438,7 +438,7 @@ class TableTextLowerCategoryBuilder extends StatelessWidget {
                                     children: [
                                       if (i < 1)
                                         CopyWithText(inputList[index]),
-                                      if (i >= 1) Text(''),
+                                      if (i >= 1) SizedText(''),
                                     ],
                                   ),
                                 );
@@ -543,7 +543,7 @@ class TableTextValueBuilder extends StatelessWidget {
                                     if (i >=
                                         inputListValue[categoryItemNum - 1]
                                             .length)
-                                      Text('')
+                                      SizedText('')
                                   ],
                                 ),
                               );

@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:teacher_test/function/screen_widget.dart';
 import 'package:teacher_test/main.dart';
+import 'package:teacher_test/setting/setting_widget.dart';
 import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/test/test_screen.dart';
 
 //TODO 단축키
+//TODO Setting 저장
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Teacher Test',
@@ -71,8 +72,14 @@ class SettingScreenBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var widgetControl = Provider.of<WidgetControl>(context);
+
     return Column(
-      children: [],
+      children: [
+        ExampleText(),
+        FontSizeSlider(),
+        SpaceSwitchWidget(),
+      ],
     );
   }
 }

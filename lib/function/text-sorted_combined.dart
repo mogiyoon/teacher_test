@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:teacher_test/function/text_widget.dart';
 import 'package:teacher_test/test/test_screen.dart';
 
 
@@ -16,9 +17,9 @@ class TextSorterOneTwo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         if(subjectNum != 11)
-          Text('1~2학년군'),
+          SizedText('1~2학년군'),
         if(subjectNum == 11)
-          Text('바른 생활')
+          SizedText('바른 생활')
       ],
     );
   }
@@ -37,9 +38,9 @@ class TextSorterThreeFour extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         if(subjectNum != 11)
-          Text('3~4학년군'),
+          SizedText('3~4학년군'),
         if(subjectNum == 11)
-          Text('슬기로운 생활')
+          SizedText('슬기로운 생활')
       ],
     );
   }
@@ -58,9 +59,9 @@ class TextSorterFiveSix extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         if(subjectNum != 11)
-          Text('5~6학년군'),
+          SizedText('5~6학년군'),
         if(subjectNum == 11)
-          Text('즐거운 생활')
+          SizedText('즐거운 생활')
       ],
     );
   }

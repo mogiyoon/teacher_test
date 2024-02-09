@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:provider/provider.dart';
 import 'package:teacher_test/function/answer_checker.dart';
+import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
 import 'package:teacher_test/test/table/table_test_builder.dart';
 import 'package:teacher_test/test/test_screen.dart';
@@ -12,17 +13,14 @@ class MultiFloatButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var routeContents = Provider.of<RouteContents>(context);
-    int subjectNum = routeContents.subjectNum;
-    bool isTableTest = routeContents.isTableTest;
-    bool isAchieveTest = routeContents.isAchieveTest;
-
     var newAchieveTextEditor = Provider.of<AchieveTextEditing>(context);
     var newTableTextEditor = Provider.of<TableTextEditing>(context);
+    var widgetControl = Provider.of<WidgetControl>(context);
 
-    var checkAnswer = CheckAnswer(subjectNum, isTableTest, isAchieveTest,
-        newAchieveTextEditor, newTableTextEditor);
-    var deleteAnswer = DeleteAnswer(subjectNum, isTableTest, isAchieveTest,
-        newAchieveTextEditor, newTableTextEditor);
+    var checkAnswer = CheckAnswer(
+        routeContents, newTableTextEditor, newAchieveTextEditor, widgetControl);
+    var deleteAnswer = DeleteAnswer(
+        routeContents, newTableTextEditor, newAchieveTextEditor, widgetControl);
 
     return SpeedDial(
       animatedIcon: AnimatedIcons.menu_close,

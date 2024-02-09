@@ -1,23 +1,33 @@
+import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import 'package:teacher_test/contents/contents.dart';
+import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
 import 'package:teacher_test/test/table/table_test_builder.dart';
+import 'package:teacher_test/test/test_screen.dart';
 
 class CheckAnswer {
+  RouteContents routeContents;
   AchieveTextEditing newAchieveTextEditor;
   TableTextEditing newTableTextEditor;
-  int subjectNum;
-  bool isTableTest;
-  bool isAchieveTest;
+  WidgetControl widgetControl;
+  CheckAnswer(this.routeContents, this.newTableTextEditor,
+      this.newAchieveTextEditor, this.widgetControl);
 
-  CheckAnswer(this.subjectNum, this.isTableTest, this.isAchieveTest,
-      this.newAchieveTextEditor, this.newTableTextEditor);
+  late int subjectNum = routeContents.subjectNum;
+  late bool isTableTest = routeContents.isTableTest;
+  late bool isAchieveTest = routeContents.isAchieveTest;
+
+  late bool isIncludeSpace = widgetControl.spaceSwitch.isIncludeSpace;
 
   void checkAnswer() {
     if (isTableTest) {
-      TableCheckAnswer(subjectNum, newTableTextEditor).tableCheckAnswer();
+      TableCheckAnswer(subjectNum, newTableTextEditor, isIncludeSpace)
+          .tableCheckAnswer();
       newTableTextEditor.notifyListeners();
     } else if (isAchieveTest) {
-      AchieveCheckAnswer(subjectNum, newAchieveTextEditor).achieveCheckAnswer();
+      AchieveCheckAnswer(subjectNum, newAchieveTextEditor, isIncludeSpace)
+          .achieveCheckAnswer();
       newAchieveTextEditor.notifyListeners();
     }
   }
@@ -26,16 +36,17 @@ class CheckAnswer {
 class AchieveCheckAnswer {
   int subjectNum;
   AchieveTextEditing newTextEditor;
+  bool isIncludeSpace;
 
-  AchieveCheckAnswer(this.subjectNum, this.newTextEditor);
+  AchieveCheckAnswer(this.subjectNum, this.newTextEditor, this.isIncludeSpace);
 
   var achieve22 = Achieve22();
-  late List<String> achieveOneTwo =
-      Remove().spaceList((achieve22.contentsAchieve22Index[subjectNum - 1])[0]);
-  late List<String> achieveThreeFour =
-      Remove().spaceList((achieve22.contentsAchieve22Index[subjectNum - 1])[1]);
-  late List<String> achieveFiveSix =
-      Remove().spaceList((achieve22.contentsAchieve22Index[subjectNum - 1])[2]);
+  late List<String> achieveOneTwo = Remove(isIncludeSpace)
+      .spaceList((achieve22.contentsAchieve22Index[subjectNum - 1])[0]);
+  late List<String> achieveThreeFour = Remove(isIncludeSpace)
+      .spaceList((achieve22.contentsAchieve22Index[subjectNum - 1])[1]);
+  late List<String> achieveFiveSix = Remove(isIncludeSpace)
+      .spaceList((achieve22.contentsAchieve22Index[subjectNum - 1])[2]);
 
   late List<List<String>> achieveIndex = [
     achieveOneTwo,
@@ -60,7 +71,7 @@ class AchieveCheckAnswer {
 
   void achieveCheckShowCorrect(int i, int j) {
     String removeSpaceText =
-        Remove().space(newTextEditor.achieveControllerList[i].text);
+        Remove(isIncludeSpace).space(newTextEditor.achieveControllerList[i].text);
     // j=0 : 1~2, j=1 : 3~4, j=2 : 5~6
     if ((achieveIndex[j]).contains(removeSpaceText)) {
       newTextEditor.achieveControllerAnswerCheckList[i] = 1;
@@ -75,8 +86,9 @@ class AchieveCheckAnswer {
 class TableCheckAnswer {
   int subjectNum;
   TableTextEditing newTextEditor;
+  bool isIncludeSpace;
 
-  TableCheckAnswer(this.subjectNum, this.newTextEditor);
+  TableCheckAnswer(this.subjectNum, this.newTextEditor, this.isIncludeSpace);
 
   var table22 = Table22();
   late var table22Area = table22.contentsTable22Area;
@@ -106,8 +118,8 @@ class TableCheckAnswer {
         newTextEditor.tableTestTitleEditing.tableTitleControllerList;
 
     for (int i = 0; i < inputString.length; i++) {
-      if (Remove().space(inputString[i].text) ==
-          Remove().space(table22Area[subjectNum - 1][i])) {
+      if (Remove(isIncludeSpace).space(inputString[i].text) ==
+          Remove(isIncludeSpace).space(table22Area[subjectNum - 1][i])) {
         newTextEditor
             .tableTestTitleEditing.tableTitleControllerAnswerCheckList[i] = 1;
       } else if (newTextEditor
@@ -128,8 +140,9 @@ class TableCheckAnswer {
 
     for (int areaNum = 0; areaNum < inputString.length; areaNum++) {
       for (int i = 0; i < inputString[areaNum].length; i++) {
-        String removeSpaceText = Remove().space(inputString[areaNum][i].text);
-        List<String> removeSpaceList = Remove()
+        String removeSpaceText =
+            Remove(isIncludeSpace).space(inputString[areaNum][i].text);
+        List<String> removeSpaceList = Remove(isIncludeSpace)
             .spaceList(table22.contentsTable22CIIndex[subjectNum - 1][areaNum]);
 
         if (removeSpaceList.contains(removeSpaceText)) {
@@ -156,8 +169,8 @@ class TableCheckAnswer {
           categoryNum++) {
         for (int i = 0; i < inputString[areaNum][categoryNum].length; i++) {
           String removeSpaceText =
-              Remove().space(inputString[areaNum][categoryNum][i].text);
-          String removeSpaceAnswer = Remove().space(
+              Remove(isIncludeSpace).space(inputString[areaNum][categoryNum][i].text);
+          String removeSpaceAnswer = Remove(isIncludeSpace).space(
               contentsTable22AreaIndex[subjectNum - 1][areaNum][categoryNum]
                   [i]);
 
@@ -191,9 +204,9 @@ class TableCheckAnswer {
           for (int i = 0;
               i < inputString[gradeNum][areaNum][categoryItemNum].length;
               i++) {
-            String removeSpaceText = Remove()
+            String removeSpaceText = Remove(isIncludeSpace)
                 .space(inputString[gradeNum][areaNum][categoryItemNum][i].text);
-            List<String> removeSpaceList = Remove().spaceList(
+            List<String> removeSpaceList = Remove(isIncludeSpace).spaceList(
                 contentsTable22ValueIndex[subjectNum - 1][gradeNum][areaNum]
                     [categoryItemNum]);
 
@@ -218,18 +231,20 @@ class TableCheckAnswer {
 }
 
 class DeleteAnswer {
+  RouteContents routeContents;
   AchieveTextEditing newAchieveTextEditor;
   TableTextEditing newTableTextEditor;
-  int subjectNum;
-  bool isTableTest;
-  bool isAchieveTest;
+  WidgetControl widgetControl;
+  DeleteAnswer(this.routeContents, this.newTableTextEditor,
+      this.newAchieveTextEditor, this.widgetControl);
 
-  DeleteAnswer(this.subjectNum, this.isTableTest, this.isAchieveTest,
-      this.newAchieveTextEditor, this.newTableTextEditor);
+  late int subjectNum = routeContents.subjectNum;
+  late bool isTableTest = routeContents.isTableTest;
+  late bool isAchieveTest = routeContents.isAchieveTest;
 
   void deleteAnswer() {
     if (isTableTest) {
-      TableCheckAnswer(subjectNum, newTableTextEditor).tableCheckAnswer();
+      TableDeleteAnswer(subjectNum, newTableTextEditor).tableDeleteAnswer();
     } else if (isAchieveTest) {
       AchieveDeleteAnswer(subjectNum, newAchieveTextEditor)
           .achieveDeleteAnswer();
@@ -257,31 +272,43 @@ class AchieveDeleteAnswer {
 }
 
 class TableDeleteAnswer {
+  //TODO DeleteAnswer 작업
   int subjectNum;
   TableTextEditing newTextEditor;
 
   TableDeleteAnswer(this.subjectNum, this.newTextEditor);
 
-  var achieve22 = Achieve22();
+  var table22 = Achieve22();
 
-  void achieveDeleteAnswer() {
+  void tableDeleteAnswer() {
     newTextEditor.notifyListeners();
   }
 }
 
 class Remove {
+  bool isIncludeSpace;
+
+  Remove(this.isIncludeSpace);
+
   List<String> spaceList(List<String> listString) {
     List<String> otherListString = listString;
-    for (int i = 0; i < listString.length; i++) {
-      otherListString[i] = listString[i].replaceAll(' ', '');
+    if (isIncludeSpace) {
+      return otherListString;
+    } else {
+      for (int i = 0; i < listString.length; i++) {
+        otherListString[i] = listString[i].replaceAll(' ', '');
+      }
+      return otherListString;
     }
-    return otherListString;
   }
 
   String space(String inputString) {
-    String otherString = inputString.replaceAll(' ', '');
-    return otherString;
+    String otherString = inputString;
+    if (isIncludeSpace) {
+      return otherString;
+    } else {
+      String otherString = inputString.replaceAll(' ', '');
+      return otherString;
+    }
   }
 }
-
-

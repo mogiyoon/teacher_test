@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:teacher_test/contents/contents.dart';
-import 'package:teacher_test/function/container_widget.dart';
-import 'package:teacher_test/function/gesture_function.dart';
+import 'package:teacher_test/function/spatial_widget.dart';
+import 'package:teacher_test/function/text_widget.dart';
 import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/function/text-sorted_combined.dart';
 import 'package:teacher_test/test/test_screen.dart';
@@ -83,7 +83,6 @@ class AchieveTextBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var widgetSetting = Provider.of<WidgetControl>(context);
-    double widgetMediumFontSize = widgetSetting.widgetFontSize.mediumFontSize;
 
     return ListView.builder(
           shrinkWrap: true,
@@ -93,8 +92,7 @@ class AchieveTextBuilder extends StatelessWidget {
           itemBuilder: (context, index) {
             return Container(
               height: 50,
-              child: CopyWithText(AchieveList[index],
-                  style: TextStyle(fontSize: widgetMediumFontSize))
+              child: CopyWithText(AchieveList[index])
               //Todo : 오류찾기 구현
             );
           });

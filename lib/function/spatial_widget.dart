@@ -36,7 +36,8 @@ class TableTextContainerWithKey extends StatefulWidget {
       {this.child, this.width, this.constraints, super.key});
 
   @override
-  State<TableTextContainerWithKey> createState() => _TableTextContainerWithKeyState();
+  State<TableTextContainerWithKey> createState() =>
+      _TableTextContainerWithKeyState();
 }
 
 class _TableTextContainerWithKeyState extends State<TableTextContainerWithKey> {
@@ -88,12 +89,13 @@ class TableTestContainerWithKey extends StatefulWidget {
       {this.child, this.width, this.constraints, super.key});
 
   @override
-  State<TableTestContainerWithKey> createState() => _TableTestContainerWithKeyState();
+  State<TableTestContainerWithKey> createState() =>
+      _TableTestContainerWithKeyState();
 }
 
 class _TableTestContainerWithKeyState extends State<TableTestContainerWithKey> {
   late TableTestCentralIdeaState? CIWidget =
-  context.findAncestorStateOfType<TableTestCentralIdeaState>();
+      context.findAncestorStateOfType<TableTestCentralIdeaState>();
   late GlobalKey CIKey =
       CIWidget?.centralIdeaTestKeyList[widget.areaNum] ?? GlobalKey();
   double? sizeHeight;
@@ -101,7 +103,7 @@ class _TableTestContainerWithKeyState extends State<TableTestContainerWithKey> {
   double? _getSizeHeight() {
     if (CIKey != null) {
       RenderBox renderBox =
-      CIKey.currentContext!.findRenderObject() as RenderBox;
+          CIKey.currentContext!.findRenderObject() as RenderBox;
       sizeHeight = renderBox.size.height;
       return sizeHeight;
     }
@@ -145,5 +147,21 @@ class ColorContainer extends StatelessWidget {
         color: containerColor,
       ),
     );
+  }
+}
+
+class SettingRow extends StatelessWidget {
+  Widget child1;
+  Widget child2;
+
+  SettingRow(this.child1, this.child2, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(children: [
+      Flexible(flex: 1, child: Center(child: child1)),
+      Flexible(flex: 2, child: Container()),
+      Flexible(flex: 1, child: Center(child: child2))
+    ]);
   }
 }

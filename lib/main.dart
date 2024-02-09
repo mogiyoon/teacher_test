@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<WidgetControl>.value(
-        value: WidgetControl(context),
+    return ChangeNotifierProvider(
+        create: (context) => WidgetControl(),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Teacher Test',
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             '/TestScreen': (context) => TestScreen(),
             '/SettingScreen': (context) => SettingScreen(),
           },
-          initialRoute: '/Main',
+          home: MyHomePage(),
         ));
   }
 }
