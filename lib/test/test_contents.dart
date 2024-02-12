@@ -28,15 +28,13 @@ class _ChoiceContentsState extends State<ChoiceContents> {
           ExpansionTile(
             title: Center(child: Text('학년군/과목 선택')),
             children: [
-              Container(
-                child: Row(
+              Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TestCheckBoxWidget(),
                     Text('시험'),
                   ],
                 ),
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

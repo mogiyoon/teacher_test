@@ -82,8 +82,6 @@ class AchieveTextBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var widgetSetting = Provider.of<WidgetControl>(context);
-
     return ListView.builder(
           shrinkWrap: true,
           physics: const ScrollPhysics(),

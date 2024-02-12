@@ -142,16 +142,8 @@ class Title extends StatelessWidget {
 
     return Column(
       children: [
-        if (routeContents.isTableTest)
-          Text(
-            '[' + tableTitle + '] 내용체계표',
-            style: TextStyle(fontSize: widgetBigFontSize),
-          ),
-        if (routeContents.isAchieveTest)
-          Text(
-            '[' + tableTitle + '] 교육과정 성취기준',
-            style: TextStyle(fontSize: widgetBigFontSize),
-          ),
+        if (routeContents.isTableTest) Text('[' + tableTitle + '] 내용체계표'),
+        if (routeContents.isAchieveTest) Text('[' + tableTitle + '] 교육과정 성취기준'),
       ],
     );
   }

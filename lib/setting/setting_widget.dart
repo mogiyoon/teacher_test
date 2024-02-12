@@ -81,7 +81,10 @@ class FontSizeSlider extends StatelessWidget {
           divisions: 9,
           onChanged: (double value) {
             widgetControl.widgetFontSize.adjustSize = value / 5;
-            widgetControl.notifyListeners();
+            widgetControl.widgetChanged();
+          },
+          onChangeEnd: (double value) {
+            widgetControl.widgetSave();
           },
         ));
   }
@@ -101,7 +104,8 @@ class SpaceSwitchWidget extends StatelessWidget {
             value: spaceSwitch,
             onChanged: (value) {
               widgetControl.spaceSwitch.isIncludeSpace = value;
-              widgetControl.notifyListeners();
+              widgetControl.widgetChanged();
+              widgetControl.widgetSave();
             }));
   }
 }

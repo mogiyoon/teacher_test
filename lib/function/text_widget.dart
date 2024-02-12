@@ -20,11 +20,10 @@ class CopyWithText extends StatelessWidget {
         widgetControl.clipBoard.copyString = inputString;
         await Clipboard.setData(ClipboardData(text: inputString));
       },
-      child: Container(
-          child: Text(
+      child: Text(
         inputString,
         style: TextStyle(fontSize: controlledMediumFontSize),
-      )),
+      ),
     );
   }
 }

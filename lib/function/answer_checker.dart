@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 import 'package:teacher_test/contents/contents.dart';
 import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
@@ -11,6 +9,7 @@ class CheckAnswer {
   AchieveTextEditing newAchieveTextEditor;
   TableTextEditing newTableTextEditor;
   WidgetControl widgetControl;
+
   CheckAnswer(this.routeContents, this.newTableTextEditor,
       this.newAchieveTextEditor, this.widgetControl);
 
@@ -70,8 +69,8 @@ class AchieveCheckAnswer {
   }
 
   void achieveCheckShowCorrect(int i, int j) {
-    String removeSpaceText =
-        Remove(isIncludeSpace).space(newTextEditor.achieveControllerList[i].text);
+    String removeSpaceText = Remove(isIncludeSpace)
+        .space(newTextEditor.achieveControllerList[i].text);
     // j=0 : 1~2, j=1 : 3~4, j=2 : 5~6
     if ((achieveIndex[j]).contains(removeSpaceText)) {
       newTextEditor.achieveControllerAnswerCheckList[i] = 1;
@@ -168,8 +167,8 @@ class TableCheckAnswer {
           categoryNum < inputString[areaNum].length;
           categoryNum++) {
         for (int i = 0; i < inputString[areaNum][categoryNum].length; i++) {
-          String removeSpaceText =
-              Remove(isIncludeSpace).space(inputString[areaNum][categoryNum][i].text);
+          String removeSpaceText = Remove(isIncludeSpace)
+              .space(inputString[areaNum][categoryNum][i].text);
           String removeSpaceAnswer = Remove(isIncludeSpace).space(
               contentsTable22AreaIndex[subjectNum - 1][areaNum][categoryNum]
                   [i]);
@@ -235,6 +234,7 @@ class DeleteAnswer {
   AchieveTextEditing newAchieveTextEditor;
   TableTextEditing newTableTextEditor;
   WidgetControl widgetControl;
+
   DeleteAnswer(this.routeContents, this.newTableTextEditor,
       this.newAchieveTextEditor, this.widgetControl);
 
@@ -272,7 +272,6 @@ class AchieveDeleteAnswer {
 }
 
 class TableDeleteAnswer {
-  //TODO DeleteAnswer 작업
   int subjectNum;
   TableTextEditing newTextEditor;
 
@@ -281,7 +280,83 @@ class TableDeleteAnswer {
   var table22 = Achieve22();
 
   void tableDeleteAnswer() {
+    tableTitleDeleteAnswer();
+    tableCIDeleteAnswer();
+    tableLowerCategoryDeleteAnswer();
+    tableValueDeleteAnswer();
     newTextEditor.notifyListeners();
+  }
+
+  void tableTitleDeleteAnswer() {
+    var inputTitleString =
+        newTextEditor.tableTestTitleEditing.tableTitleControllerList;
+
+    for (int i = 0; i < inputTitleString.length; i++) {
+      inputTitleString[i].text = '';
+      newTextEditor
+          .tableTestTitleEditing.tableTitleControllerAnswerCheckList[i] = 0;
+    }
+  }
+
+  void tableCIDeleteAnswer() {
+    var inputCIString =
+        newTextEditor.tableTestCIEditing.tableCIControllerListArea;
+
+    for (int areaNum = 0; areaNum < inputCIString.length; areaNum++) {
+      for (int i = 0; i < inputCIString[areaNum].length; i++) {
+        inputCIString[areaNum][i].text = '';
+        newTextEditor.tableTestCIEditing
+            .tableCIControllerAnswerCheckListArea[areaNum][i] = 0;
+      }
+    }
+  }
+
+  void tableLowerCategoryDeleteAnswer() {
+    var inputLowerCategoryString = newTextEditor
+        .tableTestLowerCategoryEditing.tableLowerCategoryControllerListArea;
+
+    for (int areaNum = 0;
+        areaNum < inputLowerCategoryString.length;
+        areaNum++) {
+      for (int categoryNum = 0;
+          categoryNum < inputLowerCategoryString[areaNum].length;
+          categoryNum++) {
+        for (int i = 0;
+            i < inputLowerCategoryString[areaNum][categoryNum].length;
+            i++) {
+          inputLowerCategoryString[areaNum][categoryNum][i].text = '';
+
+          newTextEditor.tableTestLowerCategoryEditing
+                  .tableLowerCategoryControllerAnswerCheckListArea[areaNum]
+              [categoryNum][i] = 0;
+        }
+      }
+    }
+  }
+
+  void tableValueDeleteAnswer() {
+    var inputValueString =
+        newTextEditor.tableTestValueEditing.tableValueControllerListArea;
+
+    for (int gradeNum = 0; gradeNum < inputValueString.length; gradeNum++) {
+      for (int areaNum = 0;
+          areaNum < inputValueString[gradeNum].length;
+          areaNum++) {
+        for (int categoryItemNum = 0;
+            categoryItemNum < inputValueString[gradeNum][areaNum].length;
+            categoryItemNum++) {
+          for (int i = 0;
+              i < inputValueString[gradeNum][areaNum][categoryItemNum].length;
+              i++) {
+            inputValueString[gradeNum][areaNum][categoryItemNum][i].text = '';
+
+            newTextEditor.tableTestValueEditing
+                    .tableValueControllerAnswerCheckListArea[gradeNum][areaNum]
+                [categoryItemNum][i] = 0;
+          }
+        }
+      }
+    }
   }
 }
 

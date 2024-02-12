@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:teacher_test/db/setting_db.dart';
 
 class WidgetControl with ChangeNotifier {
   late var widgetFontSize = WidgetFontSize();
   late var clipBoard = ClipBoard();
   late var spaceSwitch = SpaceSwitch();
+
+  void widgetChanged() {
+    notifyListeners();
+  }
+
+  void widgetSave() {
+    late double adjustSize = widgetFontSize.adjustSize;
+    late bool isIncludeSpace = spaceSwitch.isIncludeSpace;
+
+    late var saveSetting = SaveSetting(id: 0, adjustSize: adjustSize, isIncludeSpace: isIncludeSpace);
+    SettingDB.deleteSaveSetting(0);
+    SettingDB.insertSaveSetting(saveSetting);
+  }
 }
 
 class WidgetFontSize {
-
   double adjustSize = 1;
 
   double unitHeightValue = 1;
@@ -38,11 +50,4 @@ class SpaceSwitch {
   bool isIncludeSpace = false;
 }
 
-class SaveSetting {
-
-}
-
-class SavePrimaryInformation {
-
-}
-
+class SavePrimaryInformation {}

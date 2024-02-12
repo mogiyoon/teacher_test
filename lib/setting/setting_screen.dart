@@ -7,7 +7,6 @@ import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/test/test_screen.dart';
 
 //TODO 단축키
-//TODO Setting 저장
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -47,7 +46,7 @@ class _SettingScreenWidgetState extends State<SettingScreenWidget> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('설정', style: TextStyle(fontSize: widgetBigFontSize)),
+        title: Text('설정'),
         centerTitle: true,
         leading: Builder(builder: (BuildContext context) {
           return IconButton(

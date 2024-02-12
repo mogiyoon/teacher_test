@@ -159,9 +159,9 @@ class SettingRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      Flexible(flex: 1, child: Center(child: child1)),
+      Flexible(flex: 3, child: Center(child: child1)),
       Flexible(flex: 2, child: Container()),
-      Flexible(flex: 1, child: Center(child: child2))
+      Flexible(flex: 4, child: Center(child: child2))
     ]);
   }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:collection/collection.dart';
 import 'package:teacher_test/contents/contents.dart';
-import 'package:teacher_test/function/answer_checker.dart';
 import 'package:teacher_test/function/spatial_widget.dart';
+import 'package:teacher_test/function/text_widget.dart';
 import 'package:teacher_test/test/test_contents.dart';
 import 'package:teacher_test/test/test_screen.dart';
 
@@ -102,7 +102,7 @@ class TableTestCentralIdeaState extends State<TableTestCentralIdea> {
             flex: 1,
             child: TableTestContainerWithKey(
               widget.areaNum,
-              child: Text('핵심 아이디어'),
+              child: SizedText('핵심 아이디어'),
             ),
           ),
           Expanded(flex: 3, child: TableTestCIFormBuilder(widget.areaNum))
@@ -296,7 +296,7 @@ class TableTestLowerCategory extends StatelessWidget {
                   Expanded(
                       flex: 2,
                       child: Center(
-                        child: Text(title),
+                        child: SizedText(title),
                       )),
                   if (standardLowerCategory.length > 1 ||
                       standardLowerCategory[0] != '')
