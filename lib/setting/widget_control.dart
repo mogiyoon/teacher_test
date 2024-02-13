@@ -5,6 +5,7 @@ class WidgetControl with ChangeNotifier {
   late var widgetFontSize = WidgetFontSize();
   late var clipBoard = ClipBoard();
   late var spaceSwitch = SpaceSwitch();
+  late String routeName = '/Main';
 
   void widgetChanged() {
     notifyListeners();

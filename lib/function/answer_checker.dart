@@ -1,33 +1,45 @@
 import 'package:teacher_test/contents/contents.dart';
+import 'package:teacher_test/contents/introduction_contents.dart';
 import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
+import 'package:teacher_test/test/education_introduction/introduction_builder.dart';
 import 'package:teacher_test/test/table/table_test_builder.dart';
 import 'package:teacher_test/test/test_screen.dart';
 
 class CheckAnswer {
-  RouteContents routeContents;
-  AchieveTextEditing newAchieveTextEditor;
-  TableTextEditing newTableTextEditor;
+  RouteContents? routeContents;
+  AchieveTextEditing? newAchieveTextEditor;
+  TableTextEditing? newTableTextEditor;
+  EducationIntroductionTextEditing? newEducationIntroductionTextEditor;
   WidgetControl widgetControl;
 
-  CheckAnswer(this.routeContents, this.newTableTextEditor,
-      this.newAchieveTextEditor, this.widgetControl);
+  CheckAnswer(
+      {this.routeContents,
+      this.newTableTextEditor,
+      this.newAchieveTextEditor,
+      this.newEducationIntroductionTextEditor,
+      required this.widgetControl});
 
-  late int subjectNum = routeContents.subjectNum;
-  late bool isTableTest = routeContents.isTableTest;
-  late bool isAchieveTest = routeContents.isAchieveTest;
+  late int subjectNum = routeContents?.subjectNum ?? 0;
+  late bool isTableTest = routeContents?.isTableTest ?? false;
+  late bool isAchieveTest = routeContents?.isAchieveTest ?? false;
 
   late bool isIncludeSpace = widgetControl.spaceSwitch.isIncludeSpace;
 
   void checkAnswer() {
     if (isTableTest) {
-      TableCheckAnswer(subjectNum, newTableTextEditor, isIncludeSpace)
+      TableCheckAnswer(subjectNum, newTableTextEditor!, isIncludeSpace)
           .tableCheckAnswer();
-      newTableTextEditor.notifyListeners();
+      newTableTextEditor!.notifyListeners();
     } else if (isAchieveTest) {
-      AchieveCheckAnswer(subjectNum, newAchieveTextEditor, isIncludeSpace)
+      AchieveCheckAnswer(subjectNum, newAchieveTextEditor!, isIncludeSpace)
           .achieveCheckAnswer();
-      newAchieveTextEditor.notifyListeners();
+      newAchieveTextEditor!.notifyListeners();
+    } else {
+      EducationIntroductionCheckAnswer(
+              newEducationIntroductionTextEditor!, isIncludeSpace)
+          .educationIntroductionCheckAnswer();
+      newEducationIntroductionTextEditor!.notifyListeners();
     }
   }
 }
@@ -229,27 +241,58 @@ class TableCheckAnswer {
   }
 }
 
+class EducationIntroductionCheckAnswer {
+  EducationIntroductionTextEditing newTextEditor;
+  bool isIncludeSpace;
+
+  EducationIntroductionCheckAnswer(this.newTextEditor, this.isIncludeSpace);
+
+  var educationIntroduction = EducationIntroduction();
+  late List<String> inputList = educationIntroduction.educationIntroductionList;
+
+  void educationIntroductionCheckAnswer() {
+    for (int i = 0; i < inputList.length; i++) {
+      String removeSpaceText = Remove(isIncludeSpace)
+          .space(newTextEditor.educationIntroductionControllerList[i].text);
+      List<String> removeSpaceList =
+          Remove(isIncludeSpace).spaceList(inputList);
+
+      if (removeSpaceText == removeSpaceList[i]) {
+        newTextEditor.educationIntroductionCheckList[i] = 1;
+      } else if (newTextEditor.educationIntroductionControllerList[i].text ==
+          '') {
+        newTextEditor.educationIntroductionCheckList[i] = 0;
+      } else {
+        newTextEditor.educationIntroductionCheckList[i] = 2;
+      }
+    }
+  }
+}
+
 class DeleteAnswer {
-  RouteContents routeContents;
-  AchieveTextEditing newAchieveTextEditor;
-  TableTextEditing newTableTextEditor;
+  RouteContents? routeContents;
+  AchieveTextEditing? newAchieveTextEditor;
+  TableTextEditing? newTableTextEditor;
   WidgetControl widgetControl;
 
-  DeleteAnswer(this.routeContents, this.newTableTextEditor,
-      this.newAchieveTextEditor, this.widgetControl);
+  DeleteAnswer(
+      {this.routeContents,
+      this.newTableTextEditor,
+      this.newAchieveTextEditor,
+      required this.widgetControl});
 
-  late int subjectNum = routeContents.subjectNum;
-  late bool isTableTest = routeContents.isTableTest;
-  late bool isAchieveTest = routeContents.isAchieveTest;
+  late int subjectNum = routeContents!.subjectNum;
+  late bool isTableTest = routeContents!.isTableTest;
+  late bool isAchieveTest = routeContents!.isAchieveTest;
 
   void deleteAnswer() {
     if (isTableTest) {
-      TableDeleteAnswer(subjectNum, newTableTextEditor).tableDeleteAnswer();
+      TableDeleteAnswer(subjectNum, newTableTextEditor!).tableDeleteAnswer();
     } else if (isAchieveTest) {
-      AchieveDeleteAnswer(subjectNum, newAchieveTextEditor)
+      AchieveDeleteAnswer(subjectNum, newAchieveTextEditor!)
           .achieveDeleteAnswer();
     }
-    newAchieveTextEditor.notifyListeners();
+    newAchieveTextEditor!.notifyListeners();
   }
 }
 

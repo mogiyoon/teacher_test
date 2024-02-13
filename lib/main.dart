@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teacher_test/db/setting_db.dart';
+import 'package:teacher_test/function/screen_router.dart';
 import 'package:teacher_test/function/screen_widget.dart';
 import 'package:teacher_test/main/main_widget.dart';
 import 'package:teacher_test/setting/setting_screen.dart';
@@ -30,11 +31,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          routes: {
-            '/Main': (context) => MyHomePage(),
-            '/TestScreen': (context) => TestScreen(),
-            '/SettingScreen': (context) => SettingScreen(),
-          },
+          routes: ScreenRouter().routeIndex(),
           home: MyHomePage(),
         ));
   }

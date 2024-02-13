@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:teacher_test/function/answer_checker.dart';
 import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
+import 'package:teacher_test/test/education_introduction/introduction_builder.dart';
 import 'package:teacher_test/test/table/table_test_builder.dart';
 import 'package:teacher_test/test/test_screen.dart';
 
@@ -12,15 +13,34 @@ class MultiFloatButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var routeContents = Provider.of<RouteContents>(context);
-    var newAchieveTextEditor = Provider.of<AchieveTextEditing>(context);
-    var newTableTextEditor = Provider.of<TableTextEditing>(context);
+    late CheckAnswer checkAnswer;
+    late DeleteAnswer deleteAnswer;
     var widgetControl = Provider.of<WidgetControl>(context);
 
-    var checkAnswer = CheckAnswer(
-        routeContents, newTableTextEditor, newAchieveTextEditor, widgetControl);
-    var deleteAnswer = DeleteAnswer(
-        routeContents, newTableTextEditor, newAchieveTextEditor, widgetControl);
+    if (widgetControl.routeName == '/TestScreen') {
+      var routeContents = Provider.of<RouteContents>(context);
+      var newAchieveTextEditor = Provider.of<AchieveTextEditing>(context);
+      var newTableTextEditor = Provider.of<TableTextEditing>(context);
+
+      checkAnswer = CheckAnswer(
+          routeContents: routeContents,
+          newTableTextEditor: newTableTextEditor,
+          newAchieveTextEditor: newAchieveTextEditor,
+          widgetControl: widgetControl);
+      deleteAnswer = DeleteAnswer(
+          routeContents: routeContents,
+          newTableTextEditor: newTableTextEditor,
+          newAchieveTextEditor: newAchieveTextEditor,
+          widgetControl: widgetControl);
+    } else if (widgetControl.routeName == '/EducationIntroductionScreen') {
+      var newEducationIntroductionTextEditor =
+          Provider.of<EducationIntroductionTextEditing>(context);
+
+      checkAnswer = CheckAnswer(
+          newEducationIntroductionTextEditor:
+              newEducationIntroductionTextEditor,
+          widgetControl: widgetControl);
+    }
 
     return SpeedDial(
       animatedIcon: AnimatedIcons.menu_close,

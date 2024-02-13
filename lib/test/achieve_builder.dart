@@ -76,9 +76,9 @@ class AchieveTestChoiceBuilder extends StatelessWidget {
 }
 
 class AchieveTextBuilder extends StatelessWidget {
-  List<String> AchieveList;
+  List<String> achieveList;
 
-  AchieveTextBuilder(this.AchieveList);
+  AchieveTextBuilder(this.achieveList);
 
   @override
   Widget build(BuildContext context) {
@@ -86,23 +86,22 @@ class AchieveTextBuilder extends StatelessWidget {
           shrinkWrap: true,
           physics: const ScrollPhysics(),
           padding: EdgeInsets.all(30),
-          itemCount: AchieveList.length,
+          itemCount: achieveList.length,
           itemBuilder: (context, index) {
             return Container(
               height: 50,
-              child: CopyWithText(AchieveList[index])
-              //Todo : 오류찾기 구현
+              child: CopyWithText(achieveList[index])
             );
           });
   }
 }
 
 class AchieveFormBuilder extends StatelessWidget {
-  List<String> AchieveList;
+  List<String> achieveList;
   int grade; // 0: 1~2, 1: 3~4, 2: 5~6
   int subjectNum;
 
-  AchieveFormBuilder(this.AchieveList, this.grade, this.subjectNum);
+  AchieveFormBuilder(this.achieveList, this.grade, this.subjectNum);
 
   var achieve22 = Achieve22();
   late int grade12Length = ((achieve22.contentsAchieve22Index[subjectNum -
@@ -125,7 +124,7 @@ class AchieveFormBuilder extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           padding: EdgeInsets.symmetric(horizontal: 30),
-          itemCount: AchieveList.length,
+          itemCount: achieveList.length,
           itemBuilder: (context, index) {
             realIndex++;
             return Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:teacher_test/function/screen_router.dart';
 import 'package:teacher_test/setting/setting_screen.dart';
 import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/main.dart';
@@ -70,11 +71,7 @@ class TestScreen extends StatelessWidget {
         ],
         child: TestScreenWidget(),
       ),
-      routes: {
-        '/Main': (context) => MyHomePage(),
-        '/TestScreen': (context) => TestScreen(),
-        '/SettingScreen': (context) => SettingScreen(),
-      },
+      routes: ScreenRouter().routeIndex(),
     );
   }
 }
