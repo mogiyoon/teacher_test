@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/test/table/table_test_builder.dart';
 import 'package:teacher_test/test/table/table_text_builder.dart';
 
@@ -163,5 +166,31 @@ class SettingRow extends StatelessWidget {
       Flexible(flex: 2, child: Container()),
       Flexible(flex: 4, child: Center(child: child2))
     ]);
+  }
+}
+
+class CopyContainer extends StatelessWidget {
+  TextEditingController textEditingController;
+
+  CopyContainer(this.textEditingController, {super.key});
+
+  late String inputString = textEditingController.text;
+
+  @override
+  Widget build(BuildContext context) {
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
+
+    return GestureDetector(
+      onTap: () async {
+        widgetControl.clipBoard.copyStringSecond = inputString;
+        await Clipboard.setData(ClipboardData(text: inputString));
+      },
+      child: Container(
+        child: Icon(
+          Icons.copy,
+          color: Colors.grey,
+        ),
+      ),
+    );
   }
 }

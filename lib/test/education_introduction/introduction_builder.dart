@@ -40,22 +40,22 @@ class EducationIntroductionTextBuilder extends StatelessWidget {
         itemCount: educationIntroductionList.length,
         itemBuilder: (context, index) {
           return Container(
-              height: 50,
+              padding: EdgeInsets.all(6),
               child: CopyWithText(educationIntroductionList[index]));
         });
-    ;
   }
 }
 
 class EducationIntroductionFormBuilder extends StatelessWidget {
   List<String> educationIntroductionList;
+
   EducationIntroductionFormBuilder(this.educationIntroductionList, {super.key});
 
   @override
   Widget build(BuildContext context) {
     var formList = Provider.of<EducationIntroductionTextEditing>(context);
-    var educationIntroductionControllerList = formList.educationIntroductionControllerList;
-
+    var educationIntroductionControllerList =
+        formList.educationIntroductionControllerList;
 
     return Container(
       padding: EdgeInsets.all(5),
@@ -70,7 +70,7 @@ class EducationIntroductionFormBuilder extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      flex: 10,
+                      flex: 18,
                       child: TextFormField(
                         controller: educationIntroductionControllerList[index],
                       ),
@@ -80,27 +80,28 @@ class EducationIntroductionFormBuilder extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          if (formList
-                              .educationIntroductionCheckList[index] == 0)
+                          if (formList.educationIntroductionCheckList[index] ==
+                              0)
                             ColorContainer(Colors.white),
-                          if (formList
-                              .educationIntroductionCheckList[index] == 1)
+                          if (formList.educationIntroductionCheckList[index] ==
+                              1)
                             ColorContainer(Colors.green.shade200),
-                          if (formList
-                              .educationIntroductionCheckList[index] == 2)
+                          if (formList.educationIntroductionCheckList[index] ==
+                              2)
                             ColorContainer(Colors.red.shade200)
                         ],
                       ),
                     ),
-                    Container(
-                      width: 40,
-                    )
+                    Expanded(
+                        flex: 1,
+                        child: CopyContainer(
+                            educationIntroductionControllerList[index])),
                   ],
                 ),
               ],
             );
           }),
-    );;
+    );
   }
 }
 
@@ -109,8 +110,9 @@ class EducationIntroductionTextEditing with ChangeNotifier {
   late List<String> educationIntroductionList =
       educationIntroduction.educationIntroductionList;
 
-  late List<TextEditingController> educationIntroductionControllerList = List.generate(
-      educationIntroductionList.length, (i) => TextEditingController());
-  late List<int> educationIntroductionCheckList = List.generate(
-      educationIntroductionList.length, (i) => 0);
+  late List<TextEditingController> educationIntroductionControllerList =
+      List.generate(
+          educationIntroductionList.length, (i) => TextEditingController());
+  late List<int> educationIntroductionCheckList =
+      List.generate(educationIntroductionList.length, (i) => 0);
 }

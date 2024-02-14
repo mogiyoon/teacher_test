@@ -32,11 +32,11 @@ class TestSetting with ChangeNotifier {
 
   bool _isSubjectAchievOpen = false;
 
-  bool get subjectAchievOpen => _isSubjectAchievOpen;
+  bool get isSubjectAchievOpen => _isSubjectAchievOpen;
 
   void tableOpen() {
-    _isSubjectTableOpen = true;
     _isSubjectAchievOpen = false;
+    _isSubjectTableOpen = true;
     notifyListeners();
   }
 
@@ -55,7 +55,7 @@ class SubjectDrawer extends StatefulWidget {
 class SubjectDrawerState extends State<SubjectDrawer> {
   Widget build(BuildContext context) {
     var testSetting = Provider.of<TestSetting>(context);
-    var widgetControl = Provider.of<WidgetControl>(context);
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
 
     return Drawer(
       child: ListView(
@@ -101,7 +101,7 @@ class SubjectDrawerState extends State<SubjectDrawer> {
               children: [
                 SubjectListBuild(),
               ],
-              initiallyExpanded: testSetting.subjectAchievOpen,
+              initiallyExpanded: testSetting.isSubjectAchievOpen,
               onExpansionChanged: (val) {
                 if (val == true) {
                   testSetting.achievOpen();
@@ -142,7 +142,7 @@ class SubjectListBuild extends StatefulWidget {
 class SubjectListBuildState extends State<SubjectListBuild> {
   Widget build(BuildContext context) {
     var testSetting = Provider.of<TestSetting>(context);
-    var widgetControl = Provider.of<WidgetControl>(context);
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
 
     return ListView.builder(
         shrinkWrap: true,
@@ -169,7 +169,7 @@ class SubjectListBuildState extends State<SubjectListBuild> {
                     arguments: {
                       'arg1': testSetting.subjectNumber,
                       'arg2': testSetting.isSubjectTableOpen,
-                      'arg3': testSetting.subjectAchievOpen,
+                      'arg3': testSetting.isSubjectAchievOpen,
                     },
                   );
                 },

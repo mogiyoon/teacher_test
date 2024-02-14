@@ -8,7 +8,7 @@ class ExampleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var widgetControl = Provider.of<WidgetControl>(context);
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
 
     return Container(
       margin: EdgeInsets.all(10),
@@ -70,7 +70,7 @@ class FontSizeSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var widgetControl = Provider.of<WidgetControl>(context);
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
 
     return SettingRow(
         Text('글자 크기 설정'),
@@ -95,7 +95,7 @@ class SpaceSwitchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var widgetControl = Provider.of<WidgetControl>(context);
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
     bool spaceSwitch = widgetControl.spaceSwitch.isIncludeSpace;
 
     return SettingRow(

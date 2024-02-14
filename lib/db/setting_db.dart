@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'dart:io';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -15,7 +14,7 @@ class SettingDB {
             ''');
   }
 
-  static Future<Database> db() async {
+  static Future<Database> CreateSettingDB() async {
     if (Platform.isWindows || Platform.isLinux) {
       sqfliteFfiInit();
       final databaseFactory = databaseFactoryFfi;
@@ -35,7 +34,7 @@ class SettingDB {
   }
 
   static Future<int> insertSaveSetting(SaveSetting saveSetting) async {
-    final db = await SettingDB.db();
+    final db = await SettingDB.CreateSettingDB();
 
     final id = await db.insert(
       'SaveSetting',
@@ -46,7 +45,7 @@ class SettingDB {
   }
 
   static Future<List<SaveSetting>> getSaveSetting() async {
-    final db = await SettingDB.db();
+    final db = await SettingDB.CreateSettingDB();
     final List<Map<String, dynamic>> data = await db.query('SaveSetting');
 
     return List.generate(
@@ -60,7 +59,7 @@ class SettingDB {
   }
 
   static Future<int> updateSaveSetting(SaveSetting saveSetting) async {
-    final db = await SettingDB.db();
+    final db = await SettingDB.CreateSettingDB();
 
     final result = await db.update(
       'SaveSetting',
@@ -72,7 +71,7 @@ class SettingDB {
   }
 
   static Future<void> deleteSaveSetting(int id) async {
-    final db = await SettingDB.db();
+    final db = await SettingDB.CreateSettingDB();
 
     try {
       await db.delete(

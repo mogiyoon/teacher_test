@@ -89,7 +89,7 @@ class AchieveTextBuilder extends StatelessWidget {
           itemCount: achieveList.length,
           itemBuilder: (context, index) {
             return Container(
-              height: 50,
+              padding: EdgeInsets.all(6),
               child: CopyWithText(achieveList[index])
             );
           });
@@ -114,6 +114,7 @@ class AchieveFormBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     var formList = Provider.of<AchieveTextEditing>(context);
     var achieveControllerList = formList.achieveControllerList;
+
     if (grade == 0) realIndex = -1;
     if (grade == 1) realIndex = grade12Length - 1;
     if (grade == 2) realIndex = (grade12Length + grade34Length) - 1;
@@ -154,8 +155,12 @@ class AchieveFormBuilder extends StatelessWidget {
                         ],
                       ),
                     ),
+                    Expanded(
+                      flex: 1,
+                      child: CopyContainer(achieveControllerList[realIndex]),
+                    ),
                     Container(
-                      width: 40,
+                      width: 30,
                     )
                   ],
                 ),

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:teacher_test/function/screen_router.dart';
-import 'package:teacher_test/setting/setting_screen.dart';
+import 'package:teacher_test/function/router.dart';
 import 'package:teacher_test/setting/widget_control.dart';
-import 'package:teacher_test/main.dart';
 import 'package:teacher_test/function/speeddial_widget.dart';
 import 'package:teacher_test/function/screen_widget.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
@@ -91,13 +89,16 @@ class TestScreenWidgetState extends State<TestScreenWidget> {
     routeContents.isAchieveTest = args['arg3'] as bool;
     int subjectNum = routeContents.subjectNum;
 
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
+    var textEditRouter = widgetControl.textEditRouter;
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<AchieveTextEditing>.value(
-            value: AchieveTextEditing(subjectNum)),
+            value: textEditRouter.returnAchieveTextEditing(subjectNum)),
         //Achieve
         ChangeNotifierProvider<TableTextEditing>.value(
-            value: TableTextEditing(subjectNum)),
+            value: textEditRouter.returnTableTextEditing(subjectNum)),
         //Table
       ],
       child: Scaffold(
@@ -134,7 +135,7 @@ class Title extends StatelessWidget {
     var testSetting = TestSetting();
     String tableTitle = testSetting.subject[routeContents.subjectNum - 1];
 
-    var widgetSetting = Provider.of<WidgetControl>(context);
+    var widgetSetting = Provider.of<WidgetControlProvider>(context);
     double widgetBigFontSize = widgetSetting.widgetFontSize.bigFontSize;
 
     return Column(

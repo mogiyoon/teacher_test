@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:teacher_test/db/setting_db.dart';
-import 'package:teacher_test/function/screen_router.dart';
+import 'package:teacher_test/function/router.dart';
 import 'package:teacher_test/function/screen_widget.dart';
+import 'package:teacher_test/function/text_widget.dart';
 import 'package:teacher_test/main/main_widget.dart';
-import 'package:teacher_test/setting/setting_screen.dart';
 import 'package:teacher_test/setting/widget_control.dart';
 import 'package:provider/provider.dart';
-import 'package:teacher_test/test/test_screen.dart';
 
 //TODO 구글/애플 계정 연동 및 구독 시스템
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SettingDB.db();
+  await GetStorage.init('textEditBox');
+  SettingDB.CreateSettingDB();
   runApp(MyApp());
 }
 
@@ -22,8 +23,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (context) => WidgetControl(),
+    Future<int> subjectNum;
+
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => WidgetControlProvider(),
+          ),
+        ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Teacher Test',
@@ -57,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void initSetting(context) {
-    var widgetControl = Provider.of<WidgetControl>(context);
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
     double adjustSize = widgetControl.widgetFontSize.adjustSize;
     bool isIncludeSpace = widgetControl.spaceSwitch.isIncludeSpace;
     var saveSetting = SaveSetting(
@@ -68,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
         SettingDB.insertSaveSetting(saveSetting);
       } else if (_settings.length == 1) {
         widgetControl.widgetFontSize.adjustSize = _settings[0].adjustSize;
-        widgetControl.spaceSwitch.isIncludeSpace =_settings[0].isIncludeSpace;
+        widgetControl.spaceSwitch.isIncludeSpace = _settings[0].isIncludeSpace;
       } else {
         for (int i = 0; i < _settings.length; i++)
           SettingDB.deleteSaveSetting(i);
@@ -88,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final double inputUnitHeightValue =
         MediaQuery.of(context).size.height * 0.01;
-    var widgetControl = Provider.of<WidgetControl>(context);
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
     widgetControl.widgetFontSize.returnFontSize(inputUnitHeightValue);
 
     return Scaffold(
@@ -105,9 +112,8 @@ class _MyHomePageState extends State<MyHomePage> {
               tooltip: '목록');
         }),
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -124,6 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
               ],
             ),
+            ErrorFinder(),
           ],
         ),
       ),

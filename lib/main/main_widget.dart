@@ -1,25 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'package:provider/provider.dart';
+import 'package:teacher_test/function/answer_checker.dart';
+import 'package:teacher_test/function/text_widget.dart';
+import 'package:teacher_test/setting/widget_control.dart';
 
 class Timer extends StatelessWidget {
   const Timer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    double size = MediaQuery.of(context).size.width * 0.08;
+    double size = MediaQuery
+        .of(context)
+        .size
+        .width * 0.08;
 
-    return Column(
-      children: [
-        if (TimeCalculator().dDay > 0)
-          Column (
-            children: [
-              Text('시험까지', style: TextStyle(fontSize: size),),
-              Text('${TimeCalculator().dDay} 일!', style: TextStyle(fontSize: size),),
-            ],
-          ),
-        if (TimeCalculator().dDay  == 0)
-          Text('D - Day', style: TextStyle(fontSize: size * 1.5),),
-      ]
-    );
+    return Column(children: [
+      if (TimeCalculator().dDay > 0)
+        Column(
+          children: [
+            Text(
+              '시험까지',
+              style: TextStyle(fontSize: size),
+            ),
+            Text(
+              '${TimeCalculator().dDay} 일!',
+              style: TextStyle(fontSize: size),
+            ),
+          ],
+        ),
+      if (TimeCalculator().dDay == 0)
+        Text(
+          'D - Day',
+          style: TextStyle(fontSize: size * 1.5),
+        ),
+    ]);
   }
 }
 
@@ -49,7 +64,9 @@ class TimeCalculator {
       }
     }
 
-    dDay = testDate.difference(now).inDays;
+    dDay = testDate
+        .difference(now)
+        .inDays;
   }
 
   void TestDateProduction() {
@@ -63,4 +80,91 @@ class TimeCalculator {
   }
 }
 
-//Todo : 오류찾기 구현
+class ErrorFinder extends StatelessWidget {
+  const ErrorFinder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
+    TextEditingController firstController = TextEditingController();
+    firstController.text = '원문 : ${widgetControl.clipBoard.copyStringFirst}';
+    TextEditingController secondController = TextEditingController();
+    secondController.text = '비교 : ${widgetControl.clipBoard.copyStringSecond}';
+
+    return Container(
+      margin: EdgeInsets.all(20),
+      padding: EdgeInsets.all(5),
+      decoration: BoxDecoration(border: Border.all()),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+              padding: EdgeInsets.all(5),
+              child: TextFormField(
+                decoration: InputDecoration(isDense: true),
+                style: TextStyle(
+                    fontSize: widgetControl.widgetFontSize.mediumFontSize),
+                controller: firstController,
+              )),
+          Container(
+              padding: EdgeInsets.all(5),
+              child: TextFormField(
+                decoration: InputDecoration(isDense: true),
+                style: TextStyle(
+                    fontSize: widgetControl.widgetFontSize.mediumFontSize),
+                controller: secondController,
+              )),
+          Container(
+            height: widgetControl.widgetFontSize.mediumFontSize * 3,
+            margin: EdgeInsets.only(top: 20),
+            padding: EdgeInsets.only(top: 8, left: 4, right: 4),
+            decoration: BoxDecoration(border: Border.all()),
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
+            child: BoolContainerGenerator(),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class BoolContainerGenerator extends StatelessWidget {
+  const BoolContainerGenerator({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
+    var clipBoard = widgetControl.clipBoard;
+    var isIncludeSpace = widgetControl.spaceSwitch.isIncludeSpace;
+    List<bool> returnCompareResult =
+    MainAnswerChecker().returnCompareResult(clipBoard, isIncludeSpace);
+    String modifiedString = MainAnswerChecker().returnModifiedString(
+        clipBoard, isIncludeSpace);
+    final ListScrollController = ScrollController();
+
+    return Scrollbar(
+      thickness: 5,
+      controller: ListScrollController,
+      child: ListView.builder(
+        controller: ListScrollController,
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemCount: modifiedString.length,
+        itemBuilder: (context, index) {
+          return SelectableText(
+            modifiedString[index],
+            style: TextStyle(
+              fontSize: widgetControl.widgetFontSize.mediumFontSize,
+              backgroundColor: returnCompareResult[index]
+                  ? Colors.green.shade200
+                  : Colors.red.shade200,
+            ),
+          );
+        },
+      ),
+    );
+  }
+}

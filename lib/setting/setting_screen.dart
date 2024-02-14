@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:teacher_test/function/screen_router.dart';
+import 'package:teacher_test/function/router.dart';
 import 'package:teacher_test/function/screen_widget.dart';
 import 'package:teacher_test/main.dart';
 import 'package:teacher_test/setting/setting_widget.dart';
@@ -37,7 +37,7 @@ class SettingScreenWidget extends StatefulWidget {
 class _SettingScreenWidgetState extends State<SettingScreenWidget> {
   @override
   Widget build(BuildContext context) {
-    var widgetSetting = Provider.of<WidgetControl>(context);
+    var widgetSetting = Provider.of<WidgetControlProvider>(context);
     double widgetBigFontSize = widgetSetting.widgetFontSize.bigFontSize;
 
     return Scaffold(
@@ -68,7 +68,7 @@ class SettingScreenBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var widgetControl = Provider.of<WidgetControl>(context);
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
 
     return Column(
       children: [

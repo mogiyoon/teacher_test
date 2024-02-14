@@ -1,5 +1,6 @@
 import 'package:teacher_test/contents/contents.dart';
 import 'package:teacher_test/contents/introduction_contents.dart';
+import 'package:teacher_test/function/router.dart';
 import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
 import 'package:teacher_test/test/education_introduction/introduction_builder.dart';
@@ -11,7 +12,7 @@ class CheckAnswer {
   AchieveTextEditing? newAchieveTextEditor;
   TableTextEditing? newTableTextEditor;
   EducationIntroductionTextEditing? newEducationIntroductionTextEditor;
-  WidgetControl widgetControl;
+  WidgetControlProvider widgetControl;
 
   CheckAnswer(
       {this.routeContents,
@@ -26,16 +27,21 @@ class CheckAnswer {
 
   late bool isIncludeSpace = widgetControl.spaceSwitch.isIncludeSpace;
 
+  late var textEditRouter = widgetControl.textEditRouter;
+
   void checkAnswer() {
     if (isTableTest) {
+      textEditRouter.writeTableTextEditing(subjectNum, newTableTextEditor!);
       TableCheckAnswer(subjectNum, newTableTextEditor!, isIncludeSpace)
           .tableCheckAnswer();
       newTableTextEditor!.notifyListeners();
     } else if (isAchieveTest) {
+      textEditRouter.writeAchieveTextEditing(subjectNum, newAchieveTextEditor!);
       AchieveCheckAnswer(subjectNum, newAchieveTextEditor!, isIncludeSpace)
           .achieveCheckAnswer();
       newAchieveTextEditor!.notifyListeners();
     } else {
+      textEditRouter.writeEducationIntroductionTextEditing(newEducationIntroductionTextEditor!);
       EducationIntroductionCheckAnswer(
               newEducationIntroductionTextEditor!, isIncludeSpace)
           .educationIntroductionCheckAnswer();
@@ -273,17 +279,19 @@ class DeleteAnswer {
   RouteContents? routeContents;
   AchieveTextEditing? newAchieveTextEditor;
   TableTextEditing? newTableTextEditor;
-  WidgetControl widgetControl;
+  EducationIntroductionTextEditing? newEducationIntroductionTextEditor;
+  WidgetControlProvider widgetControl;
 
   DeleteAnswer(
       {this.routeContents,
       this.newTableTextEditor,
       this.newAchieveTextEditor,
+      this.newEducationIntroductionTextEditor,
       required this.widgetControl});
 
-  late int subjectNum = routeContents!.subjectNum;
-  late bool isTableTest = routeContents!.isTableTest;
-  late bool isAchieveTest = routeContents!.isAchieveTest;
+  late int subjectNum = routeContents?.subjectNum ?? 0;
+  late bool isTableTest = routeContents?.isTableTest ?? false;
+  late bool isAchieveTest = routeContents?.isAchieveTest ?? false;
 
   void deleteAnswer() {
     if (isTableTest) {
@@ -291,8 +299,10 @@ class DeleteAnswer {
     } else if (isAchieveTest) {
       AchieveDeleteAnswer(subjectNum, newAchieveTextEditor!)
           .achieveDeleteAnswer();
+    } else {
+      EducationIntroductionDeleteAnswer(newEducationIntroductionTextEditor!)
+          .educationIntroductionDeleteAnswer();
     }
-    newAchieveTextEditor!.notifyListeners();
   }
 }
 
@@ -403,6 +413,24 @@ class TableDeleteAnswer {
   }
 }
 
+class EducationIntroductionDeleteAnswer {
+  EducationIntroductionTextEditing newTextEditor;
+
+  EducationIntroductionDeleteAnswer(this.newTextEditor);
+
+  var achieve22 = Achieve22();
+
+  void educationIntroductionDeleteAnswer() {
+    for (int i = 0;
+        i < newTextEditor.educationIntroductionControllerList.length;
+        i++) {
+      newTextEditor.educationIntroductionControllerList[i].text = '';
+      newTextEditor.educationIntroductionCheckList[i] = 0;
+    }
+    newTextEditor.notifyListeners();
+  }
+}
+
 class Remove {
   bool isIncludeSpace;
 
@@ -428,5 +456,46 @@ class Remove {
       String otherString = inputString.replaceAll(' ', '');
       return otherString;
     }
+  }
+}
+
+class MainAnswerChecker {
+  List<bool> resultList = [];
+  int minLength = 0;
+  int maxLength = 0;
+  String modifiedString = '';
+
+  List<bool> returnCompareResult(ClipBoard clipBoard, bool isIncludeSpace) {
+    String copyStringFirst =
+        Remove(isIncludeSpace).space(clipBoard.copyStringFirst);
+    String copyStringSecond =
+        Remove(isIncludeSpace).space(clipBoard.copyStringSecond);
+
+    if (copyStringFirst.length < copyStringSecond.length) {
+      minLength = copyStringFirst.length;
+      maxLength = copyStringSecond.length;
+    } else {
+      minLength = copyStringSecond.length;
+      maxLength = copyStringFirst.length;
+    }
+
+    for (int i = 0; i < minLength; i++) {
+      if (copyStringFirst[i] == copyStringSecond[i]) {
+        resultList.add(true);
+      } else {
+        resultList.add(false);
+      }
+    }
+    if (minLength != maxLength) {
+      for (int i = 0; i < maxLength - minLength; i++) {
+        resultList.add(false);
+      }
+    }
+    return resultList;
+  }
+
+  String returnModifiedString(ClipBoard clipBoard, bool isIncludeSpace) {
+    modifiedString = Remove(isIncludeSpace).space(clipBoard.copyStringSecond);
+    return modifiedString;
   }
 }

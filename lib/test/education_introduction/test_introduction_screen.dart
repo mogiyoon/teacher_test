@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:teacher_test/function/screen_router.dart';
+import 'package:teacher_test/function/router.dart';
 import 'package:teacher_test/function/screen_widget.dart';
 import 'package:teacher_test/function/speeddial_widget.dart';
+import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/test/education_introduction/introduction_builder.dart';
 import 'package:teacher_test/test/test_contents.dart';
 import 'package:teacher_test/test/test_screen.dart';
@@ -30,10 +31,13 @@ class EducationTestScreenWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
+    var textEditRouter = widgetControl.textEditRouter;
+
     return MultiProvider(
         providers: [
           ChangeNotifierProvider<EducationIntroductionTextEditing>.value(
-              value: EducationIntroductionTextEditing())
+              value: textEditRouter.returnEducationIntroductionTextEditing())
         ],
         child: Scaffold(
           appBar: AppBar(
@@ -71,13 +75,17 @@ class _EducationIntroductionChoiceState
     extends State<EducationIntroductionChoice> {
   @override
   Widget build(BuildContext context) {
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
+    late var testChoice = widgetControl.testChoiceRouter
+        .returnEducationTestChoice();
+
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider<TestChoice>.value(value: TestChoice()),
+          ChangeNotifierProvider<TestChoice>.value(value: testChoice),
         ],
         child: Column(children: [
           ExpansionTile(
-            title: Center(child: Text('학년군/과목 선택')),
+            title: Center(child: Text('시험 선택')),
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:teacher_test/function/text-sorted_combined.dart';
+import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
 import 'package:teacher_test/test/table/table_builder.dart';
 import 'package:teacher_test/test/test_screen.dart';
@@ -18,23 +19,30 @@ class _ChoiceContentsState extends State<ChoiceContents> {
     var routeContents = Provider.of<RouteContents>(context);
     bool isTableTest = routeContents.isTableTest;
     bool isAchieveTest = routeContents.isAchieveTest;
+    int subjectNum = routeContents.subjectNum;
+
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
+    late var gradeChoice = widgetControl.testChoiceRouter
+        .returnGradeChoice(subjectNum, isTableTest, isAchieveTest);
+    late var testChoice = widgetControl.testChoiceRouter
+        .returnTestChoice(subjectNum, isTableTest, isAchieveTest);
 
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider<GradeChoice>.value(value: GradeChoice()),
-          ChangeNotifierProvider<TestChoice>.value(value: TestChoice()),
+          ChangeNotifierProvider<GradeChoice>.value(value: gradeChoice),
+          ChangeNotifierProvider<TestChoice>.value(value: testChoice),
         ],
         child: Column(children: [
           ExpansionTile(
             title: Center(child: Text('학년군/과목 선택')),
             children: [
               Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TestCheckBoxWidget(),
-                    Text('시험'),
-                  ],
-                ),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TestCheckBoxWidget(),
+                  Text('시험'),
+                ],
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -45,7 +53,8 @@ class _ChoiceContentsState extends State<ChoiceContents> {
               )
             ],
           ),
-          Expanded( //TODO 스크롤 중 새로운 터치가 있을 때 InteractiveViewer로 전환 -- 비동기 사용?
+          Expanded(
+            //TODO 스크롤 중 새로운 터치가 있을 때 InteractiveViewer로 전환 -- 비동기 사용?
             child: SingleChildScrollView(
               child: Column(children: [
                 if (isTableTest) TableTestChoiceBuilder(),
@@ -145,6 +154,14 @@ class GradeCheckBoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var gradeChoice = Provider.of<GradeChoice>(context);
+    switch(grade) {
+      case 1 : changeValue = gradeChoice.isOneTwoCheck;
+        break;
+      case 3 : changeValue = gradeChoice.isThreeFourCheck;
+        break;
+      case 5 : changeValue = gradeChoice.isFiveSixCheck;
+        break;
+    }
 
     return Expanded(
         flex: 1,

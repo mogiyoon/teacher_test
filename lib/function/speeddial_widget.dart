@@ -15,7 +15,7 @@ class MultiFloatButton extends StatelessWidget {
   Widget build(BuildContext context) {
     late CheckAnswer checkAnswer;
     late DeleteAnswer deleteAnswer;
-    var widgetControl = Provider.of<WidgetControl>(context);
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
 
     if (widgetControl.routeName == '/TestScreen') {
       var routeContents = Provider.of<RouteContents>(context);

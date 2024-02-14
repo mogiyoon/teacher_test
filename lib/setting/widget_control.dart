@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:teacher_test/db/setting_db.dart';
+import 'package:teacher_test/function/router.dart';
 
-class WidgetControl with ChangeNotifier {
-  late var widgetFontSize = WidgetFontSize();
-  late var clipBoard = ClipBoard();
-  late var spaceSwitch = SpaceSwitch();
-  late String routeName = '/Main';
+class WidgetControlProvider with ChangeNotifier {
+  var widgetFontSize = WidgetSize();
+  var clipBoard = ClipBoard();
+  var spaceSwitch = SpaceSwitch();
 
   void widgetChanged() {
     notifyListeners();
@@ -15,19 +15,28 @@ class WidgetControl with ChangeNotifier {
     late double adjustSize = widgetFontSize.adjustSize;
     late bool isIncludeSpace = spaceSwitch.isIncludeSpace;
 
-    late var saveSetting = SaveSetting(id: 0, adjustSize: adjustSize, isIncludeSpace: isIncludeSpace);
+    late var saveSetting = SaveSetting(
+        id: 0, adjustSize: adjustSize, isIncludeSpace: isIncludeSpace);
     SettingDB.deleteSaveSetting(0);
     SettingDB.insertSaveSetting(saveSetting);
   }
+
+
+  var textEditRouter = TextEditRouter();
+  var testChoiceRouter = TestChoiceRouter();
+  late String routeName = '/Main';
 }
 
-class WidgetFontSize {
+
+
+class WidgetSize {
   double adjustSize = 1;
 
   double unitHeightValue = 1;
   double bigFontSize = 3;
   double mediumFontSize = 2;
   double smallFontSize = 1;
+  double containerSize = 1;
 
   void returnFontSize(double inputUnitHeightValue) {
     unitHeightValue = inputUnitHeightValue;
@@ -38,17 +47,23 @@ class WidgetFontSize {
 }
 
 class ClipBoard {
-  String _copyString = '';
+  String _copyStringFirst = '';
 
-  String get copyString => _copyString;
+  String get copyStringFirst => _copyStringFirst;
 
-  set copyString(value) {
-    _copyString = value;
+  set copyStringFirst(value) {
+    _copyStringFirst = value;
+  }
+
+  String _copyStringSecond = '';
+
+  String get copyStringSecond => _copyStringSecond;
+
+  set copyStringSecond(String value) {
+    _copyStringSecond = value;
   }
 }
 
 class SpaceSwitch {
   bool isIncludeSpace = false;
 }
-
-class SavePrimaryInformation {}

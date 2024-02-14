@@ -9,11 +9,13 @@ import 'package:teacher_test/test/test_screen.dart';
 
 class TableTextEditing with ChangeNotifier {
   int subjectNum;
+
   TableTextEditing(this.subjectNum);
 
   late var tableTestTitleEditing = TableTestTitleEditing(subjectNum);
   late var tableTestCIEditing = TableTestCIEditing(subjectNum);
-  late var tableTestLowerCategoryEditing = TableTestLowerCategoryEditing(subjectNum);
+  late var tableTestLowerCategoryEditing =
+      TableTestLowerCategoryEditing(subjectNum);
   late var tableTestValueEditing = TableTestValueEditing(subjectNum);
 }
 
@@ -27,7 +29,8 @@ class TableTestTitleForm extends StatelessWidget {
     var tableTextEditing = Provider.of<TableTextEditing>(context);
     var formList = tableTextEditing.tableTestTitleEditing;
     var tableTitleControllerList = formList.tableTitleControllerList;
-    var tableTitleControllerAnswerCheckList = formList.tableTitleControllerAnswerCheckList;
+    var tableTitleControllerAnswerCheckList =
+        formList.tableTitleControllerAnswerCheckList;
 
     return Center(
       child: Container(
@@ -162,7 +165,11 @@ class TableTestCIFormBuilder extends StatelessWidget {
                         2)
                       ColorContainer(Colors.red.shade200)
                   ],
-                ))
+                )),
+            Expanded(
+                flex: 1,
+                child:
+                    CopyContainer(tableCIControllerListArea[areaNum][index])),
           ]);
         });
   }
@@ -440,7 +447,8 @@ class TableTestLowerCategoryBuilder extends StatelessWidget {
 
     var tableTextEditing = Provider.of<TableTextEditing>(context);
     var formList = tableTextEditing.tableTestLowerCategoryEditing;
-    var tableLowerCategoryControllerListArea = formList.tableLowerCategoryControllerListArea;
+    var tableLowerCategoryControllerListArea =
+        formList.tableLowerCategoryControllerListArea;
     var tableLowerCategoryControllerAnswerCheckListArea =
         formList.tableLowerCategoryControllerAnswerCheckListArea;
 
@@ -458,7 +466,7 @@ class TableTestLowerCategoryBuilder extends StatelessWidget {
 
     List<String> inputListLowerCategory =
         table22LowerCategoryIndex[subjectNum - 1][areaNum];
-  //Sum of LowerCategory of Area
+    //Sum of LowerCategory of Area
 
     int categoryIndexNum = 0;
 
@@ -508,14 +516,15 @@ class TableTestLowerCategoryBuilder extends StatelessWidget {
                                       if (i < 1)
                                         Row(children: [
                                           Expanded(
-                                            flex: 9,
+                                            flex: 5,
                                             child: TextFormField(
                                               decoration: InputDecoration(
                                                 isDense: true,
                                               ),
                                               controller:
                                                   tableLowerCategoryControllerListArea[
-                                                      areaNum][categoryNum][index],
+                                                          areaNum][categoryNum]
+                                                      [index],
                                               style: TextStyle(fontSize: 13),
                                             ),
                                           ),
@@ -547,12 +556,18 @@ class TableTestLowerCategoryBuilder extends StatelessWidget {
                                                     ColorContainer(
                                                         Colors.red.shade200)
                                                 ],
-                                              ))
+                                              )),
+                                          Expanded(
+                                              flex: 1,
+                                              child: CopyContainer(
+                                                  tableLowerCategoryControllerListArea[
+                                                          areaNum][categoryNum]
+                                                      [index]))
                                         ]),
                                       if (i >= 1)
                                         Row(children: [
                                           Expanded(
-                                            flex: 9,
+                                            flex: 5,
                                             child: TextFormField(
                                               decoration: InputDecoration(
                                                 isDense: true,
@@ -568,6 +583,12 @@ class TableTestLowerCategoryBuilder extends StatelessWidget {
                                                 children: [
                                                   ColorContainer(Colors.white),
                                                 ],
+                                              )),
+                                          Expanded(
+                                              flex: 1,
+                                              child: Icon(
+                                                Icons.copy,
+                                                color: Colors.grey,
                                               ))
                                         ]),
                                     ],
@@ -746,7 +767,13 @@ class TableTestValueBuilder extends StatelessWidget {
                                                   ColorContainer(
                                                       Colors.red.shade200)
                                               ],
-                                            ))
+                                            )),
+                                        Expanded(
+                                            flex: 1,
+                                            child: CopyContainer(
+                                                tableValueControllerListArea[
+                                                        gradeNum][areaNum]
+                                                    [categoryItemNum - 1][i]))
                                       ]),
                                     if (i >=
                                         inputListValue[categoryItemNum - 1]
@@ -765,10 +792,16 @@ class TableTestValueBuilder extends StatelessWidget {
                                             flex: 1,
                                             child: Row(
                                               mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                                  MainAxisAlignment.center,
                                               children: [
                                                 ColorContainer(Colors.white),
                                               ],
+                                            )),
+                                        Expanded(
+                                            flex: 1,
+                                            child: Icon(
+                                              Icons.copy,
+                                              color: Colors.grey,
                                             ))
                                       ]),
                                   ],

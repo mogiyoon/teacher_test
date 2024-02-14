@@ -10,20 +10,17 @@ class CopyWithText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var widgetControl = Provider.of<WidgetControl>(context);
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
     double controlledMediumFontSize =
         widgetControl.widgetFontSize.mediumFontSize;
 
-    return GestureDetector(
-      behavior: HitTestBehavior.deferToChild,
+    return SelectableText(
+      inputString,
+      style: TextStyle(fontSize: controlledMediumFontSize),
       onTap: () async {
-        widgetControl.clipBoard.copyString = inputString;
+        widgetControl.clipBoard.copyStringFirst = inputString;
         await Clipboard.setData(ClipboardData(text: inputString));
       },
-      child: Text(
-        inputString,
-        style: TextStyle(fontSize: controlledMediumFontSize),
-      ),
     );
   }
 }
@@ -35,21 +32,20 @@ class CopyWithBigText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var widgetControl = Provider.of<WidgetControl>(context);
-    double controlledBigFontSize =
-        widgetControl.widgetFontSize.bigFontSize;
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
+    double controlledBigFontSize = widgetControl.widgetFontSize.bigFontSize;
 
     return GestureDetector(
       behavior: HitTestBehavior.deferToChild,
       onTap: () async {
-        widgetControl.clipBoard.copyString = inputString;
+        widgetControl.clipBoard.copyStringFirst = inputString;
         await Clipboard.setData(ClipboardData(text: inputString));
       },
       child: Container(
           child: Text(
-            inputString,
-            style: TextStyle(fontSize: controlledBigFontSize),
-          )),
+        inputString,
+        style: TextStyle(fontSize: controlledBigFontSize),
+      )),
     );
   }
 }
@@ -61,7 +57,7 @@ class SizedText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var widgetControl = Provider.of<WidgetControl>(context);
+    var widgetControl = Provider.of<WidgetControlProvider>(context);
     double controlledMediumFontSize =
         widgetControl.widgetFontSize.mediumFontSize;
 
