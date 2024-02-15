@@ -75,9 +75,10 @@ class SubjectDrawerState extends State<SubjectDrawer> {
             title: Text('홈'),
             onTap: () async {
               widgetControl.routeName = '/Main';
-              await Navigator.pushNamed(
+              await Navigator.pushNamedAndRemoveUntil(
                 context,
                 '/Main',
+                (r) => false,
               );
             },
           ),
@@ -112,9 +113,10 @@ class SubjectDrawerState extends State<SubjectDrawer> {
             title: Text('총론'),
             onTap: () async {
               widgetControl.routeName = '/EducationIntroductionScreen';
-              await Navigator.pushNamed(
+              await Navigator.pushNamedAndRemoveUntil(
                 context,
                 '/EducationIntroductionScreen',
+                (r) => false,
               );
             },
           ),
@@ -122,9 +124,10 @@ class SubjectDrawerState extends State<SubjectDrawer> {
             title: Text('설정'),
             onTap: () async {
               widgetControl.routeName = '/SettingScreen';
-              await Navigator.pushNamed(
+              await Navigator.pushNamedAndRemoveUntil(
                 context,
                 '/SettingScreen',
+                (r) => false,
               );
             },
           ),
@@ -163,7 +166,7 @@ class SubjectListBuildState extends State<SubjectListBuild> {
                 onTap: () async {
                   widgetControl.routeName = '/TestScreen';
                   testSetting.subjectNumber = index + 1;
-                  await Navigator.pushNamed(
+                  await Navigator.pushNamedAndRemoveUntil(
                     context,
                     '/TestScreen',
                     arguments: {
@@ -171,6 +174,7 @@ class SubjectListBuildState extends State<SubjectListBuild> {
                       'arg2': testSetting.isSubjectTableOpen,
                       'arg3': testSetting.isSubjectAchievOpen,
                     },
+                    (r) => false,
                   );
                 },
               )

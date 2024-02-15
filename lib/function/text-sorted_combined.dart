@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:teacher_test/function/text_widget.dart';
+import 'package:teacher_test/function/widget/text_widget.dart';
 import 'package:teacher_test/test/test_screen.dart';
 
 
@@ -64,5 +64,27 @@ class TextSorterFiveSix extends StatelessWidget {
           SizedText('즐거운 생활')
       ],
     );
+  }
+}
+
+class TextSorter {
+  String sortingName(int subjectNum, int grade) {
+    String gradeName = '';
+    if (subjectNum == 11) {
+      switch (grade) {
+        case 0:
+          gradeName = '바른 생활';
+          break;
+        case 1:
+          gradeName = '슬기로운 생활';
+          break;
+        case 2:
+          gradeName = '즐거운 생활';
+          break;
+      }
+    } else {
+      gradeName = '${grade * 2 + 1}~${grade * 2 + 2}학년';
+    }
+    return gradeName;
   }
 }

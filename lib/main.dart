@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:teacher_test/db/setting_db.dart';
 import 'package:teacher_test/function/router.dart';
-import 'package:teacher_test/function/screen_widget.dart';
-import 'package:teacher_test/function/text_widget.dart';
-import 'package:teacher_test/main/main_widget.dart';
+import 'package:teacher_test/function/widget/screen_widget.dart';
+import 'package:teacher_test/function/widget/main_widget.dart';
 import 'package:teacher_test/setting/widget_control.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +11,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await GetStorage.init('textEditBox');
+  await GetStorage.init('WrongAnswerBox');
   SettingDB.CreateSettingDB();
   runApp(MyApp());
 }
@@ -126,7 +125,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Flexible(
                   flex: 1,
-                  child: Placeholder(),
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    child: WhatIsWrongListView(),
+                  ),
                 )
               ],
             ),

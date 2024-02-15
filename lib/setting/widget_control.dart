@@ -40,6 +40,10 @@ class WidgetSize {
 
   void returnFontSize(double inputUnitHeightValue) {
     unitHeightValue = inputUnitHeightValue;
+    applySize();
+  }
+
+  void applySize() {
     bigFontSize = 2.7 * unitHeightValue * adjustSize;
     mediumFontSize = 2.2 * unitHeightValue * adjustSize;
     smallFontSize = 1.9 * unitHeightValue * adjustSize;

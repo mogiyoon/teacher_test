@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:teacher_test/function/spatial_widget.dart';
+import 'package:teacher_test/db/wrong_answer_list_db.dart';
+import 'package:teacher_test/function/widget/spatial_widget.dart';
 import 'package:teacher_test/setting/widget_control.dart';
 
 class ExampleText extends StatelessWidget {
@@ -81,6 +82,7 @@ class FontSizeSlider extends StatelessWidget {
           divisions: 9,
           onChanged: (double value) {
             widgetControl.widgetFontSize.adjustSize = value / 5;
+            widgetControl.widgetFontSize.applySize();
             widgetControl.widgetChanged();
           },
           onChangeEnd: (double value) {
@@ -107,5 +109,22 @@ class SpaceSwitchWidget extends StatelessWidget {
               widgetControl.widgetChanged();
               widgetControl.widgetSave();
             }));
+  }
+}
+
+class ClearWrongAnswerButton extends StatelessWidget {
+  const ClearWrongAnswerButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SettingRow(
+      Text('틀린 기록 초기화'),
+      ElevatedButton(
+        onPressed: () {
+          WrongAnswerBox().eraseWrongAnswerMap();
+        },
+        child: Text('초기화'),
+      ),
+    );
   }
 }

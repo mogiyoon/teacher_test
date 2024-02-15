@@ -106,7 +106,7 @@ class CombinedSubjectAchieve22 {
     '생각이나 느낌을 살려 전시나 공연 활동을 한다.',
     '기억에 남는 경험을 떠올리며 의미를 부여한다.',
   ];
-//2022 수학 5~6년 성취기준
+//2022 즐거운 생활 1~2년 성취기준
 }
 
 class CombinedSubjectTable22 {

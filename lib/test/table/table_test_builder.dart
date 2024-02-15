@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:collection/collection.dart';
 import 'package:teacher_test/contents/contents.dart';
-import 'package:teacher_test/function/spatial_widget.dart';
-import 'package:teacher_test/function/text_widget.dart';
+import 'package:teacher_test/function/widget/spatial_widget.dart';
+import 'package:teacher_test/function/widget/text_widget.dart';
 import 'package:teacher_test/test/test_contents.dart';
 import 'package:teacher_test/test/test_screen.dart';
 

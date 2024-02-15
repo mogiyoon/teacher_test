@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:teacher_test/function/router.dart';
-import 'package:teacher_test/function/screen_widget.dart';
-import 'package:teacher_test/main.dart';
-import 'package:teacher_test/setting/setting_widget.dart';
+import 'package:teacher_test/function/widget/screen_widget.dart';
+import 'package:teacher_test/function/widget/setting_widget.dart';
 import 'package:teacher_test/setting/widget_control.dart';
-import 'package:teacher_test/test/test_screen.dart';
 
 //TODO 단축키
 
@@ -75,6 +73,8 @@ class SettingScreenBuilder extends StatelessWidget {
         ExampleText(),
         FontSizeSlider(),
         SpaceSwitchWidget(),
+        Container(height: 5,),
+        ClearWrongAnswerButton(),
       ],
     );
   }

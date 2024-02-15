@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:provider/provider.dart';
-import 'package:teacher_test/function/answer_checker.dart';
+import 'package:teacher_test/function/answer_check/answer_checker.dart';
 import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
 import 'package:teacher_test/test/education_introduction/introduction_builder.dart';
@@ -37,6 +37,10 @@ class MultiFloatButton extends StatelessWidget {
           Provider.of<EducationIntroductionTextEditing>(context);
 
       checkAnswer = CheckAnswer(
+          newEducationIntroductionTextEditor:
+              newEducationIntroductionTextEditor,
+          widgetControl: widgetControl);
+      deleteAnswer = DeleteAnswer(
           newEducationIntroductionTextEditor:
               newEducationIntroductionTextEditor,
           widgetControl: widgetControl);

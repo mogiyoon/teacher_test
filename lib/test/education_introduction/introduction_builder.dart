@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:teacher_test/contents/introduction_contents.dart';
-import 'package:teacher_test/function/spatial_widget.dart';
-import 'package:teacher_test/function/text_widget.dart';
+import 'package:teacher_test/function/widget/spatial_widget.dart';
+import 'package:teacher_test/function/widget/text_widget.dart';
 import 'package:teacher_test/test/test_contents.dart';
 
 class EducationIntroductionTestChoiceBuilder extends StatelessWidget {
@@ -34,15 +34,29 @@ class EducationIntroductionTextBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        shrinkWrap: true,
-        physics: const ScrollPhysics(),
-        padding: EdgeInsets.all(30),
-        itemCount: educationIntroductionList.length,
-        itemBuilder: (context, index) {
-          return Container(
-              padding: EdgeInsets.all(6),
-              child: CopyWithText(educationIntroductionList[index]));
-        });
+      shrinkWrap: true,
+      physics: const ScrollPhysics(),
+      padding: EdgeInsets.all(20),
+      itemCount: educationIntroductionList.length,
+      itemBuilder: (context, index) {
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              padding: EdgeInsets.all(5),
+              child: Center(
+                child: SizedText('$index'),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 5, top: 5, bottom: 5),
+              width: MediaQuery.of(context).size.width * 0.93,
+              child: CopyWithText(educationIntroductionList[index]),
+            )
+          ],
+        );
+      },
+    );
   }
 }
 
@@ -70,7 +84,12 @@ class EducationIntroductionFormBuilder extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      flex: 18,
+                      child: Container(
+                        child: SizedText('$index'),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 16,
                       child: TextFormField(
                         controller: educationIntroductionControllerList[index],
                       ),

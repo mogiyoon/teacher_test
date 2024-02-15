@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:teacher_test/contents/contents.dart';
-import 'package:teacher_test/function/text_widget.dart';
+import 'package:teacher_test/function/widget/text_widget.dart';
 import 'package:teacher_test/test/table/table_test_builder.dart';
 import 'package:teacher_test/test/table/table_text_builder.dart';
 import 'package:teacher_test/test/test_contents.dart';
