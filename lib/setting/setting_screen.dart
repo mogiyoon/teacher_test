@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:teacher_test/function/router.dart';
 import 'package:teacher_test/function/widget/screen_widget.dart';
 import 'package:teacher_test/function/widget/setting_widget.dart';
-import 'package:teacher_test/setting/widget_control.dart';
 
 //TODO 단축키
 
@@ -35,9 +34,6 @@ class SettingScreenWidget extends StatefulWidget {
 class _SettingScreenWidgetState extends State<SettingScreenWidget> {
   @override
   Widget build(BuildContext context) {
-    var widgetSetting = Provider.of<WidgetControlProvider>(context);
-    double widgetBigFontSize = widgetSetting.widgetFontSize.bigFontSize;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -66,8 +62,6 @@ class SettingScreenBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var widgetControl = Provider.of<WidgetControlProvider>(context);
-
     return Column(
       children: [
         ExampleText(),

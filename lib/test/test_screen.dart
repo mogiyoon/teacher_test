@@ -135,9 +135,6 @@ class Title extends StatelessWidget {
     var testSetting = TestSetting();
     String tableTitle = testSetting.subject[routeContents.subjectNum - 1];
 
-    var widgetSetting = Provider.of<WidgetControlProvider>(context);
-    double widgetBigFontSize = widgetSetting.widgetFontSize.bigFontSize;
-
     return Column(
       children: [
         if (routeContents.isTableTest) Text('[' + tableTitle + '] 내용체계표'),

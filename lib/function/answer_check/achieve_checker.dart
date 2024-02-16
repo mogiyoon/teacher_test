@@ -1,5 +1,6 @@
 import 'package:teacher_test/contents/contents.dart';
 import 'package:teacher_test/function/answer_check/answer_checker.dart';
+import 'package:teacher_test/function/answer_check/answer_to_db.dart';
 import 'package:teacher_test/test/achieve_builder.dart';
 
 class AchieveCheckAnswer {
@@ -35,7 +36,7 @@ class AchieveCheckAnswer {
         } else if (inputString[gradeNum][i].text == '') {
           newTextEditor.achieveControllerAnswerCheckListArea[gradeNum][i] = 0;
         } else {
-          AchieveWrongAnswerToDB().achieveWrongWriter(subjectNum, gradeNum,
+          AchieveWrongAnswerToDB().achieveWriter(subjectNum, gradeNum,
               achieve22.contentsAchieve22Index[subjectNum - 1][gradeNum][i]);
           newTextEditor.achieveControllerAnswerCheckListArea[gradeNum][i] = 2;
         }

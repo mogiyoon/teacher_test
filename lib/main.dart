@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:teacher_test/db/setting_db.dart';
+import 'package:teacher_test/db/wrong_answer_list_db.dart';
 import 'package:teacher_test/function/router.dart';
 import 'package:teacher_test/function/widget/screen_widget.dart';
 import 'package:teacher_test/function/widget/main_widget.dart';
@@ -12,6 +13,9 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init('WrongAnswerBox');
+  if(WrongAnswerBox().wrongAnswerBox.read('WrongAnswerMap') == null) {
+    WrongAnswerBox().eraseWrongAnswerMap();
+  }
   SettingDB.CreateSettingDB();
   runApp(MyApp());
 }
@@ -22,8 +26,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Future<int> subjectNum;
-
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(

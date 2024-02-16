@@ -1,5 +1,6 @@
 import 'package:teacher_test/contents/contents.dart';
 import 'package:teacher_test/function/answer_check/answer_checker.dart';
+import 'package:teacher_test/function/answer_check/answer_to_db.dart';
 import 'package:teacher_test/test/table/table_test_builder.dart';
 
 class TableCheckAnswer {
@@ -42,12 +43,13 @@ class TableCheckAnswer {
         newTextEditor
             .tableTestTitleEditing.tableTitleControllerAnswerCheckList[i] = 1;
       } else if (newTextEditor
-          .tableTestTitleEditing.tableTitleControllerList[i].text ==
+              .tableTestTitleEditing.tableTitleControllerList[i].text ==
           '') {
         newTextEditor
             .tableTestTitleEditing.tableTitleControllerAnswerCheckList[i] = 0;
       } else {
-        TableWrongAnswerToDB().tableTitleWrongWrite(subjectNum, table22Area[subjectNum - 1][i]);
+        TableWrongAnswerToDB()
+            .titleWriter(subjectNum, table22Area[subjectNum - 1][i]);
         newTextEditor
             .tableTestTitleEditing.tableTitleControllerAnswerCheckList[i] = 2;
       }
@@ -61,7 +63,7 @@ class TableCheckAnswer {
     for (int areaNum = 0; areaNum < inputString.length; areaNum++) {
       for (int i = 0; i < inputString[areaNum].length; i++) {
         String removeSpaceText =
-        Remove(isIncludeSpace).space(inputString[areaNum][i].text);
+            Remove(isIncludeSpace).space(inputString[areaNum][i].text);
         List<String> removeSpaceList = Remove(isIncludeSpace)
             .spaceList(table22.contentsTable22CIIndex[subjectNum - 1][areaNum]);
 
@@ -72,6 +74,7 @@ class TableCheckAnswer {
           newTextEditor.tableTestCIEditing
               .tableCIControllerAnswerCheckListArea[areaNum][i] = 0;
         } else {
+          TableWrongAnswerToDB().CIWriter(subjectNum, areaNum);
           newTextEditor.tableTestCIEditing
               .tableCIControllerAnswerCheckListArea[areaNum][i] = 2;
         }
@@ -85,27 +88,33 @@ class TableCheckAnswer {
 
     for (int areaNum = 0; areaNum < inputString.length; areaNum++) {
       for (int categoryNum = 0;
-      categoryNum < inputString[areaNum].length;
-      categoryNum++) {
+          categoryNum < inputString[areaNum].length;
+          categoryNum++) {
         for (int i = 0; i < inputString[areaNum][categoryNum].length; i++) {
           String removeSpaceText = Remove(isIncludeSpace)
               .space(inputString[areaNum][categoryNum][i].text);
           String removeSpaceAnswer = Remove(isIncludeSpace).space(
               contentsTable22AreaIndex[subjectNum - 1][areaNum][categoryNum]
-              [i]);
+                  [i]);
 
           if (removeSpaceText == removeSpaceAnswer) {
             newTextEditor.tableTestLowerCategoryEditing
-                .tableLowerCategoryControllerAnswerCheckListArea[areaNum]
-            [categoryNum][i] = 1;
+                    .tableLowerCategoryControllerAnswerCheckListArea[areaNum]
+                [categoryNum][i] = 1;
           } else if (removeSpaceText == '') {
             newTextEditor.tableTestLowerCategoryEditing
-                .tableLowerCategoryControllerAnswerCheckListArea[areaNum]
-            [categoryNum][i] = 0;
+                    .tableLowerCategoryControllerAnswerCheckListArea[areaNum]
+                [categoryNum][i] = 0;
           } else {
+            TableWrongAnswerToDB().lowerCategoryWriter(
+                subjectNum,
+                areaNum,
+                categoryNum,
+                contentsTable22AreaIndex[subjectNum - 1][areaNum][categoryNum]
+                    [i]);
             newTextEditor.tableTestLowerCategoryEditing
-                .tableLowerCategoryControllerAnswerCheckListArea[areaNum]
-            [categoryNum][i] = 2;
+                    .tableLowerCategoryControllerAnswerCheckListArea[areaNum]
+                [categoryNum][i] = 2;
           }
         }
       }
@@ -119,29 +128,30 @@ class TableCheckAnswer {
     for (int gradeNum = 0; gradeNum < inputString.length; gradeNum++) {
       for (int areaNum = 0; areaNum < inputString[gradeNum].length; areaNum++) {
         for (int categoryItemNum = 0;
-        categoryItemNum < inputString[gradeNum][areaNum].length;
-        categoryItemNum++) {
+            categoryItemNum < inputString[gradeNum][areaNum].length;
+            categoryItemNum++) {
           for (int i = 0;
-          i < inputString[gradeNum][areaNum][categoryItemNum].length;
-          i++) {
+              i < inputString[gradeNum][areaNum][categoryItemNum].length;
+              i++) {
             String removeSpaceText = Remove(isIncludeSpace)
                 .space(inputString[gradeNum][areaNum][categoryItemNum][i].text);
             List<String> removeSpaceList = Remove(isIncludeSpace).spaceList(
                 contentsTable22ValueIndex[subjectNum - 1][gradeNum][areaNum]
-                [categoryItemNum]);
+                    [categoryItemNum]);
 
             if (removeSpaceList.contains(removeSpaceText)) {
               newTextEditor.tableTestValueEditing
-                  .tableValueControllerAnswerCheckListArea[gradeNum]
-              [areaNum][categoryItemNum][i] = 1;
+                      .tableValueControllerAnswerCheckListArea[gradeNum]
+                  [areaNum][categoryItemNum][i] = 1;
             } else if (removeSpaceText == '') {
               newTextEditor.tableTestValueEditing
-                  .tableValueControllerAnswerCheckListArea[gradeNum]
-              [areaNum][categoryItemNum][i] = 0;
+                      .tableValueControllerAnswerCheckListArea[gradeNum]
+                  [areaNum][categoryItemNum][i] = 0;
             } else {
+              TableWrongAnswerToDB().valueWrite(subjectNum, gradeNum, areaNum, categoryItemNum);
               newTextEditor.tableTestValueEditing
-                  .tableValueControllerAnswerCheckListArea[gradeNum]
-              [areaNum][categoryItemNum][i] = 2;
+                      .tableValueControllerAnswerCheckListArea[gradeNum]
+                  [areaNum][categoryItemNum][i] = 2;
             }
           }
         }
@@ -195,19 +205,19 @@ class TableDeleteAnswer {
         .tableTestLowerCategoryEditing.tableLowerCategoryControllerListArea;
 
     for (int areaNum = 0;
-    areaNum < inputLowerCategoryString.length;
-    areaNum++) {
+        areaNum < inputLowerCategoryString.length;
+        areaNum++) {
       for (int categoryNum = 0;
-      categoryNum < inputLowerCategoryString[areaNum].length;
-      categoryNum++) {
+          categoryNum < inputLowerCategoryString[areaNum].length;
+          categoryNum++) {
         for (int i = 0;
-        i < inputLowerCategoryString[areaNum][categoryNum].length;
-        i++) {
+            i < inputLowerCategoryString[areaNum][categoryNum].length;
+            i++) {
           inputLowerCategoryString[areaNum][categoryNum][i].text = '';
 
           newTextEditor.tableTestLowerCategoryEditing
-              .tableLowerCategoryControllerAnswerCheckListArea[areaNum]
-          [categoryNum][i] = 0;
+                  .tableLowerCategoryControllerAnswerCheckListArea[areaNum]
+              [categoryNum][i] = 0;
         }
       }
     }
@@ -219,18 +229,18 @@ class TableDeleteAnswer {
 
     for (int gradeNum = 0; gradeNum < inputValueString.length; gradeNum++) {
       for (int areaNum = 0;
-      areaNum < inputValueString[gradeNum].length;
-      areaNum++) {
+          areaNum < inputValueString[gradeNum].length;
+          areaNum++) {
         for (int categoryItemNum = 0;
-        categoryItemNum < inputValueString[gradeNum][areaNum].length;
-        categoryItemNum++) {
+            categoryItemNum < inputValueString[gradeNum][areaNum].length;
+            categoryItemNum++) {
           for (int i = 0;
-          i < inputValueString[gradeNum][areaNum][categoryItemNum].length;
-          i++) {
+              i < inputValueString[gradeNum][areaNum][categoryItemNum].length;
+              i++) {
             inputValueString[gradeNum][areaNum][categoryItemNum][i].text = '';
             newTextEditor.tableTestValueEditing
-                .tableValueControllerAnswerCheckListArea[gradeNum][areaNum]
-            [categoryItemNum][i] = 0;
+                    .tableValueControllerAnswerCheckListArea[gradeNum][areaNum]
+                [categoryItemNum][i] = 0;
           }
         }
       }

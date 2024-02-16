@@ -61,7 +61,7 @@ class _TableTextContainerWithKeyState extends State<TableTextContainerWithKey> {
 
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
         sizeHeight = _getSizeHeight();
       });
@@ -114,7 +114,7 @@ class _TableTestContainerWithKeyState extends State<TableTestContainerWithKey> {
 
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
         sizeHeight = _getSizeHeight();
       });

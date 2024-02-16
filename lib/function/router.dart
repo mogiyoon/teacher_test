@@ -21,7 +21,6 @@ class ScreenRouter {
   }
 }
 
-//TODO Education 버젼도 추가
 class TextEditRouter {
   Map<String, AchieveTextEditing> achieveTextEdit = {};
   Map<String, TableTextEditing> tableTextEdit = {};

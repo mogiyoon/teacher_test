@@ -1,5 +1,6 @@
 import 'package:teacher_test/contents/introduction_contents.dart';
 import 'package:teacher_test/function/answer_check/answer_checker.dart';
+import 'package:teacher_test/function/answer_check/answer_to_db.dart';
 import 'package:teacher_test/test/education_introduction/introduction_builder.dart';
 
 class EducationIntroductionCheckAnswer {
@@ -10,7 +11,7 @@ class EducationIntroductionCheckAnswer {
 
   var educationIntroduction = EducationIntroduction();
   late List<String> inputList = educationIntroduction.educationIntroductionList;
-
+  
   void educationIntroductionCheckAnswer() {
     for (int i = 0; i < inputList.length; i++) {
       String removeSpaceText = Remove(isIncludeSpace)
@@ -24,7 +25,7 @@ class EducationIntroductionCheckAnswer {
           '') {
         newTextEditor.educationIntroductionCheckList[i] = 0;
       } else {
-        EducationIntroductionWrongAnswerToDB().educationIntroductionWrongWriter(inputList[i]);
+        EducationIntroductionWrongAnswerToDB().educationWriter(inputList[i], i);
         newTextEditor.educationIntroductionCheckList[i] = 2;
       }
     }

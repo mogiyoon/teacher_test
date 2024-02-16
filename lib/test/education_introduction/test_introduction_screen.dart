@@ -6,7 +6,6 @@ import 'package:teacher_test/function/widget/speeddial_widget.dart';
 import 'package:teacher_test/setting/widget_control.dart';
 import 'package:teacher_test/test/education_introduction/introduction_builder.dart';
 import 'package:teacher_test/test/test_contents.dart';
-import 'package:teacher_test/test/test_screen.dart';
 
 class EducationIntroductionScreen extends StatelessWidget {
   const EducationIntroductionScreen({super.key});
