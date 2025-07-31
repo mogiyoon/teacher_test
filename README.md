@@ -1,4 +1,4 @@
-# 👩‍🏫 티처 테스트 (Teacher Test)
+# 👩‍🏫 티처 테스트 (Tea Time)
 
 **티처 테스트**는 대한민국 초등교사 임용 시험을 준비하는 예비 교사들을 위한 모바일 학습 앱입니다. 방대한 교육과정 내용을 언제 어디서든 퀴즈 형태로 학습하고, 틀린 문제를 체계적으로 관리하여 합격에 한 걸음 더 다가갈 수 있도록 돕습니다.
 
@@ -30,9 +30,17 @@
 
 ## 📱 앱 스크린샷
 
-| 메인 화면 | 문제 풀이 화면 | 오답 노트 |
+| 메인 화면 | 성취기준 | 총론 |
 | :---: | :---: | :---: |
-| <img src="https://path.to/your/main-screen.png" width="250"> | <img src="https://path.to/your/test-screen.png" width="250"> | <img src="https://path.to/your/review-note-screen.png" width="250"> |
+| <img src="https://github.com/user-attachments/assets/12bed316-7c6c-414d-87f3-af96ceeb75ec" width="250"> | <img src="https://github.com/user-attachments/assets/dd3ded2f-e298-4778-b052-a05bda6e9d57" width="250"> | <img src="https://github.com/user-attachments/assets/2e07922a-0d6b-437f-bd95-ab7c8267bee4" width="250"> |
+
+| 내용 체계표 |
+| :---: |
+| <img src="https://github.com/user-attachments/assets/76bbe569-cfdc-408e-82cb-07bff8dd9237" width="750"> |
+
+| 내용 체계표(시험) |
+| :---: |
+| <img src="https://github.com/user-attachments/assets/25bd4182-981c-4567-a118-b2298a40e5d6" width="750"> |
 
 <br>
 
